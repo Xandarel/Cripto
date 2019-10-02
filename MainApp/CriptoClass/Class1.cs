@@ -6,6 +6,7 @@ namespace Criptoclass
     public static class Languege
     {
         public static Dictionary<char, int> dictionary = new Dictionary<char, int>();
+        public static int z { get; set; } //размер кольца (сколько букв в алфавите)
         public static void Libra(string lang)
         {
             switch (lang)
@@ -23,6 +24,7 @@ namespace Criptoclass
                                 dictionary[Convert.ToChar(i)] = i - Convert.ToInt32('А');
                         }
                     }
+                    z = 33;
                     break;
                 case "eng":
                     for (int i = Convert.ToInt32('A'); i <= Convert.ToInt32('Z'); i++)
@@ -30,6 +32,7 @@ namespace Criptoclass
                         if (!dictionary.ContainsKey(Convert.ToChar(i)))
                             dictionary[Convert.ToChar(i)] = i - Convert.ToInt32('A');
                     }
+                    z = 26;
                     break;
             }
         }
@@ -54,7 +57,7 @@ namespace Criptoclass
             string result="";
             for(int i=0;i<numberLitera.Length;i++)
             {
-                result +=Convert.ToString(FindValue((numberLitera[i] + keyLitera[i]) % 33));//TODO исправить константу на динамическое значение словаря
+                result +=Convert.ToString(FindValue((numberLitera[i] + keyLitera[i]) % Languege.z));
             }
             return result;
         }
@@ -67,5 +70,11 @@ namespace Criptoclass
             return ' ';//Это часть кода никогда не вернется. так как в foreach найдется такое значение
         }
 
+    }//TODO дописать декодирование
+    public class ReverseVeshener : Vishener
+    {
+
     }
+
+
 }
