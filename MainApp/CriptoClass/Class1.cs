@@ -48,15 +48,23 @@ namespace Criptoclass
                 numberLitera[number] = Languege.dictionary[litera];
                 number++;
             }
-            var keyArray = new char[word.Length];
-            for (int i = 0; i < keyArray.Length; i++)
+            var keyLitera = new int[word.Length];
+            for (int i = 0; i < keyLitera.Length; i++)
+                keyLitera[i] = Languege.dictionary[key[i % key.Length]];
+            string result="";
+            for(int i=0;i<numberLitera.Length;i++)
             {
-                keyArray[i] = key[i % key.Length];
-                Console.Write(keyArray[i]);
+                result +=Convert.ToString(FindValue((numberLitera[i] + keyLitera[i]) % 33));//TODO исправить константу на динамическое значение словаря
             }
+            return result;
+        }
 
-            return "";
-
+        char FindValue(int key)
+        {
+            foreach (var pair in Languege.dictionary)
+                if (pair.Value == key)
+                    return pair.Key;
+            return ' ';//Это часть кода никогда не вернется. так как в foreach найдется такое значение
         }
 
     }

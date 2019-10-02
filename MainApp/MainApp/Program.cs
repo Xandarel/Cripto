@@ -6,14 +6,14 @@ namespace MainApp
     {
         static void Main()
         {
-            Languege.Libra("eng");
+            Languege.Libra("ru");
             //foreach (var d in Languege.dictionary)
             //    Console.WriteLine(d);
             //Console.WriteLine(Languege.dictionary['A']);
             var example = new Vishener();
-            example.key = "DOG";
-            example.word = "MOZAMBIC";
-            example.Code();
+            example.key = "МОЗГ";
+            example.word = "ТЕЛИФОН";
+            Console.WriteLine(example.Code());
         }
     }
 }
