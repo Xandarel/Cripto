@@ -1,0 +1,14 @@
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\bin\Debug\netcoreapp2.1\MainApp.deps.json
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\bin\Debug\netcoreapp2.1\MainApp.runtimeconfig.json
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\bin\Debug\netcoreapp2.1\MainApp.runtimeconfig.dev.json
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\bin\Debug\netcoreapp2.1\MainApp.dll
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\bin\Debug\netcoreapp2.1\MainApp.pdb
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\bin\Debug\netcoreapp2.1\CriptoClass.dll
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\bin\Debug\netcoreapp2.1\CriptoClass.pdb
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\obj\Debug\netcoreapp2.1\MainApp.csprojAssemblyReference.cache
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\obj\Debug\netcoreapp2.1\MainApp.csproj.CoreCompileInputs.cache
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\obj\Debug\netcoreapp2.1\MainApp.AssemblyInfoInputs.cache
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\obj\Debug\netcoreapp2.1\MainApp.AssemblyInfo.cs
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\obj\Debug\netcoreapp2.1\MainApp.csproj.CopyComplete
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\obj\Debug\netcoreapp2.1\MainApp.dll
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\MainApp\obj\Debug\netcoreapp2.1\MainApp.pdb
