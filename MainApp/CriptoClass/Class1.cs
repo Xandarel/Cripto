@@ -37,6 +37,20 @@ namespace Criptoclass
             }
         }
     }
+    public static class Converter
+    {
+        public static int[] ConvertWordToCode(string text)
+        {
+            var numberLitera = new int[text.Length];
+            int number = 0;
+            foreach (var litera in word) // Перевод слова в код
+            {
+                numberLitera[number] = Languege.dictionary[litera];
+                number++;
+            }
+            return numberLitera;
+        }
+    }
     public class Vishener
     {
         public string word { get; set; }
@@ -44,7 +58,7 @@ namespace Criptoclass
 
         public string Code()
         {
-            var numberLitera = ConvertWordToCode();
+            var numberLitera =Converter.ConvertWordToCode(word);
             var keyLitera = new int[word.Length];
             //Создает массив по ключу. Циклически записывает ключ в строку длинны кодируемого слова
             for (int i = 0; i < keyLitera.Length; i++)
@@ -57,23 +71,10 @@ namespace Criptoclass
             return result;
         }
 
-        public string Decode()//TODO дописать. эта функция недописана
+        public static string Decode(string word, string key)//TODO дописать. эта функция недописана
         {
-
+            //var numberLitera=
             return "";
-        }
-
-        public int[] ConvertWordToCode()// Переводит слово в код, элементами которого являются номера букв слова.
-            //Возможно нужно сделать её статической функцией?
-        {
-            var numberLitera = new int[word.Length];
-            int number = 0;
-            foreach (var litera in word) // Перевод слова в код
-            {
-                numberLitera[number] = Languege.dictionary[litera];
-                number++;
-            }
-            return numberLitera;
         }
         char FindValue(int key)
         {
