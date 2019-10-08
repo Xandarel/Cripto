@@ -44,6 +44,28 @@ namespace Criptoclass
 
         public string Code()
         {
+            var numberLitera = ConvertWordToCode();
+            var keyLitera = new int[word.Length];
+            //Создает массив по ключу. Циклически записывает ключ в строку длинны кодируемого слова
+            for (int i = 0; i < keyLitera.Length; i++)
+                keyLitera[i] = Languege.dictionary[key[i % key.Length]];
+            string result="";
+            //Шифрование слова. 
+            //Коды слов последовательно суммируются и высчитывается новое значение буквы в кольце выбранного алфавита
+            for(int i=0;i<numberLitera.Length;i++)
+                result +=Convert.ToString(FindValue((numberLitera[i] + keyLitera[i]) % Languege.z));
+            return result;
+        }
+
+        public string Decode()//TODO дописать. эта функция недописана
+        {
+
+            return "";
+        }
+
+        public int[] ConvertWordToCode()// Переводит слово в код, элементами которого являются номера букв слова.
+            //Возможно нужно сделать её статической функцией?
+        {
             var numberLitera = new int[word.Length];
             int number = 0;
             foreach (var litera in word) // Перевод слова в код
@@ -51,17 +73,8 @@ namespace Criptoclass
                 numberLitera[number] = Languege.dictionary[litera];
                 number++;
             }
-            var keyLitera = new int[word.Length];
-            for (int i = 0; i < keyLitera.Length; i++)
-                keyLitera[i] = Languege.dictionary[key[i % key.Length]];
-            string result="";
-            for(int i=0;i<numberLitera.Length;i++)
-            {
-                result +=Convert.ToString(FindValue((numberLitera[i] + keyLitera[i]) % Languege.z));
-            }
-            return result;
+            return numberLitera;
         }
-
         char FindValue(int key)
         {
             foreach (var pair in Languege.dictionary)
@@ -69,6 +82,7 @@ namespace Criptoclass
                     return pair.Key;
             return ' ';//Это часть кода никогда не вернется. так как в foreach найдется такое значение
         }
+
 
     }//TODO дописать декодирование
     public class ReverseVeshener : Vishener
