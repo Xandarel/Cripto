@@ -72,7 +72,7 @@ namespace Criptoclass
             return result;
         }
 
-        public static string Decode(Vishener element)//TODO дописать. эта функция недописана
+        public static string Decode(Vishener element)//TODO написать красиво. Не нравится, что для декодирование нужен экземпляр элемента класса виженера
         {
             var numberLitera = Converter.ConvertWordToCode(element.word);
             var keyLitera = new int[element.word.Length];
@@ -90,9 +90,7 @@ namespace Criptoclass
                     return pair.Key;
             return ' ';//Это часть кода никогда не вернется. так как в foreach найдется такое значение
         }
-
-
-    }//TODO дописать декодирование
+    }
     public class ReverseVeshener : Vishener
     {
 
