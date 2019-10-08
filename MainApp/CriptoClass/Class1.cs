@@ -43,7 +43,7 @@ namespace Criptoclass
         {
             var numberLitera = new int[text.Length];
             int number = 0;
-            foreach (var litera in word) // Перевод слова в код
+            foreach (var litera in text) // Перевод слова в код
             {
                 numberLitera[number] = Languege.dictionary[litera];
                 number++;
@@ -61,6 +61,7 @@ namespace Criptoclass
             var numberLitera =Converter.ConvertWordToCode(word);
             var keyLitera = new int[word.Length];
             //Создает массив по ключу. Циклически записывает ключ в строку длинны кодируемого слова
+            //TODO придумать как написать реализацию красивее и для общего случая
             for (int i = 0; i < keyLitera.Length; i++)
                 keyLitera[i] = Languege.dictionary[key[i % key.Length]];
             string result="";
@@ -71,10 +72,16 @@ namespace Criptoclass
             return result;
         }
 
-        public static string Decode(string word, string key)//TODO дописать. эта функция недописана
+        public static string Decode(Vishener element)//TODO дописать. эта функция недописана
         {
-            //var numberLitera=
-            return "";
+            var numberLitera = Converter.ConvertWordToCode(element.word);
+            var keyLitera = new int[element.word.Length];
+            for (int i = 0; i < keyLitera.Length; i++)
+                keyLitera[i] = Languege.dictionary[element.key[i % element.key.Length]];
+            string result="";
+            for (int i = 0; i < numberLitera.Length; i++)
+                result += Convert.ToString(element.FindValue((numberLitera[i] - keyLitera[i]) % Languege.z));
+            return result;
         }
         char FindValue(int key)
         {

@@ -13,7 +13,10 @@ namespace MainApp
             var example = new Vishener();
             example.key = "МОЗГ";
             example.word = "ТЕЛИФОН";
-           // Vishener.Decode(example.Code(), example.key);
+            var kodeVishener = new Vishener();
+            kodeVishener.word = example.Code();
+            kodeVishener.key = example.key;
+            Console.WriteLine(Vishener.Decode(kodeVishener));
             Console.WriteLine(example.Code());
         }
     }
