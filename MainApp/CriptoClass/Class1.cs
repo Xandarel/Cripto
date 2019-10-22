@@ -72,7 +72,7 @@ namespace Criptoclass
             return result;
         }
 
-        public static string Decode(Vishener element)//TODO написать красиво. Не нравится, что для декодирование нужен экземпляр элемента класса виженера
+        public static string Decode(Vishener element)
         {
             var numberLitera = Converter.ConvertWordToCode(element.word);
             var keyLitera = new int[element.word.Length];
@@ -80,15 +80,28 @@ namespace Criptoclass
                 keyLitera[i] = Languege.dictionary[element.key[i % element.key.Length]];
             string result="";
             for (int i = 0; i < numberLitera.Length; i++)
-                result += Convert.ToString(element.FindValue((numberLitera[i] - keyLitera[i]) % Languege.z));
+            {
+                var dec= (numberLitera[i] - keyLitera[i]) % Languege.z;
+                result += Convert.ToString(element.FindValue(dec));
+            }
             return result;
         }
         char FindValue(int key)
         {
-            foreach (var pair in Languege.dictionary)
-                if (pair.Value == key)
-                    return pair.Key;
-            return ' ';//Это часть кода никогда не вернется. так как в foreach найдется такое значение
+            var inversekey = Languege.z + key; // + потому, что ключ точно меньше длинны кольца.
+            if (key > 0)
+            {
+                foreach (var pair in Languege.dictionary)
+                    if (pair.Value == key)
+                        return pair.Key;
+            }
+            else
+            {
+                foreach (var pair in Languege.dictionary)
+                    if (pair.Value == inversekey)
+                        return pair.Key;
+            }
+            return ' '; //теперь точно никогда сюда код не придет
         }
     }
     public class ReverseVeshener : Vishener
