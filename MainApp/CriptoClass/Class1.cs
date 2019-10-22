@@ -104,9 +104,9 @@ namespace Criptoclass
             return ' '; //теперь точно никогда сюда код не придет
         }
     }
-    public class ReverseVeshener : Vishener
+    public class ReverseVeshener :
     {
-
+        
     }
 
 
