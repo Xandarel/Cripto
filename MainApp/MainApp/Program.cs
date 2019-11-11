@@ -1,5 +1,6 @@
 ﻿using System;
 using Criptoclass;
+using CriptoClass;
 namespace MainApp
 {
     class Program
@@ -7,6 +8,8 @@ namespace MainApp
         static void Main()
         {
             Languege.Libra("ru");
+            var rv = new ReverseVeshener("ТЕЛИФОНН","МОЗГ");
+            Console.WriteLine(rv.Code());
             //foreach (var d in Languege.dictionary)
             //    Console.WriteLine(d);
             //Console.WriteLine(Languege.dictionary['A']);
