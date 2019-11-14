@@ -8,7 +8,7 @@ namespace MainApp
         static void Main()
         {
             Languege.Libra("ru");
-            var rv = new ReverseVeshener("ТЕЛИФОНН","МОЗГ");
+            var rv = new ReverseVeshener("ТЕЛИФОН","МОЗГ");
             Console.WriteLine(rv.Code());
             //foreach (var d in Languege.dictionary)
             //    Console.WriteLine(d);

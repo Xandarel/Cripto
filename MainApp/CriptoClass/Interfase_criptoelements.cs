@@ -4,9 +4,9 @@ using System.Text;
 
 namespace CriptoClass
 {
-    interface Interfase_criptoelements<T> //TODO: посмотреть как аботают интерфейсы. Написать правильно
+    interface Interfase_criptoelements<T>
     {
-        string Code();
-        string Decode();
+        string Code(WordAndKey <T> element);
+        string Decode(WordAndKey<T> element);
     }
 }
