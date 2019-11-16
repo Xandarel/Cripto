@@ -4,7 +4,7 @@ namespace CriptoClass
 {
     public class ReverseVeshener : Interfase_criptoelements<string>
     {
-        public string Code(WordAndKey<string> element)// Зарефакторить
+        public string Code(WordAndKey<string> element)
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word); // перевод слова в код
             var keyLitera = Converter.ConvertWordToCode(element.Key);// перевод ключа в код
@@ -26,7 +26,7 @@ namespace CriptoClass
             return element.Encoded;
         }
 
-        public string Decode(WordAndKey<string> element)//TODO: реализовать
+        public string Decode(WordAndKey<string> element)
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word); // перевод слова в код
             var keyLitera = Converter.ConvertWordToCode(element.Key);// перевод ключа в код

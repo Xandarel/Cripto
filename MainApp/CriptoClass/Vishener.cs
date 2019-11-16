@@ -5,19 +5,16 @@ using Criptoclass;
 
 namespace CriptoClass
 {
-    public class Vishener
+    public class Vishener : Interfase_criptoelements<string>
     {
-        public string word { get; set; }
-        public string key { get; set; }
-
-        public string Code()
+        public string Code(WordAndKey<string> element)
         {
-            var numberLitera = Converter.ConvertWordToCode(word);
-            var keyLitera = new int[word.Length];
+            var numberLitera = Converter.ConvertWordToCode(element.Word);
+            var keyLitera = new int[element.Word.Length];
             //Создает массив по ключу. Циклически записывает ключ в строку длинны кодируемого слова
             //TODO придумать как написать реализацию красивее и для общего случая
             for (int i = 0; i < keyLitera.Length; i++)
-                keyLitera[i] = Languege.dictionary[key[i % key.Length]];
+                keyLitera[i] = Languege.dictionary[element.Key[i % element.Key.Length]];
             string result = "";
             //Шифрование слова. 
             //Коды слов последовательно суммируются и высчитывается новое значение буквы в кольце выбранного алфавита
@@ -25,13 +22,12 @@ namespace CriptoClass
                 result += Convert.ToString(FindValue.Findvalue((numberLitera[i] + keyLitera[i]) % Languege.z));
             return result;
         }
-
-        public static string Decode(Vishener element)
+        public string Decode(WordAndKey<string> element)
         {
-            var numberLitera = Converter.ConvertWordToCode(element.word);
-            var keyLitera = new int[element.word.Length];
+            var numberLitera = Converter.ConvertWordToCode(element.Word);
+            var keyLitera = new int[element.Word.Length];
             for (int i = 0; i < keyLitera.Length; i++)
-                keyLitera[i] = Languege.dictionary[element.key[i % element.key.Length]];
+                keyLitera[i] = Languege.dictionary[element.Key[i % element.Key.Length]];
             string result = "";
             for (int i = 0; i < numberLitera.Length; i++)
             {
