@@ -4,6 +4,9 @@ using System.Text;
 
 namespace CriptoClass
 {
+    /// <summary>
+    /// класс, в котором будет храниться слово, ключ, по которому это слово шифровалось и зашифрованное слово
+    /// </summary>
     public class WordAndKey<T>
     {
         string word;
