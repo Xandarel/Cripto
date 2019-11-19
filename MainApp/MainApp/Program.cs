@@ -8,7 +8,10 @@ namespace MainApp
         static void Main()
         {
             Languege.Libra("ru");
-            var libra = new WordAndKey<int[]>("fool", new int[] { 2, 1, 2 });
+            var libra = new WordAndKey<int[,]>("fool", new int[,] { 
+                                                                    { 2, 1, 2 },
+                                                                    { 0, 1, 2 }
+            });
         }
     }
 }

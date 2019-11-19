@@ -2,6 +2,9 @@
 
 namespace CriptoClass
 {
+    /// <summary>
+    /// Шифр Виженера с обратной связью
+    /// </summary>
     public class ReverseVeshener : Interfase_criptoelements<string>
     {
         public string Code(WordAndKey<string> element)

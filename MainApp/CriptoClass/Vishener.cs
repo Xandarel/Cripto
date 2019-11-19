@@ -5,6 +5,9 @@ using Criptoclass;
 
 namespace CriptoClass
 {
+    /// <summary>
+    /// Шифр Виженера
+    /// </summary>
     public class Vishener : Interfase_criptoelements<string>
     {
         public string Code(WordAndKey<string> element)
