@@ -9,9 +9,11 @@ namespace CriptoClass
     {
         readonly int limit;
         readonly LinkedList<T> linkedList;
+        LinkedList<T> bufflist;
         public LimitedSizeStack(int limit)
         {
             this.linkedList = new LinkedList<T>();
+            bufflist = new LinkedList<T>();
             this.limit = limit;
         }
 
@@ -28,17 +30,21 @@ namespace CriptoClass
 
         public T Pop()
         {
-            var buf = linkedList.Last;
-            linkedList.RemoveLast();
-            return buf.Value;
+                var buf = linkedList.First;
+                bufflist.AddFirst(buf);
+                linkedList.RemoveFirst();
+                return buf.Value;
         }
-
-        public int Count
+        
+         public void Restore()
         {
-            get
+            while ((bufflist.Count != 0) && (linkedList.Count!=limit))
             {
-                return linkedList.Count;
+                linkedList.AddFirst(bufflist.Last);
+                bufflist.RemoveLast();
             }
         }
+
+        public int Count { get => linkedList.Count; }
     }
 }
