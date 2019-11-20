@@ -7,11 +7,13 @@ namespace MainApp
     {
         static void Main()
         {
-            Languege.Libra("ru");
-            var libra = new WordAndKey<int[,]>("fool", new int[,] { 
+            Languege.Libra("eng");
+            var libra = new WordAndKey<int[,]>("FOOL", new int[,] { 
                                                                     { 2, 1, 2 },
                                                                     { 0, 1, 2 }
             });
+            var tr = new CriptoClass.Transposition();
+            tr.Code(libra);
         }
     }
 }

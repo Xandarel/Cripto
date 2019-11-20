@@ -8,23 +8,20 @@ namespace CriptoClass
     /// <summary>
     /// шифр перестановки
     /// </summary>
-    class Transposition : Interfase_criptoelements<int[,]>//TODO: понять, как написать красиво
+    public class Transposition : Interfase_criptoelements<int[,]>//TODO: понять, как написать красиво
     {
         public string Code(WordAndKey<int[,]> element)
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);//TODO: может стоит объединить это в отдельный статический класс?
-            var keyLitera = new int[element.Key.GetLength(1)];
-            var buffkey= new int[element.Key.GetLength(1)];
+            var keyLitera = new LimitedSizeStack<int>(element.Key.GetLength(1));
             string result = "";
-            int i = 0;
-            foreach (var n in numberLitera)
-            {
-                result += Convert.ToString(FindValue.Findvalue((n + keyLitera[i]) % Languege.z));
-                if (i==keyLitera.Length)
-                    for (int j=0;i< keyLitera.Length;j++)
-                        buffkey[j]=
-            }
+            for (var i=0;i< element.Key.GetLength(1); i++)
+                if (i < element.Key.GetLength(1))
+                    keyLitera.Push(element.Key[1, i]);
+            //foreach (var n in numberLitera)
+            //result += Convert.ToString(FindValue.Findvalue((n + keyLitera[i]) % Languege.z));
 
+            return "";
         }
 
         public string Decode(WordAndKey<int[,]> element)
@@ -32,6 +29,9 @@ namespace CriptoClass
             throw new NotImplementedException();
         }
 
-        int sequence(int[,] coefficients)
+        //int sequence(int[,] coefficients, int[] array)
+        //{
+
+        //}
     }
 }
