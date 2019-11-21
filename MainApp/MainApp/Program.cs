@@ -12,7 +12,7 @@ namespace MainApp
                                                                     { 2, 1, 2 },
                                                                     { 0, 1, 2 }
             });
-            var tr = new CriptoClass.Transposition();
+            var tr = new Transposition();
             tr.Code(libra);
         }
     }

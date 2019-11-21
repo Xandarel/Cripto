@@ -14,7 +14,6 @@ namespace CriptoClass
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);//TODO: может стоит объединить это в отдельный статический класс?
             var keyLitera = new LimitedSizeStack<int>(element.Key.GetLength(1));
-            //var buff= new LimitedSizeStack<int>(element.Key.GetLength(1));
             string result = "";
             for (var i=0;i< element.Key.GetLength(1); i++)
                     keyLitera.Push(element.Key[1, i]);
@@ -40,8 +39,11 @@ namespace CriptoClass
             for (int i = 0; i < coefficients.GetLength(1); i++)
             {
                 int newElementSequence = 0;
-                for (var j = 0; j < coefficients.GetLength(0); j++)
-                    newElementSequence += coefficients[0, j] * key.Pop();
+                for (var j = 0; j <= coefficients.GetLength(0); j++)
+                {
+                    var multiplier = key.Pop();//TODO: разграничить PopLast и PopFirst
+                    newElementSequence += coefficients[0, j] * multiplier;
+                }
                 key.Restore();
                 key.Push(newElementSequence);
             }

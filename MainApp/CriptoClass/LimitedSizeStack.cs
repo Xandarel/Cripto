@@ -30,9 +30,9 @@ namespace CriptoClass
 
         public T Pop()
         {
-                var buf = linkedList.First;
-                bufflist.AddFirst(buf);
-                linkedList.RemoveFirst();
+            var buf = linkedList.First;
+            bufflist.AddLast(buf.Value);
+            linkedList.RemoveFirst();
                 return buf.Value;
         }
         
@@ -40,7 +40,7 @@ namespace CriptoClass
         {
             while ((bufflist.Count != 0) && (linkedList.Count!=limit))
             {
-                linkedList.AddFirst(bufflist.Last);
+                linkedList.AddFirst(bufflist.Last.Value);
                 bufflist.RemoveLast();
             }
         }
