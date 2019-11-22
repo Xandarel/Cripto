@@ -28,12 +28,12 @@ namespace CriptoClass
             }
         }
 
-        public T Pop()
+        public T PopLast()
         {
-            var buf = linkedList.First;
+            var buf = linkedList.Last;
             bufflist.AddLast(buf.Value);
-            linkedList.RemoveFirst();
-                return buf.Value;
+            linkedList.RemoveLast();
+            return buf.Value;
         }
         
          public void Restore()
@@ -43,6 +43,13 @@ namespace CriptoClass
                 linkedList.AddFirst(bufflist.Last.Value);
                 bufflist.RemoveLast();
             }
+        }
+        public T PopFirst()
+        {
+            var buf = linkedList.First;
+            bufflist.AddLast(buf.Value);
+            linkedList.RemoveFirst();
+            return buf.Value;
         }
 
         public int Count { get => linkedList.Count; }

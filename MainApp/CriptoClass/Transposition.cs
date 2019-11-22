@@ -19,7 +19,7 @@ namespace CriptoClass
                     keyLitera.Push(element.Key[1, i]);
             foreach (var nL in numberLitera)
             {
-                result+= Convert.ToString(FindValue.Findvalue((nL + keyLitera.Pop()) % Languege.z));
+                result+= Convert.ToString(FindValue.Findvalue((nL + keyLitera.PopFirst()) % Languege.z));//PopFirst
                 if (keyLitera.Count == 0)
                     sequence(element.Key, keyLitera);
 
@@ -41,7 +41,8 @@ namespace CriptoClass
                 int newElementSequence = 0;
                 for (var j = 0; j <= coefficients.GetLength(0); j++)
                 {
-                    var multiplier = key.Pop();//TODO: разграничить PopLast и PopFirst
+                    var multiplier = key.PopLast();//PopLast
+                    //TODO: разграничить PopLast и PopFirst
                     newElementSequence += coefficients[0, j] * multiplier;
                 }
                 key.Restore();
