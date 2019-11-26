@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Double;
 
 namespace CriptoClass
 {
@@ -15,6 +17,12 @@ namespace CriptoClass
         public WordAndKey(string word,T key)
         {
             this.word = word;
+            //if (key is List<Matrix<int>>)
+            //{
+            //    this.key = this.key as List<Matrix<int>>;
+            //    foreach (var element in key)
+            //        this.key.Add(element);
+            //}
             this.key = key;
             encoded = "";
         }
