@@ -10,27 +10,36 @@ namespace CriptoClass
     /// </summary>
     public class Transposition : Interfase_criptoelements<int[,]>//TODO: понять, как написать красиво
     {
-        public string Code(WordAndKey<int[,]> element)
+        public string Code(WordAndKey<int[,]> element)//TODO: понять, как реализовать в других системах исчисления
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);//TODO: может стоит объединить это в отдельный статический класс?
             var keyLitera = new LimitedSizeStack<int>(element.Key.GetLength(1));
-            string result = "";
             for (var i=0;i< element.Key.GetLength(1); i++)
                     keyLitera.Push(element.Key[1, i]);
             foreach (var nL in numberLitera)
             {
-                result+= Convert.ToString(FindValue.Findvalue((nL + keyLitera.PopFirst()) % Languege.z));
+                element.Encoded = Convert.ToString(FindValue.Findvalue((nL + keyLitera.PopFirst()) % Languege.z));
                 if (keyLitera.Count == 0)
                     sequence(element.Key, keyLitera);
 
             }
-
-            return result;
+            return element.Encoded;
         }
 
         public string Decode(WordAndKey<int[,]> element)
         {
-            throw new NotImplementedException();
+            var numberLitera = Converter.ConvertWordToCode(element.Word);//TODO: может стоит объединить это в отдельный статический класс?
+            var keyLitera = new LimitedSizeStack<int>(element.Key.GetLength(1));
+            for (var i = 0; i < element.Key.GetLength(1); i++)
+                keyLitera.Push(element.Key[1, i]);
+            foreach (var nL in numberLitera)
+            {
+                element.Encoded = Convert.ToString(FindValue.Findvalue((nL - keyLitera.PopFirst()) % Languege.z));
+                if (keyLitera.Count == 0)
+                    sequence(element.Key, keyLitera);
+
+            }
+            return element.Encoded;
         }
 
         void sequence(int[,] coefficients, LimitedSizeStack<int> key)
