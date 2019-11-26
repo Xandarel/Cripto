@@ -31,7 +31,7 @@ namespace CriptoClass
         public T PopLast()
         {
             var buf = linkedList.Last;
-            bufflist.AddLast(buf.Value);
+            bufflist.AddFirst(buf.Value);
             linkedList.RemoveLast();
             return buf.Value;
         }
