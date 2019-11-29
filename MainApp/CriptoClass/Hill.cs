@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
+using Criptoclass;
 
 namespace CriptoClass
 {
@@ -17,11 +18,15 @@ namespace CriptoClass
             {
                 if (i > numberLitera.Length)
                     i = numberLitera.Length;
-                var buff=new int[n - start];
-                for (var j = start; j < n; j++)
-                    buff[j] = numberLitera[j];
-
+                var buff=new int[i - start,1];
+                for (var j = 0; j < i - start; j++)//разделение массива на блоки длинны n
+                    buff[j,0] = numberLitera[start+j];
+                var matrix = Matrix<int>.Build.DenseOfArray(buff);
+                matrix = (matrix + element.Key[1]) * element.Key[0];
+                for (var t=0;t<matrix.RowCount;t++)
+                    element.Encoded= element.Encoded = Convert.ToString(FindValue.Findvalue(matrix[t,0]) % Languege.z);
             }
+            return element.Encoded;//TODO: проверить, работает ли правильно
         }
 
         public string Decode(WordAndKey<List<Matrix<int>>> element)
