@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "cfe1dc2a80602aef150a12815387068463a61a0d"
+    "signature": "77f621a546c6a159e8978748a97d28d30f0b301c"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,10 +9,19 @@
     ".NETStandard,Version=v2.0/": {
       "CriptoClass/1.0.0": {
         "dependencies": {
+          "MathNet.Numerics": "4.9.0",
           "NETStandard.Library": "2.0.3"
         },
         "runtime": {
           "CriptoClass.dll": {}
+        }
+      },
+      "MathNet.Numerics/4.9.0": {
+        "runtime": {
+          "lib/netstandard2.0/MathNet.Numerics.dll": {
+            "assemblyVersion": "4.9.0.0",
+            "fileVersion": "4.9.0.0"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
@@ -28,6 +37,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "MathNet.Numerics/4.9.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4cYzhuMDq57oC6lwhMmuigdhP+oywmp1bMtFzvzz4wYr5eWbg0JLDPo/L1juqDkIBj+rc3FrxUEX7jcHRmnF+w==",
+      "path": "mathnet.numerics/4.9.0",
+      "hashPath": "mathnet.numerics.4.9.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
