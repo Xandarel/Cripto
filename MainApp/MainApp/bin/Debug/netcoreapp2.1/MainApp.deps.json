@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v2.1": {
       "MainApp/1.0.0": {
         "dependencies": {
-          "CriptoClass": "1.0.0"
+          "CriptoClass": "1.0.0",
+          "MathNet.Numerics": "4.9.0"
         },
         "runtime": {
           "MainApp.dll": {}

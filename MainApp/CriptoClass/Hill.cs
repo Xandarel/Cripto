@@ -9,7 +9,7 @@ namespace CriptoClass
 {
     public class Hill : Interfase_criptoelements<List<Matrix<double>>>
     {
-        public string Code(WordAndKey<List<Matrix<double>>> element)
+        public string Code(WordAndKey<List<Matrix<double>>> element) //TODO: Если слово не разбивается на блоки длинны n, отбрасывает хвост. нужно исправить
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var n = element.Key[0].ToArray().GetLength(0);
@@ -43,8 +43,8 @@ namespace CriptoClass
                 for (var j = 0; j < i - start; j++)//разделение массива на блоки длинны n
                     buff[j, 0] = numberLitera[start + j];
                 var matrix = Matrix<double>.Build.DenseOfArray(buff);
-                var determinante = element.Key[0].Determinant();
-                matrix = element.Key[0].Inverse() * (matrix - element.Key[1]);//Inverse() не работает. придется писать руками
+                var determinante = element.Key[0].Determinant();// TODO: заменить на свое определение обратной матрицы
+                //matrix = element.Key[0].Inverse() * (matrix - element.Key[1]);//Inverse() не работает. придется писать руками
                 for (var t = 0; t < matrix.RowCount; t++)
                     element.Encoded = Convert.ToString(FindValue.Findvalue(Convert.ToInt32(matrix[t, 0] % Languege.z)));
                 start = i;
