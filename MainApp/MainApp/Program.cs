@@ -16,7 +16,7 @@ namespace MainApp
             key.Add(Matrix<double>.Build.DenseOfArray(new double[,] { { 0 }, { 0 }, { 0 } }));
             Console.WriteLine(key[0]);
             Console.WriteLine(key[1]);
-            var libra = new WordAndKey<List<Matrix<double>>>("CORRUPTIOOPTIMIPESSIMA",key);
+            var libra = new WordAndKey<List<Matrix<double>>>("CORRUPTIOOPTIMIPESSIMA", key);
             var tr = new Hill();
             tr.Decode(libra);
             Console.WriteLine(libra.Encoded);
