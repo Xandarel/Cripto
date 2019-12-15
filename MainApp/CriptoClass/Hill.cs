@@ -43,8 +43,8 @@ namespace CriptoClass
                 for (var j = 0; j < i - start; j++)//разделение массива на блоки длинны n
                     buff[j, 0] = numberLitera[start + j];
                 var matrix = Matrix<double>.Build.DenseOfArray(buff);
-                var determinante = element.Key[0].Determinant();// TODO: заменить на свое определение обратной матрицы
-                //matrix = element.Key[0].Inverse() * (matrix - element.Key[1]);//Inverse() не работает. придется писать руками
+                var inverse = InverseMatrix.Inverse_Matrix(element.Key[0]);
+                matrix =inverse * (matrix - element.Key[1]);//Inverse() не работает. придется писать руками
                 for (var t = 0; t < matrix.RowCount; t++)
                     element.Encoded = Convert.ToString(FindValue.Findvalue(Convert.ToInt32(matrix[t, 0] % Languege.z)));
                 start = i;
