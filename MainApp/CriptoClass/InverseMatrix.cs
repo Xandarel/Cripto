@@ -13,15 +13,15 @@ namespace CriptoClass
         {
             var determinant = matrix.Determinant() % Languege.z; //Определитель матрицы в кольце
             for (var i=2;i<Languege.z;i++)
-                if ((determinant*i)%Languege.z==0)
+                if ((determinant*i)%Languege.z==1)
                 {
-                    determinant = (determinant * i) % Languege.z;// обратный элемент к определителю
+                    determinant = i;// обратный элемент к определителю
                     break;
                 }
             var bufArray = new double[matrix.ColumnCount, matrix.RowCount];
             for (var i = 0; i < matrix.ColumnCount; i++)
                 for (var j = 0; j < matrix.RowCount; j++)
-                    bufArray[i, j] =Math.Pow(-1,i+j) * GetMinor(matrix.ToArray(), j, i);
+                    bufArray[i, j] =Math.Pow(-1,i+j) * GetMinor(matrix.ToArray(), i, j);
             var inverseMatrix = Matrix<double>.Build.DenseOfArray(bufArray).Transpose();
             inverseMatrix = (determinant * inverseMatrix)%Languege.z;
             return inverseMatrix;

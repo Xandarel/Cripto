@@ -10,13 +10,13 @@ namespace MainApp
     {
         static void Main()
         {
-            Languege.Libra("rus");
+            Languege.Libra("ru");
             var key = new List<Matrix<double>>();
-            key.Add(Matrix<double>.Build.DenseOfArray(new double[,] { { 7,3}, { 1,4 } }));
-            key.Add(Matrix<double>.Build.DenseOfArray(new double[,] { { 2 }, { 7 } }));
+            key.Add(Matrix<double>.Build.DenseOfArray(new double[,] { { 7,2}, { 29,29 } }));
+            key.Add(Matrix<double>.Build.DenseOfArray(new double[,] { { 15 }, { 6 } }));
             Console.WriteLine(key[0]);
             Console.WriteLine(key[1]);
-            var libra = new WordAndKey<List<Matrix<double>>>("ЯМРИ", key);
+            var libra = new WordAndKey<List<Matrix<double>>>("САНЕАЙ", key);
             var tr = new Hill();
             tr.Decode(libra);
             Console.WriteLine(libra.Encoded);

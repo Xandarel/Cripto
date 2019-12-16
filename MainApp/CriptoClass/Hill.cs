@@ -30,7 +30,7 @@ namespace CriptoClass
             return element.Encoded;
         }
 
-        public string Decode(WordAndKey<List<Matrix<double>>> element)
+        public string Decode(WordAndKey<List<Matrix<double>>> element)//TODO: проверить
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var n = element.Key[0].ToArray().GetLength(0);
@@ -44,9 +44,9 @@ namespace CriptoClass
                     buff[j, 0] = numberLitera[start + j];
                 var matrix = Matrix<double>.Build.DenseOfArray(buff);
                 var inverse = InverseMatrix.Inverse_Matrix(element.Key[0]);
-                matrix =inverse * (matrix - element.Key[1]);//Inverse() не работает. придется писать руками
+                matrix =inverse * (matrix - element.Key[1]);
                 for (var t = 0; t < matrix.RowCount; t++)
-                    element.Encoded = Convert.ToString(FindValue.Findvalue(Convert.ToInt32(matrix[t, 0] % Languege.z)));
+                    element.Encoded = Convert.ToString(FindValue.Findvalue(Convert.ToInt32(matrix[t, 0]) % Languege.z));
                 start = i;
             }
             return element.Encoded;//TODO:не работает

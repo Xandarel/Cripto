@@ -10,7 +10,7 @@ namespace CriptoClass
         public static char Findvalue(int key)
         {
             var inversekey = Languege.z + key; // + потому, что ключ точно меньше длинны кольца.
-            if (key > 0)
+            if (key >= 0)
             {
                 foreach (var pair in Languege.dictionary)
                     if (pair.Value == key)
