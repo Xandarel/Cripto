@@ -17,12 +17,6 @@ namespace CriptoClass
         public WordAndKey(string word,T key)
         {
             this.word = word;
-            //if (key is List<Matrix<int>>)
-            //{
-            //    this.key = this.key as List<Matrix<int>>;
-            //    foreach (var element in key)
-            //        this.key.Add(element);
-            //}
             this.key = key;
             encoded = "";
         }

@@ -24,6 +24,7 @@ namespace CriptoClass
                     bufArray[i, j] =Math.Pow(-1,i+j) * GetMinor(matrix.ToArray(), i, j);
             var inverseMatrix = Matrix<double>.Build.DenseOfArray(bufArray).Transpose();
             inverseMatrix = (determinant * inverseMatrix)%Languege.z;
+            Console.WriteLine(inverseMatrix);
             return inverseMatrix;
         }
 
