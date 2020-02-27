@@ -9,15 +9,15 @@ namespace CriptoClass
 {
     public class Hill : Interfase_criptoelements<List<Matrix<double>>>
     {
-        public string Code(WordAndKey<List<Matrix<double>>> element) //TODO: Если слово не разбивается на блоки длинны n, отбрасывает хвост. нужно исправить
+        public string Code(WordAndKey<List<Matrix<double>>> element)
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var n = element.Key[0].ToArray().GetLength(0);
+            while (numberLitera.Count % n != 0)
+                    numberLitera.Add(0);
             var start = 0;
-            for (var i=n; i<=numberLitera.Length;i+=n)
+            for (var i=n; i<=numberLitera.Count;i+=n)
             {
-                if (i >= numberLitera.Length)
-                    i = numberLitera.Length;
                 var buff=new double[i - start,1];
                 for (var j = 0; j < i - start; j++)//разделение массива на блоки длинны n
                     buff[j,0] = numberLitera[start+j];
@@ -30,15 +30,13 @@ namespace CriptoClass
             return element.Encoded;
         }
 
-        public string Decode(WordAndKey<List<Matrix<double>>> element)//TODO: проверить
+        public string Decode(WordAndKey<List<Matrix<double>>> element)
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var n = element.Key[0].ToArray().GetLength(0);
             var start = 0;
-            for (var i = n; i <= numberLitera.Length; i += n)
+            for (var i = n; i <= numberLitera.Count; i += n)
             {
-                if (i >= numberLitera.Length)
-                    i = numberLitera.Length;
                 var buff = new double[i - start, 1];
                 for (var j = 0; j < i - start; j++)//разделение массива на блоки длинны n
                     buff[j, 0] = numberLitera[start + j];
@@ -49,17 +47,17 @@ namespace CriptoClass
                     element.Encoded = Convert.ToString(FindValue.Findvalue(Convert.ToInt32(matrix[t, 0]) % Languege.z));
                 start = i;
             }
-            return element.Encoded;//TODO:не работает
+            return element.Encoded;
         }
-        public string Code(WordAndKey<List<Matrix<double>>> element,int random) //TODO: Если слово не разбивается на блоки длинны n, отбрасывает хвост. нужно исправить
+        public string Code(WordAndKey<List<Matrix<double>>> element,int random)
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var n = element.Key[0].ToArray().GetLength(0);
+            while (numberLitera.Count % n != 0)
+                numberLitera.Add(0);
             var start = 0;
-            for (var i = n; i <= numberLitera.Length; i += n)
+            for (var i = n; i <= numberLitera.Count; i += n)
             {
-                if (i >= numberLitera.Length)
-                    i = numberLitera.Length;
                 var buff = new double[i - start, 1];
                 for (var j = 0; j < i - start; j++)//разделение массива на блоки длинны n
                     buff[j, 0] = numberLitera[start + j];

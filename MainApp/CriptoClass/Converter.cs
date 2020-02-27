@@ -10,15 +10,11 @@ namespace CriptoClass
    public static class Converter
     {
 
-        public static int[] ConvertWordToCode(string text)
+        public static List<int> ConvertWordToCode(string text)
         {
-            var numberLitera = new int[text.Length];
-            int number = 0;
+            var numberLitera = new List<int>();
             foreach (var litera in text) // Перевод слова в код
-            {
-                numberLitera[number] = Languege.dictionary[litera];
-                number++;
-            }
+                numberLitera.Add( Languege.dictionary[litera]);
             return numberLitera;
         }
     }

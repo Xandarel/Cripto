@@ -13,10 +13,10 @@ namespace CriptoClass
             var keyLitera = Converter.ConvertWordToCode(element.Key);// перевод ключа в код
             var result = new int[element.Word.Length];
             int k = 0;
-            int line = numberLitera.Length;
+            int line = numberLitera.Count;
             for (int j = k; j < line; j++)
             {
-                if (j < keyLitera.Length)//Первая итерация
+                if (j < keyLitera.Count)//Первая итерация
                     result[j] = (numberLitera[j] + keyLitera[j]) % Languege.z;
                 else //Последующие циклы
                 {
@@ -35,9 +35,9 @@ namespace CriptoClass
             var keyLitera = Converter.ConvertWordToCode(element.Key);// перевод ключа в код
             var result = new int[element.Word.Length];
             var k = 0;
-            for (var i=0;i<numberLitera.Length;i++)
+            for (var i=0;i<numberLitera.Count;i++)
             {
-                if (i < keyLitera.Length)//Первая итерация
+                if (i < keyLitera.Count)//Первая итерация
                     result[i] = (numberLitera[i] - keyLitera[i]) % Languege.z;
                 else //Последующие итерации
                 {

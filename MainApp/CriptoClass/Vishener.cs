@@ -21,7 +21,7 @@ namespace CriptoClass
             string result = "";
             //Шифрование слова. 
             //Коды слов последовательно суммируются и высчитывается новое значение буквы в кольце выбранного алфавита
-            for (int i = 0; i < numberLitera.Length; i++)
+            for (int i = 0; i < numberLitera.Count; i++)
                 result += Convert.ToString(FindValue.Findvalue((numberLitera[i] + keyLitera[i]) % Languege.z));
             return result;
         }
@@ -32,7 +32,7 @@ namespace CriptoClass
             for (int i = 0; i < keyLitera.Length; i++)
                 keyLitera[i] = Languege.dictionary[element.Key[i % element.Key.Length]];
             string result = "";
-            for (int i = 0; i < numberLitera.Length; i++)
+            for (int i = 0; i < numberLitera.Count; i++)
             {
                 var dec = (numberLitera[i] - keyLitera[i]) % Languege.z;
                 result += Convert.ToString(FindValue.Findvalue(dec));
