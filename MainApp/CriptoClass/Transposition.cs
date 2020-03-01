@@ -4,7 +4,7 @@ using System.Text;
 using Criptoclass;
 
 namespace CriptoClass
-{
+{//TODO:Как я это написал и как это работает?
     /// <summary>
     /// шифр перестановки
     /// </summary>
@@ -12,7 +12,7 @@ namespace CriptoClass
     {
         public string Code(WordAndKey<int[,]> element)//TODO: понять, как реализовать в других системах исчисления
         {
-            var numberLitera = Converter.ConvertWordToCode(element.Word);//TODO: может стоит объединить это в отдельный статический класс?
+            var numberLitera = Converter.ConvertWordToCode(element.Word);
             var keyLitera = new LimitedSizeStack<int>(element.Key.GetLength(1));
             for (var i=0;i< element.Key.GetLength(1); i++)
                     keyLitera.Push(element.Key[1, i]);

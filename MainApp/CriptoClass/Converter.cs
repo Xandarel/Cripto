@@ -9,7 +9,6 @@ namespace CriptoClass
 {
    public static class Converter
     {
-
         public static List<int> ConvertWordToCode(string text)
         {
             var numberLitera = new List<int>();

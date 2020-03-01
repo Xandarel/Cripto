@@ -6,7 +6,7 @@ namespace Criptoclass
     public static class Languege
     {
         public static Dictionary<char, int> dictionary = new Dictionary<char, int>();
-        public static List<int> setOfReversibleElements = new List<int>();
+        public static List<int> setOfReversibleElements = new List<int>(); //множество обратимых элементов
         public static int z { get; set; } //размер кольца (сколько букв в алфавите)
         public static void Libra(string lang)
         {
