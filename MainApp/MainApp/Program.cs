@@ -13,10 +13,13 @@ namespace MainApp
         static void Main()
         {
             Languege.Libra("ru");
+            #region
             //FileStream fs = new FileStream("hillUpdateDatabase.txt", FileMode.OpenOrCreate);
             //StreamWriter hillBase = new StreamWriter(fs, Encoding.Default);
             //Random rnd = new Random();
+            #endregion
             var key = new List<Matrix<double>>();
+            #region
             //while (true)
             //{
             //    var text = Console.ReadLine();
@@ -34,12 +37,19 @@ namespace MainApp
             //    hillBase.WriteLine(libra.Key[1].ToMatrixString());
             //}
             //hillBase.Close();
-            key.Add(Matrix<double>.Build.DenseOfArray(new double[,] { { 7, 2 }, { 29, 29 } }));
-            key.Add(Matrix<double>.Build.DenseOfArray(new double[,] { { 15 }, { 6 } }));
-            var libra = new WordAndKey<List<Matrix<double>>>("БУБЛИКИ", key);
-            var tr = new Hill();
-            tr.Code(libra);
-            Console.WriteLine(libra.Encoded);
+            #endregion //
+            var basis = new int[,] { { 2, 1, 1, 2 }, { 0, 1, 4, 0 } };
+            var sequence = Generate.PseudorandomSequence(basis);
+            foreach (var element in sequence)
+                Console.Write($"{element} ");
+            #region
+            //key.Add(Matrix<double>.Build.DenseOfArray(new double[,] { { 7, 2 }, { 29, 29 } }));
+            //key.Add(Matrix<double>.Build.DenseOfArray(new double[,] { { 15 }, { 6 } }));
+            //var libra = new WordAndKey<List<Matrix<double>>>("БУБЛИКИ", key);
+            //var tr = new Hill();
+            //tr.Code(libra);
+            //Console.WriteLine(libra.Encoded);
+            #endregion
         }
     }
 }
