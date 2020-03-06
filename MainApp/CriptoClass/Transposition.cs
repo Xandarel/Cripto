@@ -42,6 +42,14 @@ namespace CriptoClass
             return element.Encoded;
         }
 
+        /// <summary>
+        /// данная функция создает новый блок псевдослучайных элементов последовательности из предыдущих.
+        /// в двумерном массиве ключа в первой строке хранится коефициент
+        /// во второй значение
+        /// коэфициент*значание=новый элемент
+        /// </summary>
+        /// <param name="coefficients"></param>
+        /// <param name="key"></param>
         void sequence(int[,] coefficients, LimitedSizeStack<int> key)
         {
             key.Restore();
