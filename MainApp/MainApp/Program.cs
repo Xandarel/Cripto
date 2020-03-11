@@ -38,7 +38,7 @@ namespace MainApp
             //}
             //hillBase.Close();
             #endregion //
-            var basis = new int[,] { { 2, 1, 1, 2 }, { 0, 1, 4, 0 } };
+            var basis = new int[,] { { 2, 2, 1, 2 }, { 0, 1, 4, 2 } };
             var sequence = Generate.PseudorandomSequence(basis);
             foreach (var element in sequence)
                 Console.Write($"{element} ");

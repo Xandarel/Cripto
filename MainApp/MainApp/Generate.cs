@@ -90,5 +90,29 @@ namespace MainApp
             }
             else return false;
         }
+
+        static List<Matrix<double>> ModifiedHillMatrix(List<int> element, int range)
+        {
+            var key = new List<Matrix<double>>();
+            var matrix = new double[range, range];
+            Random rnd = new Random();
+            int positionElement = 0;
+            for (var y=0;y<range;y++)
+                for(var x=0;x<range;x++)
+                {
+                    if (y == x)
+                        matrix[y, x] = Languege.setOfReversibleElements[rnd.Next(0, Languege.setOfReversibleElements.Count)];
+                    else if (y > x)
+                        matrix[y, x] = 0;
+                    else
+                        matrix[y, x] = element[(positionElement++)%element.Count];
+                }
+            key.Add(Matrix<double>.Build.DenseOfArray(matrix));
+            var second = new double[range, 1];
+            for (int y = 0; y < range; y++)
+                second[y, 0] = element[rnd.Next(0, element.Count)];
+            key.Add(Matrix<double>.Build.DenseOfArray(second));
+            return key;
+        }
     }
 }
