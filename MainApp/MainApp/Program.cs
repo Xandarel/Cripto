@@ -14,34 +14,30 @@ namespace MainApp
         {
             Languege.Libra("ru");
             #region
-            //FileStream fs = new FileStream("hillUpdateDatabase.txt", FileMode.OpenOrCreate);
-            //StreamWriter hillBase = new StreamWriter(fs, Encoding.Default);
+            FileStream fs = new FileStream("hillNewUpdateDatabase.txt", FileMode.OpenOrCreate);
+            StreamWriter hillBase = new StreamWriter(fs, Encoding.Default);
             //Random rnd = new Random();
             #endregion
-            var key = new List<Matrix<double>>();
             #region
-            //while (true)
-            //{
-            //    var text = Console.ReadLine();
-            //    if (text == "end")
-            //        break;
-            //    key = Generate.CreateKeys(text.Length);
-            //    var libra = new WordAndKey<List<Matrix<double>>>(text, key);
-            //    var tr = new Hill();
-            //    var random = rnd.Next(0, Languege.z);
-            //    tr.Code(libra,random);
-            //    hillBase.WriteLine(libra.Word);
-            //    hillBase.WriteLine(libra.Encoded);
-            //    hillBase.WriteLine(random);
-            //    hillBase.WriteLine(libra.Key[0].ToMatrixString());
-            //    hillBase.WriteLine(libra.Key[1].ToMatrixString());
-            //}
-            //hillBase.Close();
-            #endregion //
-            var basis = new int[,] { { 2, 2, 1, 2 }, { 0, 1, 4, 2 } };
+            var basis = new int[,] { { 2, 2, 1, 2 }, { 3, 1, 4, 2 } };
             var sequence = Generate.PseudorandomSequence(basis);
-            foreach (var element in sequence)
-                Console.Write($"{element} ");
+            var key = Generate.ModifiedHillMatrix(sequence, 4);
+            //Console.Write($"{key}");
+            while (true)
+            {
+                var text = Console.ReadLine();
+                if (text == "end")
+                    break;
+                var staticKey = Generate.CreateKeysMatrix(text.Length);
+                var libra = new WordAndKey<List<Matrix<double>>>(text, staticKey);
+                var tr = new Hill();
+                tr.Code(libra,sequence);
+                hillBase.WriteLine(libra.Word);
+                hillBase.WriteLine(libra.Encoded);
+                hillBase.WriteLine(libra.Key[0].ToMatrixString());
+            }
+            hillBase.Close();
+            #endregion //
             #region
             //key.Add(Matrix<double>.Build.DenseOfArray(new double[,] { { 7, 2 }, { 29, 29 } }));
             //key.Add(Matrix<double>.Build.DenseOfArray(new double[,] { { 15 }, { 6 } }));

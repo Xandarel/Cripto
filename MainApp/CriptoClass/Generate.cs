@@ -3,9 +3,8 @@ using System;
 using System.Collections.Generic;
 using Criptoclass;
 using System.Text;
-using CriptoClass;
 
-namespace MainApp
+namespace CriptoClass
 {
     public static class Generate
     {
@@ -29,7 +28,6 @@ namespace MainApp
         {
             var result = new List<int>();
             var generator = new LimitedSizeStack<int>(basisOfSequence.GetLength(1));
-            //var checkingForRepetition = new bool[basisOfSequence.GetLength(1)];
             for (var i = 0; i < basisOfSequence.GetLength(1); i++)
                 generator.Push(basisOfSequence[1, i]);
             for (var i=0;i<100;i++)
@@ -53,7 +51,7 @@ namespace MainApp
         /// </summary>
         /// <param name="coefficients"></param>
         /// <param name="key"></param>
-        static void sequence(int[,] coefficients, LimitedSizeStack<int> key)
+        public static void sequence(int[,] coefficients, LimitedSizeStack<int> key)
         {
             key.Restore();
             for (int i = 0; i < coefficients.GetLength(1); i++)
@@ -91,11 +89,11 @@ namespace MainApp
             else return false;
         }
 
-        static List<Matrix<double>> ModifiedHillMatrix(List<int> element, int range)
+        public static List<Matrix<double>> ModifiedHillMatrix(List<int> element, int range)
         {
-            var key = new List<Matrix<double>>();
             var matrix = new double[range, range];
             Random rnd = new Random();
+            var key = new List<Matrix<double>>();
             int positionElement = 0;
             for (var y=0;y<range;y++)
                 for(var x=0;x<range;x++)
@@ -107,10 +105,10 @@ namespace MainApp
                     else
                         matrix[y, x] = element[(positionElement++)%element.Count];
                 }
-            key.Add(Matrix<double>.Build.DenseOfArray(matrix));
             var second = new double[range, 1];
-            for (int y = 0; y < range; y++)
-                second[y, 0] = element[rnd.Next(0, element.Count)];
+            for (int y=0;y<range;y++)
+                second[y, 0] = rnd.Next(0, Languege.setOfReversibleElements.Count);
+            key.Add(Matrix<double>.Build.DenseOfArray(matrix));
             key.Add(Matrix<double>.Build.DenseOfArray(second));
             return key;
         }

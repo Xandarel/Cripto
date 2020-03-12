@@ -49,7 +49,7 @@ namespace CriptoClass
             }
             return element.Encoded;
         }
-        public string Code(WordAndKey<List<Matrix<double>>> element,int random)
+        public string Code(WordAndKey<List<Matrix<double>>> element, List<int> sequence)
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var n = element.Key[0].ToArray().GetLength(0);
@@ -58,11 +58,13 @@ namespace CriptoClass
             var start = 0;
             for (var i = n; i <= numberLitera.Count; i += n)
             {
+                var dinamicMatrix = Generate.ModifiedHillMatrix(sequence, n);
                 var buff = new double[i - start, 1];
                 for (var j = 0; j < i - start; j++)//разделение массива на блоки длинны n
                     buff[j, 0] = numberLitera[start + j];
                 var matrix = Matrix<double>.Build.DenseOfArray(buff);
-                matrix = random * element.Key[0] * matrix +(random * element.Key[1]);
+                var inverseMatrix = InverseMatrix.Inverse_Matrix(element.Key[0]);
+                matrix = inverseMatrix*dinamicMatrix[0]* element.Key[0] * matrix + dinamicMatrix[1];
                 for (var t = 0; t < matrix.RowCount; t++)
                     element.Encoded = Convert.ToString(FindValue.Findvalue(Convert.ToInt32(matrix[t, 0] % Languege.z)));
                 start = i;

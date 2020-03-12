@@ -20,7 +20,7 @@ namespace CriptoClass
             {
                 element.Encoded = Convert.ToString(FindValue.Findvalue((nL + keyLitera.PopFirst()) % Languege.z));
                 if (keyLitera.Count == 0)
-                    sequence(element.Key, keyLitera);
+                    Generate.sequence(element.Key, keyLitera);
 
             }
             return element.Encoded;
@@ -36,34 +36,9 @@ namespace CriptoClass
             {
                 element.Encoded = Convert.ToString(FindValue.Findvalue((nL - keyLitera.PopFirst()) % Languege.z));
                 if (keyLitera.Count == 0)
-                    sequence(element.Key, keyLitera);
-
+                    Generate.sequence(element.Key, keyLitera);
             }
             return element.Encoded;
-        }
-
-        /// <summary>
-        /// данная функция создает новый блок псевдослучайных элементов последовательности из предыдущих.
-        /// в двумерном массиве ключа в первой строке хранится коефициент
-        /// во второй значение
-        /// коэфициент*значание=новый элемент
-        /// </summary>
-        /// <param name="coefficients"></param>
-        /// <param name="key"></param>
-        void sequence(int[,] coefficients, LimitedSizeStack<int> key)
-        {
-            key.Restore();
-            for (int i = 0; i < coefficients.GetLength(1); i++)
-            {
-                int newElementSequence = 0;
-                for (var j = 0; j <= coefficients.GetLength(0); j++)
-                {
-                    var multiplier = key.PopLast();
-                    newElementSequence += coefficients[0, j] * multiplier;
-                }
-                key.Restore();
-                key.Push(newElementSequence);
-            }
         }
     }
 }
