@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CriptoClass
@@ -10,6 +11,25 @@ namespace CriptoClass
         public void CreatePeriod(int m,int startElement)
         {
             var c = FindMutuallyPrimeNumbers(m);
+            var dividersM = FindDividers(m);
+            var simpleDividers = new List<int>();
+            foreach (var div in dividersM)
+                if (FindDividers(div).Count == 2)
+                    simpleDividers.Add(div);
+            if (m % 4 == 0) simpleDividers.Add(4);
+            int b = FindB(simpleDividers);
+            int a = b + 1;
+            Period.Add(startElement);
+            var flag = true;
+            do
+            {
+                flag = true;
+                var xi = (a * Period.Last() + c) % m;
+                if (Period.Contains(xi))
+                    flag = false;
+                else
+                    Period.Add(xi);
+            } while (flag);
         }
 
         int FindMutuallyPrimeNumbers(int m)
@@ -28,6 +48,27 @@ namespace CriptoClass
                    : a > b
                         ? IsCoprime(a - b, b)
                         : IsCoprime(b - a, a);
+        }
+        static List<int> FindDividers(int element)
+        {
+            var result = new List<int>();
+            for (int start = 1; start < element / 2; start++)
+                if (element / start == 0)
+                    result.Add(start);
+            result.Add(element);
+            return result;
+        }
+        static int FindB(List<int> dividers)
+        {
+            for (var bCandidat = dividers.Max(); ; bCandidat++)
+            {
+                bool trueCandidat = true;
+                foreach (var div in dividers)
+                    if (bCandidat % div != 0)
+                        trueCandidat = false;
+                if (trueCandidat)
+                    return bCandidat;
+            }
         }
     }
 }
