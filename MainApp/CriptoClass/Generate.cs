@@ -88,7 +88,6 @@ namespace CriptoClass
             }
             else return false;
         }
-
         public static List<Matrix<double>> ModifiedHillMatrix(List<int> element, int range)
         {
             var matrix = new double[range, range];
