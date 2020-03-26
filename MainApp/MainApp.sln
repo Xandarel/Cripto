@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainApp", "MainApp\MainApp.csproj", "{658DCCE3-9AB0-46D2-A611-C299319A7EFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainApp", "MainApp\MainApp.csproj", "{658DCCE3-9AB0-46D2-A611-C299319A7EFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CriptoClass", "CriptoClass\CriptoClass.csproj", "{E1EFFA0D-AEB4-4C4B-93C8-EC6CFCAEF47D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriptoClass", "CriptoClass\CriptoClass.csproj", "{E1EFFA0D-AEB4-4C4B-93C8-EC6CFCAEF47D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProgramm", "TestProgramm\TestProgramm.csproj", "{FB44DDF5-E64B-4D51-972A-EA0E87E826F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E1EFFA0D-AEB4-4C4B-93C8-EC6CFCAEF47D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1EFFA0D-AEB4-4C4B-93C8-EC6CFCAEF47D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1EFFA0D-AEB4-4C4B-93C8-EC6CFCAEF47D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB44DDF5-E64B-4D51-972A-EA0E87E826F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB44DDF5-E64B-4D51-972A-EA0E87E826F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB44DDF5-E64B-4D51-972A-EA0E87E826F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB44DDF5-E64B-4D51-972A-EA0E87E826F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

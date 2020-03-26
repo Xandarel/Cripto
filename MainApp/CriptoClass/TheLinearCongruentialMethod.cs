@@ -7,7 +7,11 @@ namespace CriptoClass
 {
     public class TheLinearCongruentialMethod
     {
-        List<int> Period { get; set; }
+        public List<int> Period { get; set; }
+        public TheLinearCongruentialMethod()
+        {
+            Period = new List<int>();
+        }
         public void CreatePeriod(int m,int startElement)
         {
             var c = FindMutuallyPrimeNumbers(m);
@@ -52,8 +56,8 @@ namespace CriptoClass
         static List<int> FindDividers(int element)
         {
             var result = new List<int>();
-            for (int start = 1; start < element / 2; start++)
-                if (element / start == 0)
+            for (int start = 1; start <= element / 2; start++)
+                if (element % start == 0)
                     result.Add(start);
             result.Add(element);
             return result;

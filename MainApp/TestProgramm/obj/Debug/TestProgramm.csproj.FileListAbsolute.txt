@@ -1,0 +1,9 @@
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\bin\Debug\TestProgramm.exe.config
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\bin\Debug\TestProgramm.exe
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\bin\Debug\TestProgramm.pdb
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\bin\Debug\CriptoClass.dll
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\bin\Debug\CriptoClass.pdb
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\obj\Debug\TestProgramm.csprojAssemblyReference.cache
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\obj\Debug\TestProgramm.csproj.CopyComplete
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\obj\Debug\TestProgramm.exe
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\obj\Debug\TestProgramm.pdb
