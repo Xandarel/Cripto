@@ -11,9 +11,24 @@ namespace TestProgramm
     {
         static void Main(string[] args)
         {
-            var lcm = new TheLinearCongruentialMethod();
-            lcm.CreatePeriod(3, 2);
-            foreach (var l in lcm.Period)
+            var lcm3 = new TheLinearCongruentialMethod();
+            var lcm11 = new TheLinearCongruentialMethod();
+            var crt = new ChineseRemainderTheorem();
+
+            lcm11.CreatePeriod(11, 3);
+            lcm3.CreatePeriod(3, 2);
+            crt.CreatePeriod(lcm3.Period, lcm11.Period);
+
+            Console.WriteLine("z=3");
+            foreach (var l in lcm3.Period)
+                Console.Write($"{l} ");
+            Console.WriteLine();
+            Console.WriteLine("z=11");
+            foreach (var l in lcm11.Period)
+                Console.Write($"{l} ");
+            Console.WriteLine();
+            Console.WriteLine("z=33");
+            foreach (var l in crt.Period)
                 Console.Write($"{l} ");
             Console.ReadKey();
         }
