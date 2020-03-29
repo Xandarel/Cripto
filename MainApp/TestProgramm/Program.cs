@@ -16,10 +16,10 @@ namespace TestProgramm
             var crt = new ChineseRemainderTheorem();
 
             lcm11.CreatePeriod(11, 3);
-            lcm3.CreatePeriod(3, 2);
+            lcm3.CreatePeriod(50, 2);
             crt.CreatePeriod(lcm3.Period, lcm11.Period);
 
-            Console.WriteLine("z=3");
+            Console.WriteLine("z=50");
             foreach (var l in lcm3.Period)
                 Console.Write($"{l} ");
             Console.WriteLine();
@@ -29,7 +29,7 @@ namespace TestProgramm
             Console.WriteLine();
             Console.WriteLine("z=33");
             foreach (var l in crt.Period)
-                Console.Write($"{l} ");
+                Console.WriteLine($"{l}");
             Console.ReadKey();
         }
     }

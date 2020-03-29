@@ -63,8 +63,10 @@ namespace CriptoClass
                 for (var j = 0; j < i - start; j++)//разделение массива на блоки длинны n
                     buff[j, 0] = numberLitera[start + j];
                 var matrix = Matrix<double>.Build.DenseOfArray(buff);
-                var inverseMatrix = InverseMatrix.Inverse_Matrix(element.Key[0]);
-                matrix = inverseMatrix*dinamicMatrix[0]* element.Key[0] * matrix + dinamicMatrix[1];
+                //var inverseMatrix = InverseMatrix.Inverse_Matrix(element.Key[0]); это в декодирование?
+                matrix = dinamicMatrix[0]* element.Key[0] * matrix + dinamicMatrix[1];
+                element.Key.Add(dinamicMatrix[0]);//данные элементы необходимы для дешифрования. иначе расшифровать шифр будет невозможно
+                element.Key.Add(dinamicMatrix[1]);//их индексы в списке ключей будут начинаться с 2. 0-квадратная матрица, 1-базовый вектор столбец.
                 for (var t = 0; t < matrix.RowCount; t++)
                     element.Encoded = Convert.ToString(FindValue.Findvalue(Convert.ToInt32(matrix[t, 0] % Languege.z)));
                 start = i;
