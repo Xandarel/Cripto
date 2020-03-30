@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
+using CriptoClass;
 
 namespace CryptographicSecurity
 {
@@ -11,8 +12,11 @@ namespace CryptographicSecurity
         public void FindKey(string word, string cipher)
         {
             var checkPeriof = PossiblePeriod(word.Length, cipher.Length);
+            var wordNumber = Converter.ConvertWordToCode(word.ToUpper());
+            var cipherNumber = Converter.ConvertWordToCode(cipher.ToUpper());
+
         }
-        IEnumerable<int> PossiblePeriod(int wLength,int cLength)
+        List<int> PossiblePeriod(int wLength,int cLength)
         {
             var end = wLength < cLength ? cLength : wLength;
             var result = new List<int>();
