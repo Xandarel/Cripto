@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriptoClass", "CriptoClass\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProgramm", "TestProgramm\TestProgramm.csproj", "{FB44DDF5-E64B-4D51-972A-EA0E87E826F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptographicSecurity", "CryptographicSecurity\CryptographicSecurity.csproj", "{E97C998A-B8F3-4844-B346-7D6500DCE8F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{8BF9FF10-8926-4A62-AC5F-514BD4DC2130}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{FB44DDF5-E64B-4D51-972A-EA0E87E826F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB44DDF5-E64B-4D51-972A-EA0E87E826F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB44DDF5-E64B-4D51-972A-EA0E87E826F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E97C998A-B8F3-4844-B346-7D6500DCE8F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E97C998A-B8F3-4844-B346-7D6500DCE8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E97C998A-B8F3-4844-B346-7D6500DCE8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E97C998A-B8F3-4844-B346-7D6500DCE8F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF9FF10-8926-4A62-AC5F-514BD4DC2130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF9FF10-8926-4A62-AC5F-514BD4DC2130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF9FF10-8926-4A62-AC5F-514BD4DC2130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF9FF10-8926-4A62-AC5F-514BD4DC2130}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
