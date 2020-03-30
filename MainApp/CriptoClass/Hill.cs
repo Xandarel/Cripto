@@ -32,6 +32,7 @@ namespace CriptoClass
 
         public string Decode(WordAndKey<List<Matrix<double>>> element)
         {
+            var keyPosition = 0;
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var n = element.Key[0].ToArray().GetLength(0);
             var start = 0;
@@ -41,8 +42,8 @@ namespace CriptoClass
                 for (var j = 0; j < i - start; j++)//разделение массива на блоки длинны n
                     buff[j, 0] = numberLitera[start + j];
                 var matrix = Matrix<double>.Build.DenseOfArray(buff);
-                var inverse = InverseMatrix.Inverse_Matrix(element.Key[0]);
-                matrix =inverse * (matrix - element.Key[1]);
+                var inverse = InverseMatrix.Inverse_Matrix(element.Key[keyPosition++%element.Key.Count]);
+                matrix =inverse * (matrix - element.Key[keyPosition++ % element.Key.Count]);
                 for (var t = 0; t < matrix.RowCount; t++)
                     element.Encoded = Convert.ToString(FindValue.Findvalue(Convert.ToInt32(matrix[t, 0]) % Languege.z));
                 start = i;
