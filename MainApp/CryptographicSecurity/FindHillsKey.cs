@@ -24,7 +24,28 @@ namespace CryptographicSecurity
             {
                 if (period != cipher.Length / period - 1)
                     continue;
-                
+                var a = new double[period, period];
+                var b = new double[period];
+                var gausMatrix = new double[period + 1, period];
+                for (int i=0; i<period;i++)
+                {
+                    var cNposition = i % period;//cNposition=cipherNumber position;
+                    for (int y = 0; y < period + 1; y++)
+                    {
+                        for (int x = 0; x < period; x++)
+                        {
+                            if (x + y < period)
+                                gausMatrix[y, x] = wordNumber[x + y];
+                            else if (x + y == period)
+                                gausMatrix[y, x] = 1;
+                            else
+                                gausMatrix[y, x] = cipherNumber[cNposition];
+                        }
+                        cNposition += period;
+                    }
+                    LinearEquationSolver.Solve(gausMatrix);
+                    //TODO: Внести полученные результаты в ответную матрицу. Привести значения к нормалим для кольца
+                }
             }
         }
         List<int> PossiblePeriod(int wLength,int cLength)
