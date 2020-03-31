@@ -11,19 +11,29 @@ namespace CryptographicSecurity
         private List<Matrix<double>> ansver=new List<Matrix<double>>();
         public void FindKey(string word, string cipher)
         {
-            var checkPeriof = PossiblePeriod(word.Length, cipher.Length);
+            var checkPeriod = PossiblePeriod(word.Length, cipher.Length); //Все возможные периоды размера ключа
             var wordNumber = Converter.ConvertWordToCode(word.ToUpper());
             var cipherNumber = Converter.ConvertWordToCode(cipher.ToUpper());
-
+            #region пояснения
+            //размерность матрицы=количество систем уравнений
+            //длинна зашифрованного текста/размерность матрицы=количество уравнений в системах
+            //размерность матрицы+1 = количество неизвестных, где +1=матрица b
+            //если количество уравнений !=количеству неизвестных, то систему не решить.
+            #endregion
+            foreach (var period in checkPeriod)
+            {
+                if (period != cipher.Length / period - 1)
+                    continue;
+                
+            }
         }
         List<int> PossiblePeriod(int wLength,int cLength)
         {
-            var end = wLength < cLength ? cLength : wLength;
             var result = new List<int>();
-            for (int i=2;i<=end/2;i++)
-                if (end % i == 0)
+            for (int i=2;i<= wLength / 2;i++)
+                if (wLength % i == 0)
                     result.Add(i);
-            result.Add(end);
+            result.Add(wLength);
             return result;
         }
     }

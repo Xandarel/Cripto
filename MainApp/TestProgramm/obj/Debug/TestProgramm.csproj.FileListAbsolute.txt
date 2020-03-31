@@ -7,3 +7,7 @@ C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\obj\Debug\TestProgr
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\obj\Debug\TestProgramm.csproj.CopyComplete
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\obj\Debug\TestProgramm.exe
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\obj\Debug\TestProgramm.pdb
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\bin\Debug\CryptographicSecurity.dll
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\bin\Debug\MathNet.Numerics.dll
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\bin\Debug\CryptographicSecurity.pdb
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\TestProgramm\bin\Debug\MathNet.Numerics.xml
