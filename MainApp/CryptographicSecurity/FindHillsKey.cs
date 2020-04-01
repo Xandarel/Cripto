@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using CriptoClass;
+using Criptoclass;
+using System.Linq;
 
 namespace CryptographicSecurity
 {
     public class FindHillsKey
     {
-        private List<Matrix<double>> ansver=new List<Matrix<double>>();
+        public List<Matrix<double>> Ansver { get; } = new List<Matrix<double>>();
         public void FindKey(string word, string cipher)
         {
             var checkPeriod = PossiblePeriod(word.Length, cipher.Length); //Все возможные периоды размера ключа
@@ -26,7 +28,7 @@ namespace CryptographicSecurity
                     continue;
                 var a = new double[period, period];
                 var b = new double[period];
-                var gausMatrix = new double[period + 1, period];
+                var gausMatrix = new double[period + 2, period+1]; //Почему +2? один доп столбец-матрца b, другая - сам ответ. 
                 for (int i=0; i<period;i++)
                 {
                     var cNposition = i % period;//cNposition=cipherNumber position;
@@ -44,8 +46,13 @@ namespace CryptographicSecurity
                         cNposition += period;
                     }
                     LinearEquationSolver.Solve(gausMatrix);
-                    //TODO: Внести полученные результаты в ответную матрицу. Привести значения к нормалим для кольца
+
+                    for (var pos = 0; pos < period; pos++)
+                        a[i, pos] = (gausMatrix[pos, period+1]+Languege.z)%Languege.z;
+                    b[i] = (gausMatrix[period + 1, period + 1]+Languege.z)%Languege.z;
                 }
+                Ansver.Add(Matrix<double>.Build.DenseOfArray(a));
+                Ansver.Add(Matrix<double>.Build.DenseOfColumnVectors(Vector<double>.Build.DenseOfArray(b)));
             }
         }
         List<int> PossiblePeriod(int wLength,int cLength)

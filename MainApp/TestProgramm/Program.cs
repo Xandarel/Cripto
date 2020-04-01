@@ -7,6 +7,7 @@ using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using CriptoClass;
 using CryptographicSecurity;
+using Criptoclass;
 
 namespace TestProgramm
 {
@@ -14,14 +15,12 @@ namespace TestProgramm
     {
         static void Main(string[] args)
         {
-            var matrix = new double[,]
-            {
-                {18,15,1,21},
-                {17, 15, 1, 29},
-                {11, 0, 1, 32}
-            };
-            LinearEquationSolver.Solve(matrix);
-            Console.WriteLine(Matrix<double>.Build.DenseOfArray(matrix));
+            Languege.Libra("ru");
+            FindHillsKey hillsKey = new FindHillsKey();
+            hillsKey.FindKey("сорока", "фэьъяо");
+            var key = hillsKey.Ansver;
+            foreach (var k in key)
+                Console.WriteLine(k);
             Console.ReadKey();
             //var lcm3 = new TheLinearCongruentialMethod();
             //var lcm11 = new TheLinearCongruentialMethod();
