@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Criptoclass;
 
 namespace CryptographicSecurity
 {
@@ -63,8 +64,8 @@ namespace CryptographicSecurity
                 double f = M[row, row];
                 if (f == 0) return false;
 
-                for (int i = 0; i < rowCount + 1; i++) 
-                    M[row, i] /= f;//Вот здесь вылетаю из кольца в обычную десятичку. Хуёво
+                for (int i = 0; i < rowCount + 1; i++)
+                    M[row, i] /= f;//M[row, i] = FindQuotientInRing(M[row, i], f);M[row, i] /= f;//Вот здесь вылетаю из кольца в обычную десятичку. Хуёво
                 for (int destRow = 0; destRow < row; destRow++)
                 { 
                     M[destRow, rowCount] -= M[destRow, row] * M[row, rowCount]; 
