@@ -28,17 +28,18 @@ namespace CryptographicSecurity
                     continue;
                 var a = new double[period, period];
                 var b = new double[period];
-                var gausMatrix = new double[period + 2, period+1]; //Почему +2? один доп столбец-матрца b, другая - сам ответ. 
+                var gausMatrix = new double[period + 1, period+2]; //Почему +2? один доп столбец-матрца b, другая - сам ответ. 
                 for (int i=0; i<period;i++)
                 {
                     var cNposition = i % period;//cNposition=cipherNumber position;
                     for (int y = 0; y < period + 1; y++)
                     {
-                        for (int x = 0; x < period; x++)
+                        var additionalCounter = y;
+                        for (int x = 0; x < period+2; x++)
                         {
-                            if (x + y < period)
-                                gausMatrix[y, x] = wordNumber[x + y];
-                            else if (x + y == period)
+                            if (x + y < period + additionalCounter)
+                                gausMatrix[y, x] = wordNumber[x + y+ additionalCounter];
+                            else if (x + y == period + additionalCounter)
                                 gausMatrix[y, x] = 1;
                             else
                                 gausMatrix[y, x] = cipherNumber[cNposition];
@@ -49,7 +50,7 @@ namespace CryptographicSecurity
 
                     for (var pos = 0; pos < period; pos++)
                         a[i, pos] = (gausMatrix[pos, period+1]+Languege.z)%Languege.z;
-                    b[i] = (gausMatrix[period + 1, period + 1]+Languege.z)%Languege.z;
+                    b[i] = (gausMatrix[period, period + 1]+Languege.z)%Languege.z;
                 }
                 Ansver.Add(Matrix<double>.Build.DenseOfArray(a));
                 Ansver.Add(Matrix<double>.Build.DenseOfColumnVectors(Vector<double>.Build.DenseOfArray(b)));

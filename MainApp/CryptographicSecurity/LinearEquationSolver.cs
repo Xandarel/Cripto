@@ -22,19 +22,25 @@ namespace CryptographicSecurity
                 throw new ArgumentException("The matrix must at least have one row.");
 
             // pivoting
-            for (int col = 0; col + 1 < rowCount; col++) if (M[col, col] == 0)
+            for (int col = 0; col + 1 < rowCount; col++) 
+                if (M[col, col] == 0)
                 // check for zero coefficients
                 {
                     // find non-zero coefficient
                     int swapRow = col + 1;
-                    for (; swapRow < rowCount; swapRow++) if (M[swapRow, col] != 0) break;
+                    for (; swapRow < rowCount; swapRow++) 
+                        if (M[swapRow, col] != 0) break;
 
                     if (M[swapRow, col] != 0) // found a non-zero coefficient?
                     {
                         // yes, then swap it with the above
                         double[] tmp = new double[rowCount + 1];
                         for (int i = 0; i < rowCount + 1; i++)
-                        { tmp[i] = M[swapRow, i]; M[swapRow, i] = M[col, i]; M[col, i] = tmp[i]; }
+                        { 
+                            tmp[i] = M[swapRow, i]; 
+                            M[swapRow, i] = M[col, i]; 
+                            M[col, i] = tmp[i]; 
+                        }
                     }
                     else return false; // no, then the matrix has no unique solution
                 }
@@ -57,9 +63,13 @@ namespace CryptographicSecurity
                 double f = M[row, row];
                 if (f == 0) return false;
 
-                for (int i = 0; i < rowCount + 1; i++) M[row, i] /= f;
+                for (int i = 0; i < rowCount + 1; i++) 
+                    M[row, i] /= f;//Вот здесь вылетаю из кольца в обычную десятичку. Хуёво
                 for (int destRow = 0; destRow < row; destRow++)
-                { M[destRow, rowCount] -= M[destRow, row] * M[row, rowCount]; M[destRow, row] = 0; }
+                { 
+                    M[destRow, rowCount] -= M[destRow, row] * M[row, rowCount]; 
+                    M[destRow, row] = 0; 
+                }
             }
             return true;
         }
