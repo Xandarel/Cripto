@@ -49,7 +49,16 @@ namespace CryptographicSecurity
                     LinearEquationSolver.Solve(gausMatrix);
 
                     for (var pos = 0; pos < period; pos++)
-                        a[i, pos] = (gausMatrix[pos, period+1]+Languege.z)%Languege.z;
+                    {
+                        if (gausMatrix[pos, period + 1] - (int)gausMatrix[pos, period + 1] == 0)
+                            a[i, pos] = (gausMatrix[pos, period + 1] + Languege.z) % Languege.z;
+                        else
+                        {
+                            var multiplication = gausMatrix[pos, period + 1].ToString().Split('.', ',').ToArray()[1].Length;
+                            a[i, pos] = FindQuotientInRing(gausMatrix[pos, period + 1] * Math.Pow(10, multiplication) + Languege.z,
+                                        Math.Pow(10, multiplication));
+                        }
+                    }
                     b[i] = (gausMatrix[period, period + 1]+Languege.z)%Languege.z;
                 }
                 Ansver.Add(Matrix<double>.Build.DenseOfArray(a));
