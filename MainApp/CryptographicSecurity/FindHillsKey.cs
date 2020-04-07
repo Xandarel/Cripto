@@ -76,8 +76,6 @@ namespace CryptographicSecurity
         }
 
         private static double FindQuotientInRing(double dividend, double divider)
-        //TODO: перед внесением числа в ответную матрицу необходимо проверить, что оно не дробное. 
-        //Если дробное, прогнать и найти это число в кольце
         {
             double result = 0;
             for (var a = 0; a < Languege.z; a++)
