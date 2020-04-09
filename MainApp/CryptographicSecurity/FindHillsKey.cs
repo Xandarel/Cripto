@@ -65,6 +65,10 @@ namespace CryptographicSecurity
                 Ansver.Add(Matrix<double>.Build.DenseOfColumnVectors(Vector<double>.Build.DenseOfArray(b)));
             }
         }
+        public void FindKey(int length, string cipher)
+        {
+            //TODO: реелизовать взлом хилла, когда известен только шифр и длинна матрицы
+        }
         List<int> PossiblePeriod(int wLength,int cLength)
         {
             var result = new List<int>();
