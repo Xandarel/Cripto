@@ -12,3 +12,8 @@ C:\Users\aobor\source\repos\Crip\Cripto\MainApp\UserInterface\obj\Debug\UserInte
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\UserInterface\obj\Debug\UserInterface.csproj.GenerateResource.cache
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\UserInterface\obj\Debug\UserInterface.exe
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\UserInterface\obj\Debug\UserInterface.pdb
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\UserInterface\bin\Debug\CriptoClass.dll
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\UserInterface\bin\Debug\CryptographicSecurity.dll
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\UserInterface\bin\Debug\CriptoClass.pdb
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\UserInterface\bin\Debug\CryptographicSecurity.pdb
+C:\Users\aobor\source\repos\Crip\Cripto\MainApp\UserInterface\obj\Debug\UserInterface.csproj.CopyComplete

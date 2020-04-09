@@ -94,5 +94,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CriptoClass\CriptoClass.csproj">
+      <Project>{e1effa0d-aeb4-4c4b-93c8-ec6cfcaef47d}</Project>
+      <Name>CriptoClass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CryptographicSecurity\CryptographicSecurity.csproj">
+      <Project>{e97c998a-b8f3-4844-b346-7d6500dce8f0}</Project>
+      <Name>CryptographicSecurity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

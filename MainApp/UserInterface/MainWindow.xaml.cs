@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Criptoclass;
 
 namespace UserInterface
 {
@@ -23,6 +24,13 @@ namespace UserInterface
         public MainWindow()
         {
             InitializeComponent();
+            Criptoclass.Languege.Libra("ru");
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton pressed = (RadioButton)sender;
+            Languege.Libra(pressed.Name);
         }
     }
 }
