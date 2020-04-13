@@ -16,12 +16,17 @@ namespace TestProgramm
         static void Main(string[] args)
         {
             Languege.Libra("ru");
-            FindHillsKey hillsKey = new FindHillsKey();
-            hillsKey.FindKey("сорока", "фэьъяо");
-            var key = hillsKey.Ansver;
-            foreach (var k in key)
-                Console.WriteLine(k);
-            Console.ReadKey();
+            var vigenerKey = new VigenereKey();
+            #region
+            //Languege.Libra("ru");
+            //FindHillsKey hillsKey = new FindHillsKey();
+            //hillsKey.FindKey("сорока", "фэьъяо");
+            //var key = hillsKey.Ansver;
+            //foreach (var k in key)
+            //    Console.WriteLine(k);
+            //Console.ReadKey();
+            #endregion
+            #region
             //var lcm3 = new TheLinearCongruentialMethod();
             //var lcm11 = new TheLinearCongruentialMethod();
             //var crt = new ChineseRemainderTheorem();
@@ -42,6 +47,7 @@ namespace TestProgramm
             //foreach (var l in crt.Period)
             //    Console.WriteLine($"{l}");
             //Console.ReadKey();
+            #endregion
         }
     }
 }

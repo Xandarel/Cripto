@@ -5,7 +5,7 @@ using Criptoclass;
 
 namespace CryptographicSecurity
 {
-    class VigenereKey
+    public class VigenereKey
     {
         private string key;
         public string GetKey => key;
