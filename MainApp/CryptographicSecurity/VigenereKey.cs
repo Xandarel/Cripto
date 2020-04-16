@@ -27,6 +27,7 @@ namespace CryptographicSecurity
                     for (var pos = start; pos < chiperText.Length; pos += m)
                         analisSubstring[start] += chiperText[pos];
                 }
+                //Вопрос. Как теперь перебрать все комбинации?
                 var resultSubstring = analisSubstring.Select(x => BlockAnalysis(x)).ToArray();
                 var ansverList = new char[chiperText.Length];
                 var ansPos = 0;
@@ -37,7 +38,7 @@ namespace CryptographicSecurity
                         ansverList[ansPos] = resultSubstring[i][j];
                         ansPos += m;
                     }
-                    ansPos=i+1;
+                    ansPos = i + 1;
                 }
                 var stringAns = "";
                 foreach (var a in ansverList)
@@ -81,7 +82,7 @@ namespace CryptographicSecurity
             return nod;
         }
 
-        private string BlockAnalysis (string block)//Могут происходить коллизии, когда несколько букв имеют маскмимальную длинну. Нужно перебрать все.
+        private List<string> BlockAnalysis (string block)
         {
             var frequencyLetters = new Dictionary<char, double>();
             foreach (var libra in block)
@@ -90,22 +91,30 @@ namespace CryptographicSecurity
                 else
                     frequencyLetters[libra] += 1;
             var maxValue = 0.0;
-            char maxLibra='О';
+            var maxLibra=new List<char>();
             foreach (var k in frequencyLetters.Keys) 
             {
-                //frequencyLetters[k] = frequencyLetters[k] * 100 / block.Length;
                 if (frequencyLetters[k] > maxValue)
                 {
-                    maxLibra = k;
+                    maxLibra.Clear();
+                    maxLibra.Add(k);
                     maxValue = frequencyLetters[k];
                 }
+                else if (frequencyLetters[k] == maxValue)
+                    maxLibra.Add(k);
             }
-            var delta = Math.Abs(Languege.dictionary[maxLibra] - Languege.dictionary['О']);
-            string decodeLetter = "";
-            foreach (var b in block)
+            var delta = new List<int>();
+            foreach (var l in maxLibra)
+                delta.Add(Math.Abs(Languege.dictionary[l] - Languege.dictionary['О']));
+            var decodeLetter = new List<string>();
+            for (int i = 0; i < delta.Count; i++)
             {
-                var decodePosition = Languege.dictionary[b] - delta;
-                decodeLetter += FindValue.Findvalue(decodePosition);
+                decodeLetter.Add("");
+                foreach (var b in block)
+                {
+                    var decodePosition = Languege.dictionary[b] - delta[i];
+                    decodeLetter[i] += FindValue.Findvalue(decodePosition);
+                }
             }
             return decodeLetter;
         }
