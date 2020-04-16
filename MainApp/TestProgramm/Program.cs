@@ -16,7 +16,20 @@ namespace TestProgramm
         static void Main(string[] args)
         {
             Languege.Libra("ru");
+            var cip = new Vishener();
+            var word = new WordAndKey<string>("ШифрыВиженераподобновсеммногоалфавитнымшифрамнесохраняютчастотусимволовОднакоЕваможетиспользоватьнекоторыеметодыдлятогочтобырасшифроватьперехваченныйзашифрованныйтекстКриптоанализвданномслучаесостоитиздвухчастейнаходятдлинуключаипотомнепосредственнонаходятключ", "собака");
             var vigenerKey = new VigenereKey();
+
+            word.Encoded=cip.Code(word);
+            vigenerKey.FindKey(word.Encoded);
+            var result = vigenerKey.GetKey;
+            foreach (var r in result)
+            {
+                Console.WriteLine(r);
+                Console.WriteLine("\n");
+            }
+            Console.ReadKey();
+            //vigenerKey.FindKey()
             #region
             //Languege.Libra("ru");
             //FindHillsKey hillsKey = new FindHillsKey();

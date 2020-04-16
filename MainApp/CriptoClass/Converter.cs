@@ -11,8 +11,9 @@ namespace CriptoClass
     {
         public static List<int> ConvertWordToCode(string text)
         {
+
             var numberLitera = new List<int>();
-            foreach (var litera in text) // Перевод слова в код
+            foreach (var litera in text.ToUpper()) // Перевод слова в код
                 numberLitera.Add( Languege.dictionary[litera]);
             return numberLitera;
         }

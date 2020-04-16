@@ -17,7 +17,7 @@ namespace CriptoClass
             //Создает массив по ключу. Циклически записывает ключ в строку длинны кодируемого слова
             //TODO придумать как написать реализацию красивее и для общего случая
             for (int i = 0; i < keyLitera.Length; i++)
-                keyLitera[i] = Languege.dictionary[element.Key[i % element.Key.Length]];
+                keyLitera[i] = Languege.dictionary[element.Key.ToUpper()[i % element.Key.Length]];
             string result = "";
             //Шифрование слова. 
             //Коды слов последовательно суммируются и высчитывается новое значение буквы в кольце выбранного алфавита
