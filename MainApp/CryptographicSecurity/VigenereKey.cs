@@ -29,21 +29,22 @@ namespace CryptographicSecurity
                 }
                 //Вопрос. Как теперь перебрать все комбинации?
                 var resultSubstring = analisSubstring.Select(x => BlockAnalysis(x)).ToArray();
-                var ansverList = new char[chiperText.Length];
+                var ansverArray = new char[chiperText.Length];
+                var changePosition = new List<int>();
                 var ansPos = 0;
-                for (int i = 0; i < resultSubstring.Length; i++)
+                for (int i=0;i<resultSubstring.Length;i++)
                 {
-                    for (int j = 0; j < resultSubstring[i].Length; j++)
+                    if (resultSubstring[i].Count > 1)//если есть несколько вариантов этого блока
+                        changePosition.Add(i);     //запомни где это может произойти
+                    //for (var j = 0; j < resultSubstring[i][0].Length; j++)
+                    foreach (var a in resultSubstring[i][0])
                     {
-                        ansverList[ansPos] = resultSubstring[i][j];
+                        ansverArray[ansPos] = a;
                         ansPos += m;
                     }
                     ansPos = i + 1;
                 }
-                var stringAns = "";
-                foreach (var a in ansverList)
-                    stringAns += a;
-                key.Add(stringAns.ToLower());
+                Add(ansverArray);
                 k += 1;
             }
         }
@@ -118,5 +119,23 @@ namespace CryptographicSecurity
             }
             return decodeLetter;
         }
+
+        private void Add(char[] text)
+        {
+            var stringAns = "";
+            foreach (var a in text)
+                stringAns += a;
+            key.Add(stringAns.ToLower());
+        }
     }
 }
+
+
+  //if (resultSubstring[i].Count > 1)
+  //                      changePosition.Add(i);
+  //                  for (var j=0;j<resultSubstring[i][0].Length;j++)
+  //                  {
+  //                      ansverArray[ansPos] = resultSubstring[i][0][j];
+  //                      ansPos += m;
+  //                  }
+  //                  ansPos = i + 1;
