@@ -194,13 +194,3 @@ namespace CryptographicSecurity
         private void Add(string text) => key.Add(text.ToLower());
     }
 }
-
-
-  //if (resultSubstring[i].Count > 1)
-  //                      changePosition.Add(i);
-  //                  for (var j=0;j<resultSubstring[i][0].Length;j++)
-  //                  {
-  //                      ansverArray[ansPos] = resultSubstring[i][0][j];
-  //                      ansPos += m;
-  //                  }
-  //                  ansPos = i + 1;

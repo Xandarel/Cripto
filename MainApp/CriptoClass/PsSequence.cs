@@ -4,11 +4,11 @@ using System.Text;
 using Criptoclass;
 
 namespace CriptoClass
-{//TODO:Как я это написал и как это работает?
+{
     /// <summary>
-    /// шифр перестановки
+    /// шифр на основе псевдослучайной последовательности
     /// </summary>
-    public class Transposition : Interfase_criptoelements<int[,]>//TODO: понять, как написать красиво
+    public class PsSequence : Interfase_criptoelements<int[,]>
     {
         public string Code(WordAndKey<int[,]> element)//TODO: понять, как реализовать в других системах исчисления
         {
