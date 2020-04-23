@@ -16,18 +16,29 @@ namespace TestProgramm
         static void Main(string[] args)
         {
             Languege.Libra("ru");
-            var cip = new Vishener();
-            var word = new WordAndKey<string>("ШифрыВиженераподобновсеммногоалфавитнымшифрамнесохраняютчастотусимволовОднакоЕваможетиспользоватьнекоторыеметодыдлятогочтобырасшифроватьперехваченныйзашифрованныйтекстКриптоанализвданномслучаесостоитиздвухчастейнаходятдлинуключаипотомнепосредственнонаходятключ", "собака");
-            var vigenerKey = new VigenereKey();
+            var keyLength = 4;
+            var array = new double[keyLength, keyLength];
+            for (var y = 0; y < keyLength; y++)
+                for (var x = 0; x < keyLength; x++)
+                    array[y, x] = y * keyLength + x;
+            var matrixArray = Matrix<double>.Build.DenseOfArray(array);
+            matrixArray.SetColumn(0, matrixArray.Column(3));
+            Console.WriteLine(matrixArray);
+            #region
+            //Languege.Libra("ru");
+            //var cip = new Vishener();
+            //var word = new WordAndKey<string>("ШифрыВиженераподобновсеммногоалфавитнымшифрамнесохраняютчастотусимволовОднакоЕваможетиспользоватьнекоторыеметодыдлятогочтобырасшифроватьперехваченныйзашифрованныйтекстКриптоанализвданномслучаесостоитиздвухчастейнаходятдлинуключаипотомнепосредственнонаходятключ", "собака");
+            //var vigenerKey = new VigenereKey();
 
-            word.Encoded=cip.Code(word);
-            vigenerKey.FindKey(word.Encoded);
-            var result = vigenerKey.GetKey;
-            foreach (var r in result)
-            {
-                Console.WriteLine(r);
-                Console.WriteLine("\n");
-            }
+            //word.Encoded=cip.Code(word);
+            //vigenerKey.FindKey(word.Encoded);
+            //var result = vigenerKey.GetKey;
+            //foreach (var r in result)
+            //{
+            //    Console.WriteLine(r);
+            //    Console.WriteLine("\n");
+            //}
+            #endregion
             Console.ReadKey();
             //vigenerKey.FindKey()
             #region
