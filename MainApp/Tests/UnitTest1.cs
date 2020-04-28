@@ -32,5 +32,12 @@ namespace Tests
             //Assert.AreEqual(wk.Word, wk.Word);
             //Assert.AreEqual("0", wk.Encoded);
         }
+        [Test]
+        public void TestPermutation()
+        {
+            Languege.Libra("ru");
+            var permut = new FindPermutationKey();
+            permut.FindKey("texaitnfwetlga");
+        }
     }
 }
