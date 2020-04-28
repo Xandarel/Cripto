@@ -18,6 +18,18 @@ namespace CryptographicSecurity
                     var possiblePermutations = SetTransposition(new int[del], 0, del);
                     foreach (var perm in possiblePermutations)
                     {
+                        var block = 0;
+                        var permIndex = 0;
+                        var decryption = new char[text.Length];
+                        for (var w = 0; w < text.Length; w++)
+                        {
+                            decryption[w] = text[perm[permIndex] + block];
+                            permIndex++;
+                            if ((w + 1) % del == 0 && w != 0)
+                                block+=del;
+                            if (permIndex == perm.Length)
+                                permIndex = 0;
+                        }
 
                     }
                 }
