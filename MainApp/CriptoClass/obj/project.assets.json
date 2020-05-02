@@ -34,6 +34,15 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "NHunspell/1.2.5554.16953": {
+        "type": "package",
+        "compile": {
+          "lib/net/NHunspell.dll": {}
+        },
+        "runtime": {
+          "lib/net/NHunspell.dll": {}
+        }
       }
     }
   },
@@ -199,12 +208,30 @@
         "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "NHunspell/1.2.5554.16953": {
+      "sha512": "B2tr5kfwHu0jan5Gd3JEWdJkDVJxGAXmA230y0XeqJcL4zdZWk8Bmw9LVQ3p9/qKuun/7+FemxjspbjcTLGp6g==",
+      "type": "package",
+      "path": "nhunspell/1.2.5554.16953",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Tools/install.ps1",
+        "content/Hunspellx64.dll",
+        "content/Hunspellx86.dll",
+        "lib/net/NHunspell.dll",
+        "lib/net/NHunspell.pdb",
+        "nhunspell.1.2.5554.16953.nupkg.sha512",
+        "nhunspell.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "MathNet.Numerics >= 4.9.0",
-      "NETStandard.Library >= 2.0.3"
+      "NETStandard.Library >= 2.0.3",
+      "NHunspell >= 1.2.5554.16953"
     ]
   },
   "packageFolders": {
@@ -257,6 +284,10 @@
             "target": "Package",
             "version": "[2.0.3, )",
             "autoReferenced": true
+          },
+          "NHunspell": {
+            "target": "Package",
+            "version": "[1.2.5554.16953, )"
           }
         },
         "imports": [
@@ -272,5 +303,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"NHunspell 1.2.5554.16953\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \".NETStandard,Version=v2.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "NHunspell",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
 }

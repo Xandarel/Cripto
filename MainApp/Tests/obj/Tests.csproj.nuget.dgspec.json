@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "NHunspell": {
+              "target": "Package",
+              "version": "[1.2.5554.16953, )"
             }
           },
           "imports": [
@@ -112,6 +116,10 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "NHunspell": {
+              "target": "Package",
+              "version": "[1.2.5554.16953, )"
             }
           },
           "imports": [
@@ -175,6 +183,10 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.4.0, )"
+            },
+            "NHunspell": {
+              "target": "Package",
+              "version": "[1.2.5554.16953, )"
             },
             "NUnit3TestAdapter": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

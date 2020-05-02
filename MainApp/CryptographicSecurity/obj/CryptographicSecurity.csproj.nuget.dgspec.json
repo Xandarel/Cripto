@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "NHunspell": {
+              "target": "Package",
+              "version": "[1.2.5554.16953, )"
             }
           },
           "imports": [
@@ -112,6 +116,10 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "NHunspell": {
+              "target": "Package",
+              "version": "[1.2.5554.16953, )"
             }
           },
           "imports": [
