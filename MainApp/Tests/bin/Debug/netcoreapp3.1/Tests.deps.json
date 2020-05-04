@@ -11,6 +11,7 @@
           "CriptoClass": "1.0.0",
           "CryptographicSecurity": "1.0.0",
           "Microsoft.NET.Test.Sdk": "16.4.0",
+          "NHunspell": "1.2.5554.16953",
           "NUnit3TestAdapter": "3.16.1",
           "NUnit": "3.12.0"
         },
@@ -379,6 +380,14 @@
           "lib/netstandard1.0/Newtonsoft.Json.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.0.1.19813"
+          }
+        }
+      },
+      "NHunspell/1.2.5554.16953": {
+        "runtime": {
+          "lib/net/NHunspell.dll": {
+            "assemblyVersion": "1.2.5554.16953",
+            "fileVersion": "1.2.5554.16953"
           }
         }
       },
@@ -877,7 +886,8 @@
       },
       "CriptoClass/1.0.0": {
         "dependencies": {
-          "MathNet.Numerics": "4.9.0"
+          "MathNet.Numerics": "4.9.0",
+          "NHunspell": "1.2.5554.16953"
         },
         "runtime": {
           "CriptoClass.dll": {}
@@ -885,7 +895,8 @@
       },
       "CryptographicSecurity/1.0.0": {
         "dependencies": {
-          "CriptoClass": "1.0.0"
+          "CriptoClass": "1.0.0",
+          "NHunspell": "1.2.5554.16953"
         },
         "runtime": {
           "CryptographicSecurity.dll": {}
@@ -989,6 +1000,13 @@
       "sha512": "sha512-U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw==",
       "path": "newtonsoft.json/9.0.1",
       "hashPath": "newtonsoft.json.9.0.1.nupkg.sha512"
+    },
+    "NHunspell/1.2.5554.16953": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-B2tr5kfwHu0jan5Gd3JEWdJkDVJxGAXmA230y0XeqJcL4zdZWk8Bmw9LVQ3p9/qKuun/7+FemxjspbjcTLGp6g==",
+      "path": "nhunspell/1.2.5554.16953",
+      "hashPath": "nhunspell.1.2.5554.16953.nupkg.sha512"
     },
     "NuGet.Frameworks/5.0.0": {
       "type": "package",

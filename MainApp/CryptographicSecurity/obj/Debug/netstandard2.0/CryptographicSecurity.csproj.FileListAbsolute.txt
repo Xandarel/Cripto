@@ -9,3 +9,14 @@ C:\Users\aobor\source\repos\Crip\Cripto\MainApp\CryptographicSecurity\obj\Debug\
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.csproj.CopyComplete
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.dll
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.pdb
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\bin\Debug\netstandard2.0\CryptographicSecurity.deps.json
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\bin\Debug\netstandard2.0\CryptographicSecurity.dll
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\bin\Debug\netstandard2.0\CryptographicSecurity.pdb
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\bin\Debug\netstandard2.0\CriptoClass.dll
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\bin\Debug\netstandard2.0\CriptoClass.pdb
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.csprojAssemblyReference.cache
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.AssemblyInfoInputs.cache
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.AssemblyInfo.cs
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.csproj.CopyComplete
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.dll
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.pdb

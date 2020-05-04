@@ -6,3 +6,11 @@ C:\Users\aobor\source\repos\Crip\Cripto\MainApp\CriptoClass\obj\Debug\netstandar
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\CriptoClass\obj\Debug\netstandard2.0\CriptoClass.AssemblyInfo.cs
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\CriptoClass\obj\Debug\netstandard2.0\CriptoClass.dll
 C:\Users\aobor\source\repos\Crip\Cripto\MainApp\CriptoClass\obj\Debug\netstandard2.0\CriptoClass.pdb
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CriptoClass\bin\Debug\netstandard2.0\CriptoClass.deps.json
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CriptoClass\bin\Debug\netstandard2.0\CriptoClass.dll
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CriptoClass\bin\Debug\netstandard2.0\CriptoClass.pdb
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CriptoClass\obj\Debug\netstandard2.0\CriptoClass.csprojAssemblyReference.cache
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CriptoClass\obj\Debug\netstandard2.0\CriptoClass.AssemblyInfoInputs.cache
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CriptoClass\obj\Debug\netstandard2.0\CriptoClass.AssemblyInfo.cs
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CriptoClass\obj\Debug\netstandard2.0\CriptoClass.dll
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CriptoClass\obj\Debug\netstandard2.0\CriptoClass.pdb

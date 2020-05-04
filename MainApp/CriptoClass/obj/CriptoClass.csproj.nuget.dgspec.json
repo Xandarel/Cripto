@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj": {}
+    "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj": {
+    "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj",
+        "projectUniqueName": "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj",
         "projectName": "CriptoClass",
-        "projectPath": "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj",
+        "projectPath": "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj",
         "packagesPath": "C:\\Users\\aobor\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\CriptoClass\\obj\\",
+        "outputPath": "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\CriptoClass\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

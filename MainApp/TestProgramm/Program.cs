@@ -8,6 +8,7 @@ using MathNet.Numerics.LinearAlgebra.Double;
 using CriptoClass;
 using CryptographicSecurity;
 using Criptoclass;
+using WeCantSpell.Hunspell;
 
 namespace TestProgramm
 {
@@ -16,14 +17,16 @@ namespace TestProgramm
         static void Main(string[] args)
         {
             Languege.Libra("ru");
-            var keyLength = 4;
-            var array = new double[keyLength, keyLength];
-            for (var y = 0; y < keyLength; y++)
-                for (var x = 0; x < keyLength; x++)
-                    array[y, x] = y * keyLength + x;
-            var matrixArray = Matrix<double>.Build.DenseOfArray(array);
-            matrixArray.SetColumn(0, matrixArray.Column(3));
-            Console.WriteLine(matrixArray);
+            var permut = new FindPermutationKey();
+            permut.FindKey("собакц");
+            //var keyLength = 4;
+            //var array = new double[keyLength, keyLength];
+            //for (var y = 0; y < keyLength; y++)
+            //    for (var x = 0; x < keyLength; x++)
+            //        array[y, x] = y * keyLength + x;
+            //var matrixArray = Matrix<double>.Build.DenseOfArray(array);
+            //matrixArray.SetColumn(0, matrixArray.Column(3));
+            //Console.WriteLine(matrixArray);
             #region
             //Languege.Libra("ru");
             //var cip = new Vishener();

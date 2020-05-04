@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using NHunspell;
 using CriptoClass;
 using Criptoclass;
+using WeCantSpell.Hunspell;
 
 namespace CryptographicSecurity
 {
@@ -33,18 +33,18 @@ namespace CryptographicSecurity
                             if (permIndex == perm.Length)
                                 permIndex = 0;
                         }
-                        var stringDecryption = decryption.ToString();
+                        var stringDecryption = Converter.ConvertArrayToString(decryption);
                         if (Languege.dictionary.ContainsKey('А')) //Русский язык
-                            using (var hunspell = new Hunspell("ru_RU.aff", "ru_RU.dic"))
-                            {
-                                //TODO: реализовать
-                                //https://www.codeproject.com/Articles/33658/NHunspell-Hunspell-for-the-NET-platform
-                            }
+                        {
+                            var dictionary = WordList.CreateFromFiles(@"Russian.dic", @"Russian.aff");
+                            var suggestions = dictionary.Suggest(stringDecryption);
+                            foreach (var s in suggestions)
+                                Console.WriteLine(s);
+                        }
                         else
-                            using (var hunspell = new Hunspell("en_us.aff", "en_us.dic"))
-                            {
-                                //https://www.codeproject.com/Articles/33658/NHunspell-Hunspell-for-the-NET-platform
-                            }
+                        {
+
+                        }
                     }
                 }
             }

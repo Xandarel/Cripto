@@ -825,6 +825,15 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
+      "System.Memory/4.5.1": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/_._": {}
+        }
+      },
       "System.ObjectModel/4.0.12": {
         "type": "package",
         "dependencies": {
@@ -1244,6 +1253,18 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
+      "WeCantSpell.Hunspell/3.0.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/WeCantSpell.Hunspell.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/WeCantSpell.Hunspell.dll": {}
+        }
+      },
       "CriptoClass/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -1263,7 +1284,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "CriptoClass": "1.0.0",
-          "NHunspell": "1.2.5554.16953"
+          "WeCantSpell.Hunspell": "3.0.1"
         },
         "compile": {
           "bin/placeholder/CryptographicSecurity.dll": {}
@@ -3072,6 +3093,31 @@
         "system.linq.expressions.nuspec"
       ]
     },
+    "System.Memory/4.5.1": {
+      "sha512": "sDJYJpGtTgx+23Ayu5euxG5mAXWdkDb4+b0rD0Cab0M1oQS9H0HXGPriKcqpXuiJDTV7fTp/d+fMDJmnr6sNvA==",
+      "type": "package",
+      "path": "system.memory/4.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp2.1/_._",
+        "lib/netstandard1.1/System.Memory.dll",
+        "lib/netstandard1.1/System.Memory.xml",
+        "lib/netstandard2.0/System.Memory.dll",
+        "lib/netstandard2.0/System.Memory.xml",
+        "ref/netcoreapp2.1/_._",
+        "ref/netstandard1.1/System.Memory.dll",
+        "ref/netstandard1.1/System.Memory.xml",
+        "ref/netstandard2.0/System.Memory.dll",
+        "ref/netstandard2.0/System.Memory.xml",
+        "system.memory.4.5.1.nupkg.sha512",
+        "system.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.ObjectModel/4.0.12": {
       "sha512": "tAgJM1xt3ytyMoW4qn4wIqgJYm7L7TShRZG4+Q4Qsi2PCcj96pXN7nRywS9KkB3p/xDUjc2HSwP9SROyPYDYKQ==",
       "type": "package",
@@ -4645,6 +4691,23 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
+    "WeCantSpell.Hunspell/3.0.1": {
+      "sha512": "guVwsDstyatfSrF3pcRvBecKAOAHg2/V/kpQlzUEa/09xgsfyMeDzV/W8iFHR5HpzPCOEYsHtRtpWLP+OZAiiw==",
+      "type": "package",
+      "path": "wecantspell.hunspell/3.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/WeCantSpell.Hunspell.dll",
+        "lib/net45/WeCantSpell.Hunspell.xml",
+        "lib/netstandard1.3/WeCantSpell.Hunspell.dll",
+        "lib/netstandard1.3/WeCantSpell.Hunspell.xml",
+        "lib/netstandard2.0/WeCantSpell.Hunspell.dll",
+        "lib/netstandard2.0/WeCantSpell.Hunspell.xml",
+        "wecantspell.hunspell.3.0.1.nupkg.sha512",
+        "wecantspell.hunspell.nuspec"
+      ]
+    },
     "CriptoClass/1.0.0": {
       "type": "project",
       "path": "../CriptoClass/CriptoClass.csproj",
@@ -4673,11 +4736,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\Tests\\Tests.csproj",
+      "projectUniqueName": "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\Tests\\Tests.csproj",
       "projectName": "Tests",
-      "projectPath": "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\Tests\\Tests.csproj",
+      "projectPath": "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\Tests\\Tests.csproj",
       "packagesPath": "C:\\Users\\aobor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\Tests\\obj\\",
+      "outputPath": "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4696,11 +4759,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj": {
-              "projectPath": "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj"
+            "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj": {
+              "projectPath": "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\CriptoClass\\CriptoClass.csproj"
             },
-            "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\CryptographicSecurity\\CryptographicSecurity.csproj": {
-              "projectPath": "C:\\Users\\aobor\\source\\repos\\Crip\\Cripto\\MainApp\\CryptographicSecurity\\CryptographicSecurity.csproj"
+            "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\CryptographicSecurity\\CryptographicSecurity.csproj": {
+              "projectPath": "C:\\Users\\aobor\\source\\repos\\cloneDiplom\\Cripto\\MainApp\\CryptographicSecurity\\CryptographicSecurity.csproj"
             }
           }
         }

@@ -17,5 +17,13 @@ namespace CriptoClass
                 numberLitera.Add( Languege.dictionary[litera]);
             return numberLitera;
         }
+
+        public static string ConvertArrayToString(char[] array)
+        {
+            string ans = "";
+            foreach (var a in array)
+                ans += a;
+            return ans;
+        }
     }
 }

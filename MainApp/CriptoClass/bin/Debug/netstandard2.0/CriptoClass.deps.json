@@ -10,7 +10,8 @@
       "CriptoClass/1.0.0": {
         "dependencies": {
           "MathNet.Numerics": "4.9.0",
-          "NETStandard.Library": "2.0.3"
+          "NETStandard.Library": "2.0.3",
+          "NHunspell": "1.2.5554.16953"
         },
         "runtime": {
           "CriptoClass.dll": {}
@@ -28,6 +29,14 @@
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "NHunspell/1.2.5554.16953": {
+        "runtime": {
+          "lib/net/NHunspell.dll": {
+            "assemblyVersion": "1.2.5554.16953",
+            "fileVersion": "1.2.5554.16953"
+          }
         }
       }
     }
@@ -58,6 +67,13 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "NHunspell/1.2.5554.16953": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-B2tr5kfwHu0jan5Gd3JEWdJkDVJxGAXmA230y0XeqJcL4zdZWk8Bmw9LVQ3p9/qKuun/7+FemxjspbjcTLGp6g==",
+      "path": "nhunspell/1.2.5554.16953",
+      "hashPath": "nhunspell.1.2.5554.16953.nupkg.sha512"
     }
   }
 }

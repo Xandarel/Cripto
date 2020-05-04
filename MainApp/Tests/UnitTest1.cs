@@ -37,7 +37,7 @@ namespace Tests
         {
             Languege.Libra("ru");
             var permut = new FindPermutationKey();
-            permut.FindKey("texaitnfwetlga");
+            permut.FindKey("шифрывиженераа");
         }
     }
 }
