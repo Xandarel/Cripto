@@ -27,15 +27,42 @@ namespace UserInterface
             Criptoclass.Languege.Libra("ru");
         }
 
+        public string CriptMetod { get; private set; }
+        private void CriptMetod_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton item)
+                CriptMetod = item.Name.ToString();
+        }
+
+        public string DecriptMetod { get; private set; }
+        private void DecriptMetod_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is RadioButton item)
+            {
+                var text = item.Name.ToString().ToCharArray();
+                text[0] = char.ToUpper(text[0]);
+                DecriptMetod = new string(text);
+            }
+        }
+
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             RadioButton pressed = (RadioButton)sender;
             Languege.Libra(pressed.Name);
         }
 
-        private void CriptoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Encryption_Click_1(object sender, RoutedEventArgs e)
         {
+            ClickTitle.Text = "Зашифрованный текст";
+            var type = Type.GetType(CriptMetod);
+            var cm = Activator.CreateInstance(type);
+        }
 
+        private void Decryption_Click(object sender, RoutedEventArgs e)
+        {
+            ClickTitle.Text = "Расшифрованный текст";
+            var type = Type.GetType(DecriptMetod);
+            var dm = Activator.CreateInstance(type);
         }
     }
 }
