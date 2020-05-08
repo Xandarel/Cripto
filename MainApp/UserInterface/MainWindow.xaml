@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Диплом" Height="450" Width="800">
     <Grid x:Name="Grid1">
+        
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -15,27 +16,45 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
+
+        <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            
+            <MenuItem Header="Шифрование">
+                <RadioButton GroupName="encryptionMethod" IsChecked="True" Content="Шифр Виженера"/>
+                <RadioButton GroupName="encryptionMethod" Content="Шифр виженера с обратной связью"/>
+                <RadioButton GroupName="encryptionMethod" Content="Шифр Хилла"/>
+                <RadioButton GroupName="encryptionMethod" Content="Шифр перестановки"/>
+            </MenuItem>
+            
+            <MenuItem Header="Дешифрование">
+                <RadioButton GroupName="decryptionMethod" IsChecked="True" Content="Шифр Виженера"/>
+                <RadioButton GroupName="decryptionMethod" Content="Шифр виженера с обратной связью"/>
+                <RadioButton GroupName="decryptionMethod" Content="Шифр Хилла"/>
+                <RadioButton GroupName="decryptionMethod" Content="Шифр перестановки"/>
+            </MenuItem>
+            
+            <MenuItem Header="Криптостойкойкость">
+                <RadioButton GroupName="CryptographicSecurity" IsChecked="True" Content="Шифр виженера"/>
+                <RadioButton GroupName="CryptographicSecurity" Content="Шифр Хилла"/>
+            </MenuItem>
+            
+        </Menu>
+
         <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0">
-            <TextBlock HorizontalAlignment="Left" Width="200" Margin="20,20,0,0"><Run Text="Слово"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Width="200" Margin="25,30,0,0"><Run Text="Слово"/></TextBlock>
             <TextBox x:Name="textBox1" 
                      HorizontalAlignment="Left" Width="200" Margin="20 10 0 0"/>
             <TextBlock  HorizontalAlignment="Left" Width="200" Margin="20,10,0,0">Шифр</TextBlock>
             <TextBlock  HorizontalAlignment="Left" Width="200" Margin="20 10 0 0"/>
         </StackPanel>
-        <StackPanel x:Name="Languages" Grid.Row="0" Grid.Column="1" Margin="20 20 0 0">
+        
+        <StackPanel x:Name="Languages" Grid.Row="0" Grid.Column="1" Margin="20 30 0 0">
             <RadioButton HorizontalAlignment="Left" x:Name="ru" GroupName="Languages" Content="Русский" 
                          Checked="RadioButton_Checked" IsChecked="True" Width="100"/>
             <RadioButton x:Name="eng" HorizontalAlignment="Left" Width="100" GroupName="Languages" Content="Английский" 
                          Checked="RadioButton_Checked"/>
-            <TextBlock HorizontalAlignment="Left" Width="200"><Run Text="Cпособ шифрования"/></TextBlock>
-            <ComboBox HorizontalAlignment="Left" Name="CriptoList" Width="200" Height="30" VerticalAlignment="Top">
-                <TextBlock>Шифр Виженера</TextBlock>
-                <TextBlock>Шифр Виженера с обратной связью</TextBlock>
-                <TextBlock>Шифр перестановки</TextBlock>
-                <TextBlock>Шифр Хилла</TextBlock>
-                <TextBlock>Модифицированный Шифр Хилла</TextBlock>
-            </ComboBox>
-
+            <Button x:Name="encryption" HorizontalAlignment="Left" Margin="10 10 0 0" >Зашифровать</Button>
+            <Button x:Name="decryption" HorizontalAlignment="Left" Margin="10 10 0 0">Расшифровать</Button>
         </StackPanel>
 
     </Grid>

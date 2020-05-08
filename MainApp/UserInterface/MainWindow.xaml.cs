@@ -32,5 +32,10 @@ namespace UserInterface
             RadioButton pressed = (RadioButton)sender;
             Languege.Libra(pressed.Name);
         }
+
+        private void CriptoList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
