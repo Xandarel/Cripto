@@ -40,3 +40,5 @@ C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\obj\Debug\U
 C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\obj\Debug\UserInterface.csproj.CopyComplete
 C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\obj\Debug\UserInterface.exe
 C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\obj\Debug\UserInterface.pdb
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\bin\Debug\MathNet.Numerics.dll
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\bin\Debug\MathNet.Numerics.xml

@@ -12,7 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Double;
 using Criptoclass;
+using CriptoClass;
 
 namespace UserInterface
 {
@@ -56,6 +59,18 @@ namespace UserInterface
             ClickTitle.Text = "Зашифрованный текст";
             var type = Type.GetType(CriptMetod);
             var cm = Activator.CreateInstance(type);
+            switch (CriptMetod)
+            {
+                case "Vishener":
+                    var textWK = new WordAndKey<string>(textBox1.Text, key.Text);
+                    break;
+                case "ReverseVeshener":
+                    textWK = new WordAndKey<string>(textBox1.Text, key.Text);
+                    break;
+                case "Hill":
+                    //textWK = new WordAndKey<List<Matrix<double>>>(textBox1.Text,)
+                    break;
+            }
         }
 
         private void Decryption_Click(object sender, RoutedEventArgs e)
