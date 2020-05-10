@@ -57,20 +57,62 @@ namespace UserInterface
         private void Encryption_Click_1(object sender, RoutedEventArgs e)
         {
             ClickTitle.Text = "Зашифрованный текст";
-            var type = Type.GetType(CriptMetod);
-            var cm = Activator.CreateInstance(type);
             switch (CriptMetod)
             {
                 case "Vishener":
+                    var cm = GetCriptMetod("Vishener");
                     var textWK = new WordAndKey<string>(textBox1.Text, key.Text);
                     break;
                 case "ReverseVeshener":
+                    cm = GetCriptMetod("ReverseVeshener");
                     textWK = new WordAndKey<string>(textBox1.Text, key.Text);
                     break;
                 case "Hill":
-                    //textWK = new WordAndKey<List<Matrix<double>>>(textBox1.Text,)
+                    cm = GetCriptMetod("Hill");
+                    var matrix = BuildMatrix(key.Text);
+                    textWK = new WordAndKey<List<Matrix<double>>>(textBox1.Text, matrix);//Исправить. Написать функцию - инициализатор
                     break;
             }
+        }
+        List<Matrix<double>> BuildMatrix(string matrixElement)
+        {
+            var res = new List<Matrix<double>>();
+            matrixElement = matrixElement.Replace("\r\n", " ");
+            var matrixLength = matrixElement.IndexOf(' ');
+            matrixElement = matrixElement.Replace(" ", "");
+            var matrixArray = new double[matrixLength, matrixLength];
+            var matrixVector = new double[matrixLength];
+            for (var i = 0; i < matrixLength; i++)
+            {
+                matrixVector[i] = 0;
+                for (var j = 0; j < matrixLength; j++)
+                {
+                    matrixArray[j, i] = double.Parse(matrixElement[0].ToString());
+                    matrixElement = matrixElement.Remove(0, 1);
+                }
+            }
+            res.Add(Matrix<double>.Build.DenseOfArray(matrixArray));
+            res.Add(Matrix<double>.Build.DenseOfColumnVectors(Vector<double>.Build.DenseOfArray(matrixVector)));
+            return res;
+        }
+
+
+            private dynamic GetCriptMetod(string metod)
+        {
+            switch (metod)
+            {
+                case "Vishener":
+                    return new Vishener();
+                case "ReverseVeshener":
+                    return new ReverseVeshener();
+                case "Hill":
+                    return new Hill();
+                case "Permutation":
+                    return new Permutation();
+                default:
+                    return new Vishener();
+            }
+
         }
 
         private void Decryption_Click(object sender, RoutedEventArgs e)

@@ -7,7 +7,7 @@ using MathNet.Numerics.LinearAlgebra.Double;
 
 namespace CriptoClass
 {
-    class Permutation : Interfase_criptoelements<int[,]>
+    public class Permutation : Interfase_criptoelements<int[,]>
     {
         public string Code(WordAndKey<int[,]> element)
         {

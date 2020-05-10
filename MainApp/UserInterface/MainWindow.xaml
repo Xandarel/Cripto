@@ -90,7 +90,11 @@
             <TextBox  HorizontalAlignment="Left"
                       x:Name="key"
                       Width="200" 
-                      Margin="20 10 0 0" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True"/>
+                      Margin="20 10 0 0" 
+                      TextWrapping="Wrap" 
+                      AcceptsReturn="True" 
+                      AcceptsTab="True" 
+                      SpellCheck.IsEnabled="True"/>
             <TextBlock x:Name="ClickTitle" 
                        HorizontalAlignment="Left" 
                        Width="200" 
