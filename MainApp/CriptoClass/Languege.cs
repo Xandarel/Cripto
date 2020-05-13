@@ -10,6 +10,8 @@ namespace Criptoclass
         public static int z { get; set; } //размер кольца (сколько букв в алфавите)
         public static void Libra(string lang)
         {
+            if (dictionary.Count > 0)
+                dictionary.Clear();
             switch (lang)
             {
                 case "ru":

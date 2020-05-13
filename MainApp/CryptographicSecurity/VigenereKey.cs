@@ -15,105 +15,107 @@ namespace CryptographicSecurity
         {
             chiperText = chiperText.ToUpper();
             var repetitionPeriods = KasiskiMethod(chiperText);
+            if (repetitionPeriods.Count == 0)
+                Console.WriteLine("Невозможно найти период. Невозможно взломать ключ");
+            else { 
             var nod = FindNOD(repetitionPeriods.ToArray());
             var k = 1;
-            for (var m = nod;; m*=k )
-            {
-                if (m > chiperText.Length / m)
-                    break;
-                char[,] strings = new char[chiperText.Length/ m + 1, m];
-                for (int i = 0; i < chiperText.Length; i++)
+                for (var m = nod; ; m = nod * k)
                 {
-                    int ii = i / m;
-                    int ij = i - (ii * m);
-
-                    strings[ii, ij] = chiperText[i];
-                }
-                var paswords = new List<string>();
-                paswords.Add("");
-                for (int i = 0; i < m; i++)
-                {
-                    Dictionary<char, int> dict = new Dictionary<char, int>();
-
-                    for (int j = 0; j < (chiperText.Length / m) + 1; j++)
-                        if (dict.ContainsKey(strings[j, i]))
-                            dict[strings[j, i]]++;
-                        else
-                            dict.Add(strings[j, i], 1);
-
-                    var sortict = dict.OrderByDescending(x => x.Value)
-                                      .ToDictionary(x=>x.Key,x=>x.Value);
-                    var maxValue = sortict.Values.Max();
-                    var positionCandidat = new List<char>();
-
-                    char sy = Languege.z == 33 ? 'О' : 'E';
-                    foreach (var kvp in sortict)
+                    if (m > chiperText.Length / m)
+                        break;
+                    char[,] strings = new char[chiperText.Length / m + 1, m];
+                    for (int i = 0; i < chiperText.Length; i++)
                     {
-                        if (kvp.Value < maxValue)
-                            break;
-                        else
-                            positionCandidat.Add(kvp.Key);
-                        //sy = kvp.Key;
-                        //break;
+                        int ii = i / m;
+                        int ij = i - (ii * m);
+
+                        strings[ii, ij] = chiperText[i];
                     }
-                    if (positionCandidat.Count>1)
+                    var paswords = new List<string>();
+                    paswords.Add("");
+                    for (int i = 0; i < m; i++)
                     {
-                        var bufList = new List<string>(paswords);
-                        for (var copy=0;copy<positionCandidat.Count-1;copy++)
-                            paswords.AddRange(bufList);
-                        var transition = paswords.Count / positionCandidat.Count;
-                        var candidatElement = 0;
-                        for (var pos = 0; pos < paswords.Count; pos++)
+                        Dictionary<char, int> dict = new Dictionary<char, int>();
+
+                        for (int j = 0; j < (chiperText.Length / m) + 1; j++)
+                            if (dict.ContainsKey(strings[j, i]))
+                                dict[strings[j, i]]++;
+                            else
+                                dict.Add(strings[j, i], 1);
+
+                        var sortict = dict.OrderByDescending(x => x.Value)
+                                          .ToDictionary(x => x.Key, x => x.Value);
+                        var maxValue = sortict.Values.Max();
+                        var positionCandidat = new List<char>();
+
+                        char sy = Languege.z == 33 ? 'О' : 'E';
+                        foreach (var kvp in sortict)
                         {
-                            if (pos != 0 && pos % transition == 0)
-                                candidatElement++;
-                            int res = Languege.dictionary[positionCandidat[candidatElement]] -
-                                               Languege.dictionary[sy];
-                            paswords[pos] += FindValue.Findvalue(res+1);
+                            if (kvp.Value < maxValue)
+                                break;
+                            else
+                                positionCandidat.Add(kvp.Key);
+                            //sy = kvp.Key;
+                            //break;
+                        }
+                        if (positionCandidat.Count > 1)
+                        {
+                            var bufList = new List<string>(paswords);
+                            for (var copy = 0; copy < positionCandidat.Count - 1; copy++)
+                                paswords.AddRange(bufList);
+                            var transition = paswords.Count / positionCandidat.Count;
+                            var candidatElement = 0;
+                            for (var pos = 0; pos < paswords.Count; pos++)
+                            {
+                                if (pos != 0 && pos % transition == 0)
+                                    candidatElement++;
+                                int res = Languege.dictionary[positionCandidat[candidatElement]] -
+                                                   Languege.dictionary[sy];
+                                paswords[pos] += FindValue.Findvalue(res + 1);
+                            }
+                        }
+                        else
+                        {
+                            int res = Languege.dictionary[positionCandidat[0]] -
+                                                  Languege.dictionary[sy];
+                            for (var pos = 0; pos < paswords.Count; pos++)
+                                paswords[pos] += FindValue.Findvalue(res);
                         }
                     }
-                    else
-                    {
-                        int res = Languege.dictionary[positionCandidat[0]] -
-                                              Languege.dictionary[sy];
-                        for (var pos = 0; pos < paswords.Count; pos++)
-                            paswords[pos] += FindValue.Findvalue(res);
-                    }
-                    //int res = (Languege.dictionary[sy] - Languege.dictionary[Languege.z == 33 ? 'О' : 'E' ] + Languege.z) % Languege.z;
-                    //password += FindValue.Findvalue(res);
-                }
-                foreach (var password in paswords)
-                    Add(password);
-                #region
-                //var analisSubstring = new string[m];
-                //for (var start = 0; start < m; start++)
-                //{
-                //    for (var pos = start; pos < chiperText.Length; pos += m)
-                //        analisSubstring[start] += chiperText[pos];
-                //}
-                ////Вопрос. Как теперь перебрать все комбинации?
-                //var resultSubstring = analisSubstring.Select(x => BlockAnalysis(x)).ToArray();
-                //var ansverArray = new char[chiperText.Length];
-                //var changePosition = new List<int>();
-                //var ansPos = 0;
-                //for (int i=0;i<resultSubstring.Length;i++)
-                //{
-                //    if (resultSubstring[i].Count > 1)//если есть несколько вариантов этого блока
-                //        changePosition.Add(i);     //запомни где это может произойти
-                //    foreach (var a in resultSubstring[i][0])
-                //    {
-                //        ansverArray[ansPos] = a;
-                //        ansPos += m;
-                //    }
-                //    ansPos = i + 1;
-                //}
-                //Add(ansverArray); //Добавили "нулевую" строку в ответ
-                //for (var i=changePosition.Count-1;i>=0;i--)
-                //{
+                    foreach (var password in paswords)
+                        Add(password);
+                    #region
+                    //var analisSubstring = new string[m];
+                    //for (var start = 0; start < m; start++)
+                    //{
+                    //    for (var pos = start; pos < chiperText.Length; pos += m)
+                    //        analisSubstring[start] += chiperText[pos];
+                    //}
+                    ////Вопрос. Как теперь перебрать все комбинации?
+                    //var resultSubstring = analisSubstring.Select(x => BlockAnalysis(x)).ToArray();
+                    //var ansverArray = new char[chiperText.Length];
+                    //var changePosition = new List<int>();
+                    //var ansPos = 0;
+                    //for (int i=0;i<resultSubstring.Length;i++)
+                    //{
+                    //    if (resultSubstring[i].Count > 1)//если есть несколько вариантов этого блока
+                    //        changePosition.Add(i);     //запомни где это может произойти
+                    //    foreach (var a in resultSubstring[i][0])
+                    //    {
+                    //        ansverArray[ansPos] = a;
+                    //        ansPos += m;
+                    //    }
+                    //    ansPos = i + 1;
+                    //}
+                    //Add(ansverArray); //Добавили "нулевую" строку в ответ
+                    //for (var i=changePosition.Count-1;i>=0;i--)
+                    //{
 
-                //}
-                #endregion
-                k += 1;
+                    //}
+                    #endregion
+                    k += 1;
+                }
             }
         }
         private List<int> KasiskiMethod(string chiperText)

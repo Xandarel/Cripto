@@ -16,31 +16,31 @@ namespace TestProgramm
     {
         static void Main(string[] args)
         {
-            Languege.Libra("ru");
-            var permut = new FindPermutationKey();
-            permut.FindKey("собакц");
-            //var keyLength = 4;
-            //var array = new double[keyLength, keyLength];
-            //for (var y = 0; y < keyLength; y++)
-            //    for (var x = 0; x < keyLength; x++)
-            //        array[y, x] = y * keyLength + x;
-            //var matrixArray = Matrix<double>.Build.DenseOfArray(array);
-            //matrixArray.SetColumn(0, matrixArray.Column(3));
-            //Console.WriteLine(matrixArray);
             #region
-            //Languege.Libra("ru");
-            //var cip = new Vishener();
-            //var word = new WordAndKey<string>("ШифрыВиженераподобновсеммногоалфавитнымшифрамнесохраняютчастотусимволовОднакоЕваможетиспользоватьнекоторыеметодыдлятогочтобырасшифроватьперехваченныйзашифрованныйтекстКриптоанализвданномслучаесостоитиздвухчастейнаходятдлинуключаипотомнепосредственнонаходятключ", "собака");
-            //var vigenerKey = new VigenereKey();
+            Languege.Libra("ru");
+            var cip = new Vishener();
+            var word = new WordAndKey<string>("ПереночеваввгостиницевГуаякилемыселикагентувмашинуипоехалинасудновПуэртоБоливарДоехаливопрекиожиданиямбыстропримернозачасаПогодабылапасмурнаяидаженесмотрянаточтомынаходимсянедалекоотэкваторабылопрохладноПочтивсевремяпокамыехалипообестороныдорогибылибанановыеплантацииновсеравновголовенеукладываетсяэтибананыгрузятнасудавнесколькихпортахЭквадорадесяткамитысячтоннкаждыйденькруглыйгодЭтожнесчастныебананыдолжнырастибыстреечемгрибыДорогиДорогивЭквадорепрактическиидеальныехотянаселенныепунктывыглядяточеньбедноНадорогахмногоинтересныхмашиннапримероченьмногогрузовиковдревнихФордовкоторыеяникогдараньшеневиделАещенесколькоразаглазапопадалисьстаренькиеЖигулиАещеесликоготообгоняешьиестьвстречнаямашинаонаобязательновключаетфарыНабольшихмашинахгрузовикахиавтобусахобязательнокрасуетсяместныйтюнингмашиныразукрашенныелибовнаклейкахиобязательновездеогромноемножествосветодиодовкакбудтоновогодниеелкиедутипереливаютсявсемицветамиСудноНапервыйвзглядсуднонеплохоевотносительнохорошемсостояниихотяигодапостройкиЭкипажчеловекрусскихифилиппинцеввключаяповараоворятпериодическистановитсятоскливоотегошнихкулинарныхизысковФилиппинцыздесьрядовойсоставзанимипостояннонужноследитьчтобыненатвориличегосрединихтолькоодинм", "слов");
+            var vigenerKey = new VigenereKey();
 
-            //word.Encoded=cip.Code(word);
-            //vigenerKey.FindKey(word.Encoded);
-            //var result = vigenerKey.GetKey;
-            //foreach (var r in result)
-            //{
-            //    Console.WriteLine(r);
-            //    Console.WriteLine("\n");
-            //}
+            word.Encoded = cip.Code(word);
+            vigenerKey.FindKey(word.Encoded);
+            var result = vigenerKey.GetKey;
+            foreach (var r in result)
+            {
+                if (Languege.dictionary.ContainsKey('А')) //Русский язык
+                {
+                    var dictionary = WordList.CreateFromFiles(@"Russian.dic", @"Russian.aff");
+                    var suggestions = dictionary.Suggest(r);
+                    Console.WriteLine("Расшифрованно: {0}", r);
+                    Console.WriteLine("Варианты:");
+                    foreach (var s in suggestions)
+                        Console.WriteLine(s);
+                }
+                else
+                {
+
+                }
+            }
             #endregion
             Console.ReadKey();
             //vigenerKey.FindKey()

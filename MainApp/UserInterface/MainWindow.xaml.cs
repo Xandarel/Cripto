@@ -61,19 +61,34 @@ namespace UserInterface
             {
                 case "Vishener":
                     var cm = GetCriptMetod("Vishener");
-                    var textWK = new WordAndKey<string>(textBox1.Text, key.Text);
+                    var textWK = GetWKClass("Vishener", textBox1.Text, key.Text);
+                    ExecuteCript(cm, textWK);
                     break;
                 case "ReverseVeshener":
                     cm = GetCriptMetod("ReverseVeshener");
-                    textWK = new WordAndKey<string>(textBox1.Text, key.Text);
+                    textWK = GetWKClass("ReverseVeshener", textBox1.Text, key.Text);
+                    ExecuteCript(cm, textWK);
                     break;
                 case "Hill":
                     cm = GetCriptMetod("Hill");
-                    var matrix = BuildMatrix(key.Text);
-                    textWK = new WordAndKey<List<Matrix<double>>>(textBox1.Text, matrix);//Исправить. Написать функцию - инициализатор
+                    textWK = GetWKClass("Hill", textBox1.Text, key.Text);
+                    ExecuteCript(cm, textWK);
+                    break;
+                case "Permutation":
+                    cm = GetCriptMetod("Permutation");
+                    textWK = GetWKClass("Permutation", textBox1.Text, key.Text);
+                    ExecuteCript(cm, textWK);
                     break;
             }
         }
+        void ExecuteCript<T>(Interfase_criptoelements<T> cm, WordAndKey<T> wk)
+        {
+             wk.Encoded = cm.Code(wk);
+            CripDecripBox.Text = wk.Encoded;
+        }
+
+
+
         List<Matrix<double>> BuildMatrix(string matrixElement)
         {
             var res = new List<Matrix<double>>();
@@ -96,8 +111,40 @@ namespace UserInterface
             return res;
         }
 
+        private dynamic GetWKClass(string metod, string text, string key)
+        {
+            switch (metod)
+            {
+                case "Vishener":
+                    return new WordAndKey<string>(text, key);
+                case "ReverseVeshener":
+                    return new WordAndKey<string>(text, key);
+                case "Hill":
+                    var matrix = BuildMatrix(key);
+                    return new WordAndKey<List<Matrix<double>>>(text, matrix);
+                case "Permutation":
+                    var keyMatrix = CreateArray(key);
+                    return new WordAndKey<int[,]>(text, keyMatrix);
+                default:
+                    return new WordAndKey<string> (text, key);
+            }
+        }
 
-            private dynamic GetCriptMetod(string metod)
+        private int[,] CreateArray(string keyText)
+        {
+            keyText = keyText.Replace("\r\n", " ");
+            var length = keyText.IndexOf(" ");
+            var res = new int[length, length];
+            keyText = keyText.Replace(" ", "");
+            for (var i=0;i<length;i++)
+                for(var j=0;j<length;j++)
+                {
+                    res[j,i]= int.Parse(keyText[0].ToString());
+                    keyText = keyText.Remove(0, 1);
+                }
+            return res;
+        }
+        private dynamic GetCriptMetod(string metod)
         {
             switch (metod)
             {
@@ -112,14 +159,30 @@ namespace UserInterface
                 default:
                     return new Vishener();
             }
-
         }
 
         private void Decryption_Click(object sender, RoutedEventArgs e)
         {
             ClickTitle.Text = "Расшифрованный текст";
-            var type = Type.GetType(DecriptMetod);
-            var dm = Activator.CreateInstance(type);
+            switch (CriptMetod)
+            {
+                case "Vishener":
+                    var cm = GetCriptMetod("Vishener");
+                    var textWK = GetWKClass("Vishener", textBox1.Text, key.Text);
+                    break;
+                case "ReverseVeshener":
+                    cm = GetCriptMetod("ReverseVeshener");
+                    textWK = GetWKClass("ReverseVeshener", textBox1.Text, key.Text);
+                    break;
+                case "Hill":
+                    cm = GetCriptMetod("Hill");
+                    textWK = GetWKClass("Hill", textBox1.Text, key.Text);//Исправить. Написать функцию - инициализатор
+                    break;
+                case "Permutation":
+                    cm = GetCriptMetod("Permutation");
+                    textWK = GetWKClass("Permutation", textBox1.Text, key.Text);
+                    break;
+            }
         }
     }
 }
