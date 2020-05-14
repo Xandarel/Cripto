@@ -13,8 +13,8 @@ namespace CriptoClass
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var keyLength = element.Key.GetLength(1);
-            var array = new double[keyLength, keyLength];
-            for (var y = 0; y < keyLength; y++)
+            var array = new double[numberLitera.Count/keyLength, keyLength];
+            for (var y = 0; y < numberLitera.Count / keyLength; y++)
                 for (var x = 0; x < keyLength; x++)
                     array[y,x] = numberLitera[y * keyLength + x];
             var matrixArray = Matrix<double>.Build.DenseOfArray(array);

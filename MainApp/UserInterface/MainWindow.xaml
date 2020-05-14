@@ -33,10 +33,10 @@
                              GroupName="encryptionMethod" 
                              Content="Шифр Хилла"
                              Checked="CriptMetod_Checked"/>
-                <RadioButton x:Name="Permutation" 
+                <!--<RadioButton x:Name="Permutation" 
                              GroupName="encryptionMethod" 
                              Content="Шифр перестановки"
-                             Checked="CriptMetod_Checked"/>
+                             Checked="CriptMetod_Checked"/>-->
             </MenuItem>
 
             <MenuItem Header="Дешифрование">
@@ -100,11 +100,18 @@
                        Width="200" 
                        Margin="20,10,0,0">
             </TextBlock>
-            <TextBlock x:Name="CripDecripBox" 
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="CripDecripBox"
                        HorizontalAlignment="Left" 
                        Width="200" 
                        Margin="20,10,0,0">
-            </TextBlock>
+                </TextBlock>
+                <Button x:Name="Copy" 
+                        Content="Copy" 
+                        Click="Copy_Click">
+                    
+                </Button>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel x:Name="Languages" 

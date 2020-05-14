@@ -56,8 +56,6 @@ namespace CryptographicSecurity
                                 break;
                             else
                                 positionCandidat.Add(kvp.Key);
-                            //sy = kvp.Key;
-                            //break;
                         }
                         if (positionCandidat.Count > 1)
                         {
@@ -85,35 +83,6 @@ namespace CryptographicSecurity
                     }
                     foreach (var password in paswords)
                         Add(password);
-                    #region
-                    //var analisSubstring = new string[m];
-                    //for (var start = 0; start < m; start++)
-                    //{
-                    //    for (var pos = start; pos < chiperText.Length; pos += m)
-                    //        analisSubstring[start] += chiperText[pos];
-                    //}
-                    ////Вопрос. Как теперь перебрать все комбинации?
-                    //var resultSubstring = analisSubstring.Select(x => BlockAnalysis(x)).ToArray();
-                    //var ansverArray = new char[chiperText.Length];
-                    //var changePosition = new List<int>();
-                    //var ansPos = 0;
-                    //for (int i=0;i<resultSubstring.Length;i++)
-                    //{
-                    //    if (resultSubstring[i].Count > 1)//если есть несколько вариантов этого блока
-                    //        changePosition.Add(i);     //запомни где это может произойти
-                    //    foreach (var a in resultSubstring[i][0])
-                    //    {
-                    //        ansverArray[ansPos] = a;
-                    //        ansPos += m;
-                    //    }
-                    //    ansPos = i + 1;
-                    //}
-                    //Add(ansverArray); //Добавили "нулевую" строку в ответ
-                    //for (var i=changePosition.Count-1;i>=0;i--)
-                    //{
-
-                    //}
-                    #endregion
                     k += 1;
                 }
             }
@@ -155,44 +124,6 @@ namespace CryptographicSecurity
                 }
             return pairs.Keys.Min();
         }
-
-        private List<string> BlockAnalysis (string block)
-        {
-            var frequencyLetters = new Dictionary<char, double>();
-            foreach (var libra in block)
-                if (!frequencyLetters.ContainsKey(libra))
-                    frequencyLetters.Add(libra, 1);
-                else
-                    frequencyLetters[libra] += 1;
-            var maxValue = 0.0;
-            var maxLibra=new List<char>();
-            foreach (var k in frequencyLetters.Keys) 
-            {
-                if (frequencyLetters[k] > maxValue)
-                {
-                    maxLibra.Clear();
-                    maxLibra.Add(k);
-                    maxValue = frequencyLetters[k];
-                }
-                else if (frequencyLetters[k] == maxValue)
-                    maxLibra.Add(k);
-            }
-            var delta = new List<int>();
-            foreach (var l in maxLibra)
-                delta.Add((Languege.dictionary['О'] - Languege.dictionary[l]+Languege.z)%Languege.z);
-            var decodeLetter = new List<string>();
-            for (int i = 0; i < delta.Count; i++)
-            {
-                decodeLetter.Add("");
-                foreach (var b in block)
-                {
-                    var decodePosition = Languege.dictionary[b] - delta[i];
-                    decodeLetter[i] += FindValue.Findvalue(decodePosition);
-                }
-            }
-            return decodeLetter;
-        }
-
         private void Add(string text) => key.Add(text.ToLower());
     }
 }

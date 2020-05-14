@@ -83,7 +83,7 @@ namespace UserInterface
         }
         void ExecuteCript<T>(Interfase_criptoelements<T> cm, WordAndKey<T> wk)
         {
-             wk.Encoded = cm.Code(wk);
+            cm.Code(wk);
             CripDecripBox.Text = wk.Encoded;
         }
 
@@ -134,12 +134,12 @@ namespace UserInterface
         {
             keyText = keyText.Replace("\r\n", " ");
             var length = keyText.IndexOf(" ");
-            var res = new int[length, length];
+            var res = new int[2, length];
             keyText = keyText.Replace(" ", "");
-            for (var i=0;i<length;i++)
+            for (var i=0;i<2;i++)
                 for(var j=0;j<length;j++)
                 {
-                    res[j,i]= int.Parse(keyText[0].ToString());
+                    res[i,j]= int.Parse(keyText[0].ToString());
                     keyText = keyText.Remove(0, 1);
                 }
             return res;
@@ -169,20 +169,34 @@ namespace UserInterface
                 case "Vishener":
                     var cm = GetCriptMetod("Vishener");
                     var textWK = GetWKClass("Vishener", textBox1.Text, key.Text);
+                    ExecuteDecript(cm, textWK);
                     break;
                 case "ReverseVeshener":
                     cm = GetCriptMetod("ReverseVeshener");
                     textWK = GetWKClass("ReverseVeshener", textBox1.Text, key.Text);
+                    ExecuteDecript(cm, textWK);
                     break;
                 case "Hill":
                     cm = GetCriptMetod("Hill");
-                    textWK = GetWKClass("Hill", textBox1.Text, key.Text);//Исправить. Написать функцию - инициализатор
+                    textWK = GetWKClass("Hill", textBox1.Text, key.Text);
+                    ExecuteDecript(cm, textWK);
                     break;
                 case "Permutation":
                     cm = GetCriptMetod("Permutation");
                     textWK = GetWKClass("Permutation", textBox1.Text, key.Text);
+                    ExecuteDecript(cm, textWK);
                     break;
             }
+        }
+        void ExecuteDecript<T>(Interfase_criptoelements<T> cm, WordAndKey<T> wk)
+        {
+            cm.Decode(wk);
+            CripDecripBox.Text = wk.Encoded;
+        }
+
+        private void Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(CripDecripBox.Text);
         }
     }
 }
