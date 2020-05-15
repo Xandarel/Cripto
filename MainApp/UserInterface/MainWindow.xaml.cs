@@ -16,6 +16,9 @@ using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using Criptoclass;
 using CriptoClass;
+using CryptographicSecurity;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace UserInterface
 {
@@ -28,7 +31,13 @@ namespace UserInterface
         {
             InitializeComponent();
             Criptoclass.Languege.Libra("ru");
+            SeriesCollection = new SeriesCollection();
         }
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> Formatter { get; set; }
+
+
 
         public string CriptMetod { get; private set; }
         private void CriptMetod_Checked(object sender, RoutedEventArgs e)
@@ -57,6 +66,26 @@ namespace UserInterface
         private void Encryption_Click_1(object sender, RoutedEventArgs e)
         {
             ClickTitle.Text = "Зашифрованный текст";
+            var data = Ngramm.NGrams(textBox1.Text);//TODO:Дописать потом кнопки, чтоб не значение по умолчанию было
+            var labl = new List<string>();
+            var chartvalues = new ChartValues<int>();
+            foreach (var k in data.Keys)
+            {
+                labl.Add(k);
+                chartvalues.Add(data[k]);
+            }
+            if (SeriesCollection.Count > 0)
+                SeriesCollection.Remove(SeriesCollection[0]);
+            SeriesCollection.Add(new ColumnSeries
+            {
+                Title = textBox1.Text,
+                Values = chartvalues
+            }
+                );
+            
+            Labels = labl.ToArray();
+            Formatter = value => value.ToString("N");
+            DataContext = this;
             switch (CriptMetod)
             {
                 case "Vishener":
@@ -198,5 +227,9 @@ namespace UserInterface
         {
             Clipboard.SetText(CripDecripBox.Text);
         }
+
+
+        
+
     }
 }
