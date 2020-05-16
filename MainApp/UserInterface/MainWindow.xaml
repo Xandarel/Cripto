@@ -138,22 +138,81 @@
                     Margin="10 10 0 0" 
                     Click="Decryption_Click" Content="Расшифровать"/>
         </StackPanel>
-        <lvc:CartesianChart Series="{Binding SeriesCollection}" 
-                            LegendLocation="Left"
+
+        <WrapPanel Grid.Column="0"
+                   Grid.Row="1"
+                   Orientation="Horizontal" 
+                   ItemHeight="20" 
+                   ItemWidth="80" HorizontalAlignment="Center" >
+            <Button x:Name="A" 
+                    Content="A" 
+                    Click="A_Click"/>
+
+            <Button x:Name="AA" 
+                    Content="AA" 
+                    Click="AA_Click"/>
+
+            <Button x:Name="AAA"
+                    Content="AAA" 
+                    Click="AAA_Click"/>
+        </WrapPanel>
+        <lvc:CartesianChart Margin="0 20 0 0" 
+                            Grid.Column="0"
                             Grid.Row="1"
-                            Grid.Column="0">
+                            x:Name="Table"
+                            Series="{Binding SeriesCollection}" 
+                            LegendLocation="Bottom">
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Salesman" 
+                <lvc:Axis Title="Слово" x:Name="AxisX" 
                           Labels="{Binding Labels}">
-                    
+
                 </lvc:Axis>
             </lvc:CartesianChart.AxisX>
             <lvc:CartesianChart.AxisY>
                 <lvc:Axis Title="Sold Apps" 
                           LabelFormatter="{Binding Formatter}">
-                    
+
                 </lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
+
+        <WrapPanel Grid.Column="1"
+                   Grid.Row="1"
+                   Orientation="Horizontal" 
+                   ItemHeight="20" 
+                   ItemWidth="80" HorizontalAlignment="Center" >
+            <Button x:Name="A2" 
+                    Content="A" 
+                    Click="A_Click"/>
+
+            <Button x:Name="AA2" 
+                    Content="AA" 
+                    Click="AA_Click"/>
+
+            <Button x:Name="AAA2"
+                    Content="AAA" 
+                    Click="AAA_Click"/>
+        </WrapPanel>
+        <lvc:CartesianChart Margin="0 20 0 0" 
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            x:Name="Table2"
+                            Series="{Binding SeriesCollection2}" 
+                            LegendLocation="Bottom">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Слово" 
+                          x:Name="AxisX2" 
+                          Labels="{Binding Labels2}">
+
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Sold Apps" 
+                          LabelFormatter="{Binding Formatter2}">
+
+                </lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+
     </Grid>
 </Window>

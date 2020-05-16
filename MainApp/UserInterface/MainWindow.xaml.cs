@@ -30,12 +30,18 @@ namespace UserInterface
         public MainWindow()
         {
             InitializeComponent();
-            Criptoclass.Languege.Libra("ru");
+            Languege.Libra("ru");
             SeriesCollection = new SeriesCollection();
+            SeriesCollection2 = new SeriesCollection();
         }
+
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> Formatter { get; set; }
+
+        public SeriesCollection SeriesCollection2 { get; set; }
+        public string[] Labels2 { get; set; }
+        public Func<double, string> Formatter2 { get; set; }
 
 
 
@@ -63,29 +69,65 @@ namespace UserInterface
             Languege.Libra(pressed.Name);
         }
 
-        private void Encryption_Click_1(object sender, RoutedEventArgs e)
+        private void ShowStat( Dictionary<string,int> data)
         {
-            ClickTitle.Text = "Зашифрованный текст";
-            var data = Ngramm.NGrams(textBox1.Text);//TODO:Дописать потом кнопки, чтоб не значение по умолчанию было
-            var labl = new List<string>();
             var chartvalues = new ChartValues<int>();
             foreach (var k in data.Keys)
             {
-                labl.Add(k);
                 chartvalues.Add(data[k]);
             }
             if (SeriesCollection.Count > 0)
+            {
+                AxisX.Labels = null;
+                Table = null;
+                Labels = null;
                 SeriesCollection.Remove(SeriesCollection[0]);
+            }
             SeriesCollection.Add(new ColumnSeries
             {
                 Title = textBox1.Text,
-                Values = chartvalues
+                Values = chartvalues,
+                DataLabels = true
             }
                 );
-            
-            Labels = labl.ToArray();
+            Labels = data.Keys.ToArray();
+            AxisX.Labels = Labels;
             Formatter = value => value.ToString("N");
             DataContext = this;
+        }
+
+        private void ShowStat2(Dictionary<string, int> data)
+        {
+            var chartvalues = new ChartValues<int>();
+            foreach (var k in data.Keys)
+            {
+                chartvalues.Add(data[k]);
+            }
+            if (SeriesCollection2.Count > 0)
+            {
+                AxisX2.Labels = null;
+                Table2 = null;
+                Labels2 = null;
+                SeriesCollection2.Remove(SeriesCollection2[0]);
+            }
+            SeriesCollection2.Add(new ColumnSeries
+            {
+                Title = CripDecripBox.Text,
+                Values = chartvalues,
+                DataLabels = true
+            }
+                );
+            Labels2 = data.Keys.ToArray();
+            AxisX2.Labels = Labels2;
+            Formatter2 = value => value.ToString("N");
+            DataContext = this;
+        }
+
+        private void Encryption_Click_1(object sender, RoutedEventArgs e)
+        {
+            ClickTitle.Text = "Зашифрованный текст";
+            var data = Ngramm.NGrams(textBox1.Text);
+            ShowStat(data);
             switch (CriptMetod)
             {
                 case "Vishener":
@@ -109,6 +151,8 @@ namespace UserInterface
                     ExecuteCript(cm, textWK);
                     break;
             }
+            data = Ngramm.NGrams(CripDecripBox.Text);
+            ShowStat2(data);
         }
         void ExecuteCript<T>(Interfase_criptoelements<T> cm, WordAndKey<T> wk)
         {
@@ -228,8 +272,49 @@ namespace UserInterface
             Clipboard.SetText(CripDecripBox.Text);
         }
 
+        private void A_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+            if (b.Name == "A2")
+            {
+                var data = Ngramm.NGrams(CripDecripBox.Text, 1);
+                ShowStat2(data);
+            }
+            else
+            {
+                var data = Ngramm.NGrams(textBox1.Text, 1);
+                ShowStat(data);
+            }
+        }
 
-        
+        private void AA_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+            if (b.Name == "AA2")
+            {
+                var data = Ngramm.NGrams(CripDecripBox.Text, 2);
+                ShowStat2(data);
+            }
+            else
+            {
+                var data = Ngramm.NGrams(textBox1.Text, 2);
+                ShowStat(data);
+            }
+        }
 
+        private void AAA_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+            if (b.Name == "AAA2")
+            {
+                var data = Ngramm.NGrams(CripDecripBox.Text, 3);
+                ShowStat2(data);
+            }
+            else
+            {
+                var data = Ngramm.NGrams(textBox1.Text, 3);
+                ShowStat(data);
+            }
+        }
     }
 }
