@@ -13,10 +13,17 @@ namespace CriptoClass
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var keyLength = element.Key.GetLength(1);
-            var array = new double[numberLitera.Count/keyLength, keyLength];
-            for (var y = 0; y < numberLitera.Count / keyLength; y++)
+            var array = new double[keyLength, keyLength];
+            var count = 0;
+            for (var y = 0; y <numberLitera.Count/keyLength; y++)
                 for (var x = 0; x < keyLength; x++)
-                    array[y,x] = numberLitera[y * keyLength + x];
+                {
+                    array[y, x] = numberLitera[y * keyLength + x];
+                    count++;
+                }
+            if (count < numberLitera.Count)
+                for (var x = 0; x < numberLitera.Count-count; x++)
+                    array[(numberLitera.Count / keyLength), x] = numberLitera[count + x];
             var matrixArray = Matrix<double>.Build.DenseOfArray(array);
             var ansverMatrix = DenseMatrix.Create(keyLength, keyLength, 0);
             for (var start=0;start<keyLength;start++)
@@ -24,7 +31,7 @@ namespace CriptoClass
                 var column = matrixArray.Column(element.Key[0, start]);
                 ansverMatrix.SetColumn(element.Key[1, start], column.ToArray());
             }
-            for (var y = 0; y < keyLength; y++)
+            for (var y = 0; y < (numberLitera.Count / keyLength) + 1; y++)
                 for (var x = 0; x < keyLength; x++)
                     element.Encoded= Convert.ToString(FindValue.Findvalue(Convert.ToInt32(ansverMatrix[x,y]) % Languege.z));
             return element.Encoded;
@@ -35,9 +42,19 @@ namespace CriptoClass
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var keyLength = element.Key.GetLength(1);
             var array = new double[keyLength, keyLength];
-            for (var y = 0; y < keyLength; y++)
+            var count = 0;
+
+            for (var y = 0; y < numberLitera.Count / keyLength; y++)
                 for (var x = 0; x < keyLength; x++)
-                    array[y, x] = numberLitera[y * keyLength + x];
+                {
+                    array[x, y] = numberLitera[y * keyLength + x];
+                    count++;
+                }
+
+            if (count < numberLitera.Count)
+                for (var x = 0; x < numberLitera.Count - count; x++)
+                    array[x, (numberLitera.Count / keyLength)] = numberLitera[count + x];
+
             var matrixArray = Matrix<double>.Build.DenseOfArray(array);
             var ansverMatrix = DenseMatrix.Create(keyLength, keyLength, 0);
             for (var start = 0; start < keyLength; start++)
@@ -47,7 +64,7 @@ namespace CriptoClass
             }
             for (var y = 0; y < keyLength; y++)
                 for (var x = 0; x < keyLength; x++)
-                    element.Encoded = Convert.ToString(FindValue.Findvalue(Convert.ToInt32(ansverMatrix[x, y]) % Languege.z));
+                    element.Encoded = Convert.ToString(FindValue.Findvalue(Convert.ToInt32(ansverMatrix[y,x]) % Languege.z));
             return element.Encoded;
         }
     }

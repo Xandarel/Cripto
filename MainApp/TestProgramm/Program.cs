@@ -16,65 +16,15 @@ namespace TestProgramm
     {
         static void Main(string[] args)
         {
-            #region
             Languege.Libra("ru");
-            var cip = new Vishener();
-            var word = new WordAndKey<string>("ПереночеваввгостиницевГуаякилемыселикагентувмашинуипоехалинасудновПуэртоБоливарДоехаливопрекиожиданиямбыстропримернозачасаПогодабылапасмурнаяидаженесмотрянаточтомынаходимсянедалекоотэкваторабылопрохладноПочтивсевремяпокамыехалипообестороныдорогибылибанановыеплантацииновсеравновголовенеукладываетсяэтибананыгрузятнасудавнесколькихпортахЭквадорадесяткамитысячтоннкаждыйденькруглыйгодЭтожнесчастныебананыдолжнырастибыстреечемгрибыДорогиДорогивЭквадорепрактическиидеальныехотянаселенныепунктывыглядяточеньбедноНадорогахмногоинтересныхмашиннапримероченьмногогрузовиковдревнихФордовкоторыеяникогдараньшеневиделАещенесколькоразаглазапопадалисьстаренькиеЖигулиАещеесликоготообгоняешьиестьвстречнаямашинаонаобязательновключаетфарыНабольшихмашинахгрузовикахиавтобусахобязательнокрасуетсяместныйтюнингмашиныразукрашенныелибовнаклейкахиобязательновездеогромноемножествосветодиодовкакбудтоновогодниеелкиедутипереливаютсявсемицветамиСудноНапервыйвзглядсуднонеплохоевотносительнохорошемсостояниихотяигодапостройкиЭкипажчеловекрусскихифилиппинцеввключаяповараоворятпериодическистановитсятоскливоотегошнихкулинарныхизысковФилиппинцыздесьрядовойсоставзанимипостояннонужноследитьчтобыненатвориличегосрединихтолькоодинм", "слов");
-            var vigenerKey = new VigenereKey();
-
-            word.Encoded = cip.Code(word);
-            vigenerKey.FindKey(word.Encoded);
-            var result = vigenerKey.GetKey;
-            foreach (var r in result)
-            {
-                if (Languege.dictionary.ContainsKey('А')) //Русский язык
-                {
-                    var dictionary = WordList.CreateFromFiles(@"Russian.dic", @"Russian.aff");
-                    var suggestions = dictionary.Suggest(r);
-                    Console.WriteLine("Расшифрованно: {0}", r);
-                    Console.WriteLine("Варианты:");
-                    foreach (var s in suggestions)
-                        Console.WriteLine(s);
-                }
-                else
-                {
-
-                }
-            }
-            #endregion
+            var cip = new Permutation();
+            var wk = new WordAndKey<int[,]>("скаслиуиа", new int[,] { 
+                                                                    { 0, 1, 2 }, 
+                                                                    { 1, 2, 0 } 
+                                                                  });
+            cip.Decode(wk);
+            Console.WriteLine(wk.Encoded);
             Console.ReadKey();
-            //vigenerKey.FindKey()
-            #region
-            //Languege.Libra("ru");
-            //FindHillsKey hillsKey = new FindHillsKey();
-            //hillsKey.FindKey("сорока", "фэьъяо");
-            //var key = hillsKey.Ansver;
-            //foreach (var k in key)
-            //    Console.WriteLine(k);
-            //Console.ReadKey();
-            #endregion
-            #region
-            //var lcm3 = new TheLinearCongruentialMethod();
-            //var lcm11 = new TheLinearCongruentialMethod();
-            //var crt = new ChineseRemainderTheorem();
-
-            //lcm11.CreatePeriod(11, 3);
-            //lcm3.CreatePeriod(50, 2);
-            //crt.CreatePeriod(lcm3.Period, lcm11.Period);
-
-            //Console.WriteLine("z=50");
-            //foreach (var l in lcm3.Period)
-            //    Console.Write($"{l} ");
-            //Console.WriteLine();
-            //Console.WriteLine("z=11");
-            //foreach (var l in lcm11.Period)
-            //    Console.Write($"{l} ");
-            //Console.WriteLine();
-            //Console.WriteLine("z=33");
-            //foreach (var l in crt.Period)
-            //    Console.WriteLine($"{l}");
-            //Console.ReadKey();
-            #endregion
         }
     }
 }
