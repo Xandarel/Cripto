@@ -40,10 +40,10 @@
                              GroupName="encryptionMethod" 
                              Content="Шифр Хилла"
                              Checked="CriptMetod_Checked"/>
-                <!--<RadioButton x:Name="Permutation" 
+                <RadioButton x:Name="Permutation" 
                              GroupName="encryptionMethod" 
                              Content="Шифр перестановки"
-                             Checked="CriptMetod_Checked"/>-->
+                             Checked="CriptMetod_Checked"/>
             </MenuItem>
 
             <MenuItem Header="Дешифрование">
