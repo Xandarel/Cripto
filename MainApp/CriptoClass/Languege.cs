@@ -42,5 +42,5 @@ namespace Criptoclass
             }
         }
         static void SetReversibleElements(params int[] elements) => setOfReversibleElements.AddRange(elements);
-    }//TODO: написать кодирование слов в других системах исчисления (2,3,8,16)
+    }
 }

@@ -71,6 +71,7 @@ namespace UserInterface
 
         private void ShowStat( Dictionary<string,int> data)
         {
+            data = data.OrderBy(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
             var chartvalues = new ChartValues<int>();
             foreach (var k in data.Keys)
             {
@@ -85,19 +86,19 @@ namespace UserInterface
             }
             SeriesCollection.Add(new ColumnSeries
             {
-                Title = textBox1.Text,
                 Values = chartvalues,
                 DataLabels = true
             }
                 );
             Labels = data.Keys.ToArray();
             AxisX.Labels = Labels;
-            Formatter = value => value.ToString("N");
+            Formatter = value => value.ToString();
             DataContext = this;
         }
 
         private void ShowStat2(Dictionary<string, int> data)
         {
+            data = data.OrderBy(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
             var chartvalues = new ChartValues<int>();
             foreach (var k in data.Keys)
             {
@@ -112,14 +113,13 @@ namespace UserInterface
             }
             SeriesCollection2.Add(new ColumnSeries
             {
-                Title = CripDecripBox.Text,
                 Values = chartvalues,
                 DataLabels = true
             }
                 );
             Labels2 = data.Keys.ToArray();
             AxisX2.Labels = Labels2;
-            Formatter2 = value => value.ToString("N");
+            Formatter2 = value => value.ToString();
             DataContext = this;
         }
 
@@ -278,12 +278,18 @@ namespace UserInterface
             if (b.Name == "A2")
             {
                 var data = Ngramm.NGrams(CripDecripBox.Text, 1);
-                ShowStat2(data);
+                if (data.Count> Languege.z)
+                    new Stat(data).Show();
+                else
+                    ShowStat2(data);
             }
             else
             {
                 var data = Ngramm.NGrams(textBox1.Text, 1);
-                ShowStat(data);
+                if (data.Count > Languege.z)
+                    new Stat(data).Show();
+                else
+                    ShowStat(data);
             }
         }
 
@@ -293,12 +299,18 @@ namespace UserInterface
             if (b.Name == "AA2")
             {
                 var data = Ngramm.NGrams(CripDecripBox.Text, 2);
-                ShowStat2(data);
+                if (data.Count > Languege.z)
+                    new Stat(data).Show();
+                else
+                    ShowStat2(data);
             }
             else
             {
                 var data = Ngramm.NGrams(textBox1.Text, 2);
-                ShowStat(data);
+                if (data.Count > Languege.z)
+                    new Stat(data).Show();
+                else
+                    ShowStat(data);
             }
         }
 
@@ -308,12 +320,18 @@ namespace UserInterface
             if (b.Name == "AAA2")
             {
                 var data = Ngramm.NGrams(CripDecripBox.Text, 3);
-                ShowStat2(data);
+                if (data.Count > Languege.z)
+                    new Stat(data).Show();
+                else
+                    ShowStat2(data);
             }
             else
             {
                 var data = Ngramm.NGrams(textBox1.Text, 3);
-                ShowStat(data);
+                if (data.Count > Languege.z)
+                    new Stat(data).Show();
+                else
+                    ShowStat(data);
             }
         }
     }

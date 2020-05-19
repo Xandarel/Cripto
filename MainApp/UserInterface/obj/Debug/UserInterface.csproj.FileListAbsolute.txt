@@ -65,3 +65,5 @@ C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\bin\Debug\L
 C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\bin\Debug\LiveCharts.xml
 C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\bin\Debug\LiveCharts.Wpf.pdb
 C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\obj\Debug\Stat.g.cs
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\UserInterface\obj\Debug\Stat.baml

@@ -22,7 +22,7 @@ namespace CriptoClass
                     if (pair.Value == inversekey)
                         return pair.Key;
             }
-            return ' '; //теперь точно никогда сюда код не придет
+            return ' ';
         }
     }
 }
