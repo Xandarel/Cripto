@@ -33,6 +33,7 @@ namespace CryptographicSecurity
                             if (permIndex == perm.Length)
                                 permIndex = 0;
                         }
+                        //TODO: Сделать из этого что-то нормальное
                         var stringDecryption = Converter.ConvertArrayToString(decryption);
                         if (Languege.dictionary.ContainsKey('А')) //Русский язык
                         {

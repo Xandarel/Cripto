@@ -29,7 +29,6 @@
             <MenuItem Header="Шифрование">
                 <RadioButton x:Name="Vishener" 
                              GroupName="encryptionMethod" 
-                             IsChecked="True" 
                              Content="Шифр Виженера" 
                              Checked="CriptMetod_Checked"/>
                 <RadioButton x:Name="ReverseVeshener" 
@@ -48,8 +47,7 @@
 
             <MenuItem Header="Дешифрование">
                 <RadioButton x:Name="vishener"
-                             GroupName="decryptionMethod" 
-                             IsChecked="True" 
+                             GroupName="decryptionMethod"  
                              Content="Шифр Виженера"
                              Checked="DecriptMetod_Checked"/>
                 <RadioButton x:Name="reverseVeshener"
@@ -68,8 +66,12 @@
 
             <MenuItem Header="Криптостойкойкость">
                 <RadioButton GroupName="CryptographicSecurity"  
-                             Content="Шифр виженера"/>
+                             Content="Шифр виженера"
+                             x:Name="VigenereKey"
+                             Checked="Hack"/>
                 <RadioButton GroupName="CryptographicSecurity" 
+                             Checked="Hack"
+                             x:Name="FindHillsKey"
                              Content="Шифр Хилла"/>
             </MenuItem>
 
@@ -80,16 +82,22 @@
                     Grid.Column="0" 
                     Grid.ColumnSpan="3" 
                     Margin="0,0,396.6,0.4">
-            <TextBlock HorizontalAlignment="Right" 
+            <TextBlock x:Name="TBword"
+                       HorizontalAlignment="Left" 
                        Width="205" 
-                       Margin="0,30,171.8,0"><Run Text="Слово"/></TextBlock>
+                       Margin="20,30,171.8,0">
+                <Run Text="Слово"/>
+            </TextBlock>
             <TextBox x:Name="textBox1" 
                      HorizontalAlignment="Left" 
                      Width="200" 
                      Margin="20 10 0 0"/>
-            <TextBlock  HorizontalAlignment="Left" 
+            <TextBlock  x:Name="TBkey"
+                        HorizontalAlignment="Left" 
                         Width="200" 
-                        Margin="20,10,0,0"><Run Text="Ключ"/></TextBlock>
+                        Margin="20,10,0,0">
+                <Run Text="Ключ"/>
+            </TextBlock>
             <TextBox  HorizontalAlignment="Left"
                       x:Name="key"
                       Width="200" 
@@ -132,11 +140,30 @@
             <Button x:Name="Encryption" 
                     HorizontalAlignment="Left" 
                     Margin="10 10 0 0"  
-                    Click="Encryption_Click_1" Content="Зашифровать"/>
-            <Button x:Name="Decryption" 
+                    Click="Encryption_Click_1" 
+                    Content="Зашифровать"/>
+            <Button x:Name="Decryption"
                     HorizontalAlignment="Left" 
                     Margin="10 10 0 0" 
-                    Click="Decryption_Click" Content="Расшифровать"/>
+                    Click="Decryption_Click" 
+                    Content="Расшифровать"/>
+            <TextBlock x:Name="KL" Text="Размер ключа"
+                       HorizontalAlignment="Left"
+                       Margin="10 10 0 0" 
+                       Visibility="Hidden"/>
+            <ComboBox Name="KeyLength"
+                      HorizontalAlignment="Left" 
+                      Width="95"
+                      Margin="10 10 0 0" 
+                      SelectedIndex="0" 
+                      Visibility="Hidden">
+                <TextBlock>Неизвестно</TextBlock>
+                <TextBlock>2</TextBlock>
+                <TextBlock>3</TextBlock>
+                <TextBlock>4</TextBlock>
+                <TextBlock>5</TextBlock>
+                <TextBlock>6</TextBlock>
+            </ComboBox>
         </StackPanel>
 
         <WrapPanel Grid.Column="0"

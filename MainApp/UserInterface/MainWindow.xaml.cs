@@ -42,19 +42,28 @@ namespace UserInterface
         public SeriesCollection SeriesCollection2 { get; set; }
         public string[] Labels2 { get; set; }
         public Func<double, string> Formatter2 { get; set; }
-
-
-
         public string CriptMetod { get; private set; }
+        /// <summary>
+        /// Переключение способов шифрования
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CriptMetod_Checked(object sender, RoutedEventArgs e)
         {
+            ChangeDesign("");
             if (sender is RadioButton item)
                 CriptMetod = item.Name.ToString();
         }
 
         public string DecriptMetod { get; private set; }
+        /// <summary>
+        /// Переключение способов дешифровывания
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DecriptMetod_Checked(object sender, RoutedEventArgs e)
         {
+            ChangeDesign("");
             if (sender is RadioButton item)
             {
                 var text = item.Name.ToString().ToCharArray();
@@ -62,13 +71,22 @@ namespace UserInterface
                 DecriptMetod = new string(text);
             }
         }
-
+        
+        /// <summary>
+        /// Переключение языков
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             RadioButton pressed = (RadioButton)sender;
             Languege.Libra(pressed.Name);
         }
 
+        /// <summary>
+        /// Статистика для левой таблицы
+        /// </summary>
+        /// <param name="data">статистический словарь</param>
         private void ShowStat( Dictionary<string,int> data)
         {
             data = data.OrderBy(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
@@ -94,8 +112,12 @@ namespace UserInterface
             AxisX.Labels = Labels;
             Formatter = value => value.ToString();
             DataContext = this;
+            AxisX.Title = textBox1.Text;
         }
-
+        /// <summary>
+        /// Статистика для левой таблицы
+        /// </summary>
+        /// <param name="data">>статистический словарь</param>
         private void ShowStat2(Dictionary<string, int> data)
         {
             data = data.OrderBy(pair => pair.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
@@ -121,46 +143,89 @@ namespace UserInterface
             AxisX2.Labels = Labels2;
             Formatter2 = value => value.ToString();
             DataContext = this;
-        }
+            AxisX2.Title = CripDecripBox.Text;
 
+        }
+        /// <summary>
+        /// Реализация кнопки "Зашифровать"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Encryption_Click_1(object sender, RoutedEventArgs e)
         {
-            ClickTitle.Text = "Зашифрованный текст";
-            var data = Ngramm.NGrams(textBox1.Text);
-            ShowStat(data);
-            switch (CriptMetod)
+            var button = (Button)sender;
+            if (button.Content.ToString() == "Зашифровать")
             {
-                case "Vishener":
-                    var cm = GetCriptMetod("Vishener");
-                    var textWK = GetWKClass("Vishener", textBox1.Text, key.Text);
-                    ExecuteCript(cm, textWK);
-                    break;
-                case "ReverseVeshener":
-                    cm = GetCriptMetod("ReverseVeshener");
-                    textWK = GetWKClass("ReverseVeshener", textBox1.Text, key.Text);
-                    ExecuteCript(cm, textWK);
-                    break;
-                case "Hill":
-                    cm = GetCriptMetod("Hill");
-                    textWK = GetWKClass("Hill", textBox1.Text, key.Text);
-                    ExecuteCript(cm, textWK);
-                    break;
-                case "Permutation":
-                    cm = GetCriptMetod("Permutation");
-                    textWK = GetWKClass("Permutation", textBox1.Text, key.Text);
-                    ExecuteCript(cm, textWK);
-                    break;
+                ClickTitle.Text = "Зашифрованный текст";
+                var data = Ngramm.NGrams(textBox1.Text);
+                ShowStat(data);
+                switch (CriptMetod)
+                {
+                    case "Vishener":
+                        var cm = GetCriptMetod("Vishener");
+                        var textWK = GetWKClass("Vishener", textBox1.Text, key.Text);
+                        ExecuteCript(cm, textWK);
+                        break;
+                    case "ReverseVeshener":
+                        cm = GetCriptMetod("ReverseVeshener");
+                        textWK = GetWKClass("ReverseVeshener", textBox1.Text, key.Text);
+                        ExecuteCript(cm, textWK);
+                        break;
+                    case "Hill":
+                        cm = GetCriptMetod("Hill");
+                        textWK = GetWKClass("Hill", textBox1.Text, key.Text);
+                        ExecuteCript(cm, textWK);
+                        break;
+                    case "Permutation":
+                        cm = GetCriptMetod("Permutation");
+                        textWK = GetWKClass("Permutation", textBox1.Text, key.Text);
+                        ExecuteCript(cm, textWK);
+                        break;
+                }
+                data = Ngramm.NGrams(CripDecripBox.Text);
+                ShowStat2(data);
             }
-            data = Ngramm.NGrams(CripDecripBox.Text);
-            ShowStat2(data);
+            else
+            {
+                switch (HackMetod)
+                {
+                    case "VigenereKey":
+                        var cs = GetCriptSecur("VigenereKey");
+                        cs.FindKey(key.Text);
+                        MessageBox.Show(cs.GetKey);
+                        break;
+                    case "FindHillsKey":
+                        cs = GetCriptMetod("FindHillsKey");
+
+                        break;
+                }
+            }
         }
+
+        private dynamic GetCriptSecur(string metod)
+        {
+            switch (metod)
+            {
+                case "VigenereKey":
+                    return new VigenereKey();
+                case "FindHillsKey":
+                    return new FindHillsKey();
+                default:
+                    return new VigenereKey();
+            }
+        }
+
+        /// <summary>
+        /// Выполнение шифрования выбранным способом
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cm"></param>
+        /// <param name="wk"></param>
         void ExecuteCript<T>(Interfase_criptoelements<T> cm, WordAndKey<T> wk)
         {
             cm.Code(wk);
             CripDecripBox.Text = wk.Encoded;
         }
-
-
 
         List<Matrix<double>> BuildMatrix(string matrixElement)
         {
@@ -183,7 +248,13 @@ namespace UserInterface
             res.Add(Matrix<double>.Build.DenseOfColumnVectors(Vector<double>.Build.DenseOfArray(matrixVector)));
             return res;
         }
-
+        /// <summary>
+        /// Инициализация класса WordAndKey
+        /// </summary>
+        /// <param name="metod">как представляется ключ</param>
+        /// <param name="text">текст для шифрования/дешифрования</param>
+        /// <param name="key">ключ</param>
+        /// <returns></returns>
         private dynamic GetWKClass(string metod, string text, string key)
         {
             switch (metod)
@@ -217,6 +288,11 @@ namespace UserInterface
                 }
             return res;
         }
+        /// <summary>
+        /// Выполнить шифрование
+        /// </summary>
+        /// <param name="metod">метод шифрования</param>
+        /// <returns></returns>
         private dynamic GetCriptMetod(string metod)
         {
             switch (metod)
@@ -233,10 +309,16 @@ namespace UserInterface
                     return new Vishener();
             }
         }
-
+        /// <summary>
+        /// Мозки кнопки "расшифровать"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Decryption_Click(object sender, RoutedEventArgs e)
         {
             ClickTitle.Text = "Расшифрованный текст";
+            var data = Ngramm.NGrams(textBox1.Text);
+            ShowStat(data);
             switch (CriptMetod)
             {
                 case "Vishener":
@@ -260,18 +342,34 @@ namespace UserInterface
                     ExecuteDecript(cm, textWK);
                     break;
             }
+            data = Ngramm.NGrams(CripDecripBox.Text);
+            ShowStat2(data);
         }
+        /// <summary>
+        /// Выбор способа дешифрования
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cm"></param>
+        /// <param name="wk"></param>
         void ExecuteDecript<T>(Interfase_criptoelements<T> cm, WordAndKey<T> wk)
         {
             cm.Decode(wk);
             CripDecripBox.Text = wk.Encoded;
         }
-
+        /// <summary>
+        /// Мозги кнопки "копировать"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Copy_Click(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(CripDecripBox.Text);
         }
-
+        /// <summary>
+        /// Вывод буквенной статистики
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void A_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
@@ -292,7 +390,11 @@ namespace UserInterface
                     ShowStat(data);
             }
         }
-
+        /// <summary>
+        /// Вывод статистики по биграммам
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AA_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
@@ -313,7 +415,11 @@ namespace UserInterface
                     ShowStat(data);
             }
         }
-
+        /// <summary>
+        /// Вывод статистики по триграммам
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AAA_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
@@ -332,6 +438,40 @@ namespace UserInterface
                     new Stat(data).Show();
                 else
                     ShowStat(data);
+            }
+        }
+
+        public string HackMetod { get; private set; }
+        private void Hack(object sender, RoutedEventArgs e)
+        {
+            ChangeDesign("Hack");
+            if (sender is RadioButton item)
+                HackMetod = item.Name.ToString();
+        }
+
+
+        private void ChangeDesign(string mode)
+        {
+            switch (mode)
+            {
+                case "Hack":
+                    TBword.Text = "Открытый текст";
+                    TBkey.Text = "Зашифрованный текст";
+                    ClickTitle.Text = "";
+                    CripDecripBox.Text = "";
+                    Decryption.Visibility = Visibility.Hidden;
+                    Encryption.Content = "Взломать";
+                    KL.Visibility = Visibility.Visible;
+                    KeyLength.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    TBword.Text = "Слово";
+                    TBkey.Text = "Ключ";
+                    Decryption.Visibility = Visibility.Visible;
+                    Encryption.Content = "Зашифровать";
+                    KL.Visibility = Visibility.Hidden;
+                    KeyLength.Visibility = Visibility.Hidden;
+                    break;
             }
         }
     }
