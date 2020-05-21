@@ -83,12 +83,12 @@ namespace CryptographicSecurity
         {
             double result = 0;
             for (var a = 0; a < Languege.z; a++)
-                if (((divider * a) % Languege.z) == dividend % Languege.z)
+                if (((divider * a) % Languege.z) == 1)
                 {
                     result = a;
                     break;
                 }
-            return result;
+            return (dividend * result)%Languege.z;
         }
     }
 }

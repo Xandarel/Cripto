@@ -24,7 +24,6 @@ namespace CriptoClass
                     bufArray[i, j] =Math.Pow(-1,i+j) * GetMinor(matrix.ToArray(), i, j);
             var inverseMatrix = Matrix<double>.Build.DenseOfArray(bufArray).Transpose();
             inverseMatrix = (determinant * inverseMatrix)%Languege.z;
-            //Console.WriteLine(inverseMatrix);
             return inverseMatrix;
         }
 
@@ -43,6 +42,36 @@ namespace CriptoClass
                     }
                 }
             return Matrix<double>.Build.DenseOfArray(buf).Determinant()%Languege.z;
+        }
+
+        public static Matrix<double> Normalization(Matrix<double> matrix)
+        {
+            var ans = DenseMatrix.Create(matrix.RowCount, matrix.ColumnCount, 0);
+            for (var y = 0; y < matrix.RowCount; y++)
+                for (var x = 0; x < matrix.ColumnCount; x++)
+                {
+                    if (matrix[y, x] - (int)matrix[y, x] == 0)
+                        ans[y, x] = (matrix[y, x] + Languege.z) % Languege.z;
+                    else
+                    {
+                        var multiplication = matrix[y, x].ToString().Split('.', ',')[1].Length;
+                        ans[y,x] = FindQuotientInRing(matrix[y, x] * Math.Pow(10, multiplication),
+                            Math.Pow(10, multiplication));
+                    }
+                }
+            return ans;
+
+        }
+        private static double FindQuotientInRing(double dividend, double divider)
+        {
+            double result = 0;
+            for (var a = 0; a < Languege.z; a++)
+                if (((divider * a) % Languege.z) == 1)
+                {
+                    result = a;
+                    break;
+                }
+            return (dividend*result)%Languege.z;
         }
     }
 }

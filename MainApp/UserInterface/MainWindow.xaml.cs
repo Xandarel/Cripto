@@ -35,6 +35,7 @@ namespace UserInterface
             SeriesCollection2 = new SeriesCollection();
         }
 
+        private dynamic GetWordAndKey { get; set; }
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> Formatter { get; set; }
@@ -115,7 +116,7 @@ namespace UserInterface
             AxisX.Title = textBox1.Text;
         }
         /// <summary>
-        /// Статистика для левой таблицы
+        /// Статистика для правой таблицы
         /// </summary>
         /// <param name="data">>статистический словарь</param>
         private void ShowStat2(Dictionary<string, int> data)
@@ -159,27 +160,56 @@ namespace UserInterface
                 ClickTitle.Text = "Зашифрованный текст";
                 var data = Ngramm.NGrams(textBox1.Text);
                 ShowStat(data);
+                dynamic textWK;
                 switch (CriptMetod)
                 {
                     case "Vishener":
                         var cm = GetCriptMetod("Vishener");
-                        var textWK = GetWKClass("Vishener", textBox1.Text, key.Text);
+                        if (GetWordAndKey != null)
+                            if (textBox1.Text == GetWordAndKey.Word)
+                                textWK = GetWordAndKey;
+                            else
+                                textWK = GetWKClass("Vishener", textBox1.Text, key.Text);
+                        else
+                            textWK = GetWKClass("Vishener", textBox1.Text, key.Text);
                         ExecuteCript(cm, textWK);
+                        GetWordAndKey = textWK;
                         break;
                     case "ReverseVeshener":
                         cm = GetCriptMetod("ReverseVeshener");
-                        textWK = GetWKClass("ReverseVeshener", textBox1.Text, key.Text);
+                        if (GetWordAndKey != null)
+                            if (textBox1.Text == GetWordAndKey.Word)
+                                textWK = GetWordAndKey;
+                            else
+                                textWK = GetWKClass("ReverseVeshener", textBox1.Text, key.Text);
+                        else
+                            textWK = GetWKClass("ReverseVeshener", textBox1.Text, key.Text);
                         ExecuteCript(cm, textWK);
+                        GetWordAndKey = textWK;
                         break;
                     case "Hill":
                         cm = GetCriptMetod("Hill");
-                        textWK = GetWKClass("Hill", textBox1.Text, key.Text);
+                        if (GetWordAndKey != null)
+                            if (textBox1.Text == GetWordAndKey.Word)
+                                textWK = GetWordAndKey;
+                            else
+                                textWK = GetWKClass("Hill", textBox1.Text, key.Text);
+                        else
+                            textWK = GetWKClass("Hill", textBox1.Text, key.Text);
                         ExecuteCript(cm, textWK);
+                        GetWordAndKey = textWK;
                         break;
                     case "Permutation":
                         cm = GetCriptMetod("Permutation");
-                        textWK = GetWKClass("Permutation", textBox1.Text, key.Text);
+                        if (GetWordAndKey != null)
+                            if (textBox1.Text == GetWordAndKey.Word)
+                                textWK = GetWordAndKey;
+                            else
+                                textWK = GetWKClass("Permutation", textBox1.Text, key.Text);
+                        else
+                            textWK = GetWKClass("Permutation", textBox1.Text, key.Text);
                         ExecuteCript(cm, textWK);
+                        GetWordAndKey = textWK;
                         break;
                 }
                 data = Ngramm.NGrams(CripDecripBox.Text);
@@ -255,20 +285,30 @@ namespace UserInterface
         /// <param name="text">текст для шифрования/дешифрования</param>
         /// <param name="key">ключ</param>
         /// <returns></returns>
-        private dynamic GetWKClass(string metod, string text, string key)
+        private dynamic GetWKClass(string metod, string text, dynamic key)
         {
             switch (metod)
             {
                 case "Vishener":
-                    return new WordAndKey<string>(text, key);
+                    return new WordAndKey<string>(text, (string)key);
                 case "ReverseVeshener":
-                    return new WordAndKey<string>(text, key);
+                    return new WordAndKey<string>(text, (string)key);
                 case "Hill":
-                    var matrix = BuildMatrix(key);
-                    return new WordAndKey<List<Matrix<double>>>(text, matrix);
+                    if (key is string)
+                    {
+                        var matrix = BuildMatrix(key);
+                        return new WordAndKey<List<Matrix<double>>>(text, matrix);
+                    }
+                    else
+                       return new WordAndKey<List<Matrix<double>>>(text, key);
                 case "Permutation":
-                    var keyMatrix = CreateArray(key);
-                    return new WordAndKey<int[,]>(text, keyMatrix);
+                    if (key is string)
+                    {
+                        var keyMatrix = CreateArray(key);
+                        return new WordAndKey<int[,]>(text, keyMatrix);
+                    }
+                    else
+                        return new WordAndKey<int[,]>(text, key);
                 default:
                     return new WordAndKey<string> (text, key);
             }
@@ -319,26 +359,52 @@ namespace UserInterface
             ClickTitle.Text = "Расшифрованный текст";
             var data = Ngramm.NGrams(textBox1.Text);
             ShowStat(data);
+            dynamic textWK;
             switch (CriptMetod)
             {
                 case "Vishener":
                     var cm = GetCriptMetod("Vishener");
-                    var textWK = GetWKClass("Vishener", textBox1.Text, key.Text);
+                    //TYT
+                    if (GetWordAndKey!= null)
+                        if (textBox1.Text == GetWordAndKey.Encoded)
+                            textWK = GetWKClass("Vishener", GetWordAndKey.Encoded, GetWordAndKey.Key);
+                        else
+                            textWK = GetWKClass("Vishener", textBox1.Text, key.Text);
+                    else
+                        textWK = GetWKClass("Vishener", textBox1.Text, key.Text);
                     ExecuteDecript(cm, textWK);
                     break;
                 case "ReverseVeshener":
                     cm = GetCriptMetod("ReverseVeshener");
-                    textWK = GetWKClass("ReverseVeshener", textBox1.Text, key.Text);
+                    if (GetWordAndKey != null)
+                        if (textBox1.Text == GetWordAndKey.Encoded)
+                            textWK = GetWKClass("ReverseVeshener", GetWordAndKey.Encoded, GetWordAndKey.Key);
+                        else
+                            textWK = GetWKClass("ReverseVeshener", textBox1.Text, key.Text);
+                    else
+                        textWK = GetWKClass("ReverseVeshener", textBox1.Text, key.Text);
                     ExecuteDecript(cm, textWK);
                     break;
                 case "Hill":
                     cm = GetCriptMetod("Hill");
-                    textWK = GetWKClass("Hill", textBox1.Text, key.Text);
+                    if (GetWordAndKey != null)
+                        if (textBox1.Text == GetWordAndKey.Encoded)
+                            textWK = GetWKClass("Hill", GetWordAndKey.Encoded, GetWordAndKey.Key);
+                        else
+                            textWK = GetWKClass("Hill", textBox1.Text, key.Text);
+                    else
+                        textWK = GetWKClass("Hill", textBox1.Text, key.Text);
                     ExecuteDecript(cm, textWK);
                     break;
                 case "Permutation":
                     cm = GetCriptMetod("Permutation");
-                    textWK = GetWKClass("Permutation", textBox1.Text, key.Text);
+                    if (GetWordAndKey != null)
+                        if (textBox1.Text == GetWordAndKey.Encoded)
+                            textWK = GetWKClass("Permutation", GetWordAndKey.Encoded, GetWordAndKey.Key);
+                        else
+                            textWK = GetWKClass("Permutation", textBox1.Text, key.Text);
+                    else
+                        textWK = GetWKClass("Permutation", textBox1.Text, key.Text);
                     ExecuteDecript(cm, textWK);
                     break;
             }
