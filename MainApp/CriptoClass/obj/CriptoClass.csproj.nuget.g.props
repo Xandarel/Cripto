@@ -12,7 +12,4 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgNHunspell Condition=" '$(PkgNHunspell)' == '' ">C:\Users\aobor\.nuget\packages\nhunspell\1.2.5554.16953</PkgNHunspell>
-  </PropertyGroup>
 </Project>

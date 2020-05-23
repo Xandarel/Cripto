@@ -5,11 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WeCantSpell.Hunspell" Version="3.0.1" />
+    <PackageReference Include="System.Memory" Version="4.5.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CriptoClass\CriptoClass.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="WeCantSpell.Hunspell">
+      <HintPath>..\..\..\lib\WeCantSpell.Hunspell\src\WeCantSpell.Hunspell\obj\Debug\netstandard2.0\WeCantSpell.Hunspell.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

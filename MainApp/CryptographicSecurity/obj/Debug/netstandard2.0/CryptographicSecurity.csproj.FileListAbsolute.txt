@@ -20,3 +20,6 @@ C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\obj
 C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.csproj.CopyComplete
 C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.dll
 C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\obj\Debug\netstandard2.0\CryptographicSecurity.pdb
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\bin\Debug\netstandard2.0\WeCantSpell.Hunspell.dll
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\bin\Debug\netstandard2.0\WeCantSpell.Hunspell.pdb
+C:\Users\aobor\source\repos\cloneDiplom\Cripto\MainApp\CryptographicSecurity\bin\Debug\netstandard2.0\WeCantSpell.Hunspell.xml

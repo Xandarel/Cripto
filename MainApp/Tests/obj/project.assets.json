@@ -426,15 +426,6 @@
           "lib/netstandard1.0/Newtonsoft.Json.dll": {}
         }
       },
-      "NHunspell/1.2.5554.16953": {
-        "type": "package",
-        "compile": {
-          "lib/net/NHunspell.dll": {}
-        },
-        "runtime": {
-          "lib/net/NHunspell.dll": {}
-        }
-      },
       "NuGet.Frameworks/5.0.0": {
         "type": "package",
         "compile": {
@@ -1253,24 +1244,11 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "WeCantSpell.Hunspell/3.0.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Memory": "4.5.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/WeCantSpell.Hunspell.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/WeCantSpell.Hunspell.dll": {}
-        }
-      },
       "CriptoClass/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "MathNet.Numerics": "4.9.0",
-          "NHunspell": "1.2.5554.16953"
+          "MathNet.Numerics": "4.9.0"
         },
         "compile": {
           "bin/placeholder/CriptoClass.dll": {}
@@ -1284,7 +1262,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "CriptoClass": "1.0.0",
-          "WeCantSpell.Hunspell": "3.0.1"
+          "System.Memory": "4.5.1"
         },
         "compile": {
           "bin/placeholder/CryptographicSecurity.dll": {}
@@ -1912,23 +1890,6 @@
         "newtonsoft.json.9.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
-      ]
-    },
-    "NHunspell/1.2.5554.16953": {
-      "sha512": "B2tr5kfwHu0jan5Gd3JEWdJkDVJxGAXmA230y0XeqJcL4zdZWk8Bmw9LVQ3p9/qKuun/7+FemxjspbjcTLGp6g==",
-      "type": "package",
-      "path": "nhunspell/1.2.5554.16953",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Tools/install.ps1",
-        "content/Hunspellx64.dll",
-        "content/Hunspellx86.dll",
-        "lib/net/NHunspell.dll",
-        "lib/net/NHunspell.pdb",
-        "nhunspell.1.2.5554.16953.nupkg.sha512",
-        "nhunspell.nuspec"
       ]
     },
     "NuGet.Frameworks/5.0.0": {
@@ -4691,23 +4652,6 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
-    "WeCantSpell.Hunspell/3.0.1": {
-      "sha512": "guVwsDstyatfSrF3pcRvBecKAOAHg2/V/kpQlzUEa/09xgsfyMeDzV/W8iFHR5HpzPCOEYsHtRtpWLP+OZAiiw==",
-      "type": "package",
-      "path": "wecantspell.hunspell/3.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net45/WeCantSpell.Hunspell.dll",
-        "lib/net45/WeCantSpell.Hunspell.xml",
-        "lib/netstandard1.3/WeCantSpell.Hunspell.dll",
-        "lib/netstandard1.3/WeCantSpell.Hunspell.xml",
-        "lib/netstandard2.0/WeCantSpell.Hunspell.dll",
-        "lib/netstandard2.0/WeCantSpell.Hunspell.xml",
-        "wecantspell.hunspell.3.0.1.nupkg.sha512",
-        "wecantspell.hunspell.nuspec"
-      ]
-    },
     "CriptoClass/1.0.0": {
       "type": "project",
       "path": "../CriptoClass/CriptoClass.csproj",
@@ -4809,17 +4753,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Пакет \"NHunspell 1.2.5554.16953\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \".NETCoreApp,Version=v3.1\". Этот пакет может быть не полностью совместим с вашим проектом.",
-      "libraryId": "NHunspell",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  }
 }

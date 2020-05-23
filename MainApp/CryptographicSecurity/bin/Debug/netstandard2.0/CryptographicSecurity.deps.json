@@ -11,7 +11,8 @@
         "dependencies": {
           "CriptoClass": "1.0.0",
           "NETStandard.Library": "2.0.3",
-          "WeCantSpell.Hunspell": "3.0.1"
+          "System.Memory": "4.5.1",
+          "WeCantSpell.Hunspell": "0.0.0.0"
         },
         "runtime": {
           "CryptographicSecurity.dll": {}
@@ -29,14 +30,6 @@
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
-        }
-      },
-      "NHunspell/1.2.5554.16953": {
-        "runtime": {
-          "lib/net/NHunspell.dll": {
-            "assemblyVersion": "1.2.5554.16953",
-            "fileVersion": "1.2.5554.16953"
-          }
         }
       },
       "System.Buffers/4.4.0": {
@@ -76,24 +69,20 @@
           }
         }
       },
-      "WeCantSpell.Hunspell/3.0.1": {
-        "dependencies": {
-          "System.Memory": "4.5.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/WeCantSpell.Hunspell.dll": {
-            "assemblyVersion": "3.0.1.0",
-            "fileVersion": "3.0.1.0"
-          }
-        }
-      },
       "CriptoClass/1.0.0": {
         "dependencies": {
-          "MathNet.Numerics": "4.9.0",
-          "NHunspell": "1.2.5554.16953"
+          "MathNet.Numerics": "4.9.0"
         },
         "runtime": {
           "CriptoClass.dll": {}
+        }
+      },
+      "WeCantSpell.Hunspell/0.0.0.0": {
+        "runtime": {
+          "WeCantSpell.Hunspell.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
         }
       }
     }
@@ -125,13 +114,6 @@
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
-    "NHunspell/1.2.5554.16953": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-B2tr5kfwHu0jan5Gd3JEWdJkDVJxGAXmA230y0XeqJcL4zdZWk8Bmw9LVQ3p9/qKuun/7+FemxjspbjcTLGp6g==",
-      "path": "nhunspell/1.2.5554.16953",
-      "hashPath": "nhunspell.1.2.5554.16953.nupkg.sha512"
-    },
     "System.Buffers/4.4.0": {
       "type": "package",
       "serviceable": true,
@@ -160,15 +142,13 @@
       "path": "system.runtime.compilerservices.unsafe/4.5.0",
       "hashPath": "system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512"
     },
-    "WeCantSpell.Hunspell/3.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-guVwsDstyatfSrF3pcRvBecKAOAHg2/V/kpQlzUEa/09xgsfyMeDzV/W8iFHR5HpzPCOEYsHtRtpWLP+OZAiiw==",
-      "path": "wecantspell.hunspell/3.0.1",
-      "hashPath": "wecantspell.hunspell.3.0.1.nupkg.sha512"
-    },
     "CriptoClass/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WeCantSpell.Hunspell/0.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

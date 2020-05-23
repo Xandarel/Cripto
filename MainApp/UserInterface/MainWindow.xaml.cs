@@ -35,6 +35,7 @@ namespace UserInterface
             SeriesCollection2 = new SeriesCollection();
         }
 
+        public int selectIndex;
         private dynamic GetWordAndKey { get; set; }
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
@@ -222,7 +223,9 @@ namespace UserInterface
                     case "VigenereKey":
                         var cs = GetCriptSecur("VigenereKey");
                         cs.FindKey(key.Text);
-                        MessageBox.Show(cs.GetKey);
+                        var csh =new Normalizator();
+                        csh.NormalizeKey(cs.GetKey, selectIndex);
+                        MessageBox.Show(String.Join("\n\r", csh.Keys));
                         break;
                     case "FindHillsKey":
                         cs = GetCriptMetod("FindHillsKey");
@@ -539,6 +542,12 @@ namespace UserInterface
                     KeyLength.Visibility = Visibility.Hidden;
                     break;
             }
+        }
+
+        private void KeyLength_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var select = (TextBlock)KeyLength.SelectedItem;
+            selectIndex = Convert.ToInt32(select.Tag);
         }
     }
 }
