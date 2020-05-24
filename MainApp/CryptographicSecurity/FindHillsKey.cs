@@ -59,12 +59,21 @@ namespace CryptographicSecurity
                             a[i, pos] = (gausMatrix[pos, period + 1] + Languege.z) % Languege.z;
                         else
                         {
-                            var multiplication = gausMatrix[pos, period + 1].ToString().Split('.', ',').ToArray()[1].Length;
-                            a[i, pos] = FindQuotientInRing(gausMatrix[pos, period + 1] * Math.Pow(10, multiplication) + Languege.z,
+                            var workElement = Math.Round(gausMatrix[pos, period + 1], 2);
+                            var multiplication = workElement.ToString().Split('.', ',').ToArray()[1].Length;
+                            a[i, pos] = FindQuotientInRing(Math.Round(workElement * Math.Pow(10, multiplication) % Languege.z,0),
                                         Math.Pow(10, multiplication));
                         }
                     }
-                    b[i] = (gausMatrix[period, period + 1]+Languege.z)%Languege.z;
+                    if (gausMatrix[period, period + 1] - (int)gausMatrix[period, period + 1] == 0)
+                        b[i] = (gausMatrix[period, period + 1] + Languege.z) % Languege.z;
+                    else
+                    {
+                        var workElement = Math.Round(gausMatrix[period, period + 1], 2);
+                        var multiplication = workElement.ToString().Split('.', ',').ToArray()[1].Length;
+                        b[i] = FindQuotientInRing(workElement * Math.Pow(10, multiplication) + Languege.z,
+                                    Math.Pow(10, multiplication));
+                    }
                 }
                 Ansver.Add(Matrix<double>.Build.DenseOfArray(a));
                 Ansver.Add(Matrix<double>.Build.DenseOfColumnVectors(Vector<double>.Build.DenseOfArray(b)));

@@ -230,8 +230,8 @@ namespace UserInterface
                     case "FindHillsKey":
                         cs = GetCriptSecur("FindHillsKey");
                         cs.FindKey(textBox1.Text, key.Text);
-                        MessageBox.Show("1");
-
+                        MessageBox.Show(cs.Ansver[0].ToString());
+                        MessageBox.Show(cs.Ansver[1].ToString());
                         break;
                 }
             }
