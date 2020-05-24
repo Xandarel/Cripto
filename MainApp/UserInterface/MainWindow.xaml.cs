@@ -228,7 +228,9 @@ namespace UserInterface
                         MessageBox.Show(String.Join("\n\r", csh.Keys));
                         break;
                     case "FindHillsKey":
-                        cs = GetCriptMetod("FindHillsKey");
+                        cs = GetCriptSecur("FindHillsKey");
+                        cs.FindKey(textBox1.Text, key.Text);
+                        MessageBox.Show("1");
 
                         break;
                 }
@@ -257,7 +259,10 @@ namespace UserInterface
         void ExecuteCript<T>(Interfase_criptoelements<T> cm, WordAndKey<T> wk)
         {
             cm.Code(wk);
-            CripDecripBox.Text = wk.Encoded;
+            if (wk.Encoded=="-1")
+                CripDecripBox.Text = "Матрица является вырожденной. Данную матрицу невозможно расшифровать";
+            else
+                CripDecripBox.Text = wk.Encoded;
         }
 
         List<Matrix<double>> BuildMatrix(string matrixElement)

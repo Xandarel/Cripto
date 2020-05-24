@@ -11,6 +11,11 @@ namespace CryptographicSecurity
     public class FindHillsKey
     {
         public List<Matrix<double>> Ansver { get; } = new List<Matrix<double>>();
+        /// <summary>
+        /// взлом ключа по открытому тексту и зашифрованному тексту
+        /// </summary>
+        /// <param name="word">открытый текст</param>
+        /// <param name="cipher">зашифрованный текст</param>
         public void FindKey(string word, string cipher)
         {
             var checkPeriod = PossiblePeriod(word.Length, cipher.Length); //Все возможные периоды размера ключа
@@ -24,7 +29,7 @@ namespace CryptographicSecurity
             #endregion
             foreach (var period in checkPeriod)
             {
-                if (period != cipher.Length / period - 1)
+                if (period > cipher.Length / period)
                     continue;
                 var a = new double[period, period];
                 var b = new double[period];
@@ -72,10 +77,10 @@ namespace CryptographicSecurity
         List<int> PossiblePeriod(int wLength,int cLength)
         {
             var result = new List<int>();
-            for (int i=2;i<= wLength / 2;i++)
-                if (wLength % i == 0)
+            for (int i=2;i<= cLength / 2;i++)
+                if (cLength % i == 0)
                     result.Add(i);
-            result.Add(wLength);
+            result.Add(cLength);
             return result;
         }
 

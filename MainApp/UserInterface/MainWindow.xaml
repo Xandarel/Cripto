@@ -111,7 +111,8 @@
                        Width="200" 
                        Margin="20,10,0,0"/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock x:Name="CripDecripBox"
+                <TextBlock TextWrapping="WrapWithOverflow" 
+                           x:Name="CripDecripBox"
                            HorizontalAlignment="Left" 
                            Width="200" 
                            Margin="20,10,0,0"/>

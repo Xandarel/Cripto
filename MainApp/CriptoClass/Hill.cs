@@ -11,6 +11,11 @@ namespace CriptoClass
     {
         public string Code(WordAndKey<List<Matrix<double>>> element)
         {
+            if (element.Key[0].Determinant() == 0)
+            {
+                element.Encoded = "-1";
+                return element.Encoded;
+            }
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var n = element.Key[0].ToArray().GetLength(0);
             while (numberLitera.Count % n != 0)
