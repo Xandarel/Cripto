@@ -233,6 +233,14 @@ namespace UserInterface
                         MessageBox.Show(cs.Ansver[0].ToString());
                         MessageBox.Show(cs.Ansver[1].ToString());
                         break;
+                    case "FindPermutationKey":
+                        cs = GetCriptSecur("FindPermutationKey");
+                        cs.FindKey(key.Text, textBox1.Text);
+                        foreach (var k in cs.Key)
+                        {
+                            MessageBox.Show(String.Join(" ", k));
+                        }
+                        break;
                 }
             }
         }
@@ -245,6 +253,8 @@ namespace UserInterface
                     return new VigenereKey();
                 case "FindHillsKey":
                     return new FindHillsKey();
+                case "FindPermutationKey":
+                    return new FindPermutationKey();
                 default:
                     return new VigenereKey();
             }

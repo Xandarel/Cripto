@@ -4,48 +4,78 @@ using System.Text;
 using CriptoClass;
 using Criptoclass;
 using WeCantSpell.Hunspell;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra.Double;
 
 namespace CryptographicSecurity
 {
     public class FindPermutationKey
     {
-        public List<int> Key { get; } = new List<int>();
-        public void FindKey(string text)
+        public List<int[]> Key { get; } = new List<int[]>();
+        public void FindKey(string cText, string oText)
         {
-            for (var del=2;del<=text.Length/2;del++)
+            var numberLitera = Converter.ConvertWordToCode(cText);
+            for (var del=2;del<=cText.Length;del++)
             {
-                if (text.Length % del != 0)
+                if (cText.Length % del != 0)
                     continue;
                 else
                 {
                     var possiblePermutations = SetTransposition(new int[del], 0, del);
                     foreach (var perm in possiblePermutations)
                     {
-                        var block = 0;
-                        var permIndex = 0;
-                        var decryption = new char[text.Length];
-                        for (var w = 0; w < text.Length; w++)
+                        var array = new double[cText.Length / del, del];
+                        var pos = 0;
+                        for (var x = 0; x < del; x++)
+                            for (var y=0;y< cText.Length / del;y++)
+                            {
+                                array[y, x] = numberLitera[pos];
+                                pos++;
+                            }
+                        var matrixArray = Matrix<double>.Build.DenseOfArray(array);
+                        var ansverMatrix = DenseMatrix.Create(cText.Length / del, del, 0);
+                        pos = 0;
+                        foreach (var p in perm)
                         {
-                            decryption[w] = text[perm[permIndex] + block];
-                            permIndex++;
-                            if ((w + 1) % del == 0 && w != 0)
-                                block+=del;
-                            if (permIndex == perm.Length)
-                                permIndex = 0;
+                            var column = matrixArray.Column(p);
+                            ansverMatrix.SetColumn(pos, column.ToArray());
+                            pos++;
                         }
-                        //TODO: Сделать из этого что-то нормальное
-                        var stringDecryption = Converter.ConvertArrayToString(decryption);
-                        if (Languege.dictionary.ContainsKey('А')) //Русский язык
-                        {
-                            var dictionary = WordList.CreateFromFiles(@"Russian.dic", @"Russian.aff");
-                            var suggestions = dictionary.Suggest(stringDecryption);
-                            foreach (var s in suggestions)
-                                Console.WriteLine(s);
-                        }
-                        else
-                        {
+                        string ans = "";
+                        for (var y = 0; y < cText.Length / del; y++)
+                            for (var x = 0; x < del; x++)
+                                ans += Convert.ToString(FindValue.Findvalue(Convert.ToInt32(ansverMatrix[y, x]) % Languege.z));
+                        if (ans.Contains(oText.ToUpper()))
+                            Key.Add(perm);
+                        #region
+                        //var block = 0;
+                        //var permIndex = 0;
+                        //var decryption = new char[cText.Length];
+                        //for (var w = 0; w < cText.Length; w++)
+                        //{
+                        //    decryption[w] = cText[perm[permIndex] + block];
+                        //    permIndex++;
+                        //    if ((w + 1) % del == 0 && w != 0)
+                        //        block+=del;
+                        //    if (permIndex == perm.Length)
+                        //        permIndex = 0;
+                        //}
+                        ////TODO: Сделать из этого что-то нормальное
+                        //var stringDecryption = Converter.ConvertArrayToString(decryption);
+                        //if (stringDecryption.Contains(oText))
+                        //    Key.Add(perm);
+                        //if (Languege.dictionary.ContainsKey('А')) //Русский язык
+                        //{
+                        //    var dictionary = WordList.CreateFromFiles(@"Russian.dic", @"Russian.aff");
+                        //    var suggestions = dictionary.Suggest(stringDecryption);
+                        //    foreach (var s in suggestions)
+                        //        Console.WriteLine(s);
+                        //}
+                        //else
+                        //{
 
-                        }
+                        //}
+                        #endregion
                     }
                 }
             }

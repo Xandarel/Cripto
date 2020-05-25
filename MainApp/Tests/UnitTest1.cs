@@ -35,9 +35,9 @@ namespace Tests
         [Test]
         public void TestPermutation()
         {
-            Languege.Libra("ru");
-            var permut = new FindPermutationKey();
-            permut.FindKey("шифрывиженераа");
+            //Languege.Libra("ru");
+            //var permut = new FindPermutationKey();
+            //permut.FindKey("шифрывиженераа");
         }
     }
 }

@@ -73,6 +73,10 @@
                              Checked="Hack"
                              x:Name="FindHillsKey"
                              Content="Шифр Хилла"/>
+                <RadioButton GroupName="CryptographicSecurity"
+                             Checked="Hack"
+                             x:Name="FindPermutationKey"
+                             Content="Шифр перестановки"/>
             </MenuItem>
 
         </Menu>
