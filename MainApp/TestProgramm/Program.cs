@@ -16,13 +16,30 @@ namespace TestProgramm
     {
         static void Main(string[] args)
         {
-            var candidat = new List<string>();
-            candidat.Add("собакц");
-            candidat.Add("сингапцр");
-            var ans = Bodymethod(@"Russian.dic", @"Russian.aff", -1, candidat);
-            foreach (var a in ans)
-                Console.WriteLine(a);
+            Languege.Libra("ru");
+            var crt = new ChineseRemainderTheorem();
+            var el3 = new TheLinearCongruentialMethod();
+            var el11 = new TheLinearCongruentialMethod();
+            el3.CreatePeriod(3, 1);
+            el11.CreatePeriod(11, 4);
+            crt.CreatePeriod(el3.Period, el11.Period);
+            foreach (var e in el3.Period)
+                Console.Write($"{e} ");
+            Console.WriteLine();
+            foreach (var e in el11.Period)
+                Console.Write($"{e} ");
+            Console.WriteLine();
+            foreach (var e in crt.Period)
+                Console.Write($"{e} ");
             Console.ReadKey();
+
+            //var candidat = new List<string>();
+            //candidat.Add("собакц");
+            //candidat.Add("сингапцр");
+            //var ans = Bodymethod(@"Russian.dic", @"Russian.aff", -1, candidat);
+            //foreach (var a in ans)
+            //    Console.WriteLine(a);
+            //Console.ReadKey();
         }
 
         static List<string> Bodymethod(string dicMode, string affMode, int length, List<string> candidat)

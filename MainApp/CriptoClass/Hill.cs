@@ -77,6 +77,7 @@ namespace CriptoClass
                     element.Encoded = Convert.ToString(FindValue.Findvalue(Convert.ToInt32(matrix[t, 0] % Languege.z)));
                 start = i;
             }
+            element.Key.RemoveRange(0, 2);
             return element.Encoded;
         }
     }
