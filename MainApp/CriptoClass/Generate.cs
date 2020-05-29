@@ -8,6 +8,8 @@ namespace CriptoClass
 {
     public static class Generate
     {
+        static int positionElement=0;
+        static int diagonal=0;
         public static List<Matrix<double>> CreateKeysMatrix(int length)
         {
             Random rnd = new Random();
@@ -16,7 +18,12 @@ namespace CriptoClass
             var second = new double[length, 1];
             for (int i = 0; i < length; i++)
                 for (int j = 0; j < length; j++)
-                    first[i, j] = rnd.Next(0, Languege.z-1);
+                {
+                    if (i == j)
+                        first[i, j] = Languege.setOfReversibleElements[(rnd.Next(0, Languege.z - 1)) % Languege.setOfReversibleElements.Count];
+                    else
+                        first[i, j] = rnd.Next(0, Languege.z - 1);
+                }
             for (int i = 0; i < length; i++)
                 second[i,0]= rnd.Next(0, Languege.z - 1);
             key.Add(Matrix<double>.Build.DenseOfArray(first));
@@ -93,20 +100,19 @@ namespace CriptoClass
             var matrix = new double[range, range];
             Random rnd = new Random();
             var key = new List<Matrix<double>>();
-            int positionElement = 0;
             for (var y=0;y<range;y++)
                 for(var x=0;x<range;x++)
                 {
                     if (y == x)
-                        matrix[y, x] = Languege.setOfReversibleElements[rnd.Next(0, Languege.setOfReversibleElements.Count)];
+                        matrix[y, x] = Languege.setOfReversibleElements[(diagonal++)%Languege.setOfReversibleElements.Count];
                     else if (y > x)
                         matrix[y, x] = 0;
                     else
-                        matrix[y, x] = element[(positionElement++)%element.Count];
+                        matrix[y, x] = element[(positionElement++) % element.Count];
                 }
             var second = new double[range, 1];
-            for (int y=0;y<range;y++)
-                second[y, 0] = rnd.Next(0, Languege.setOfReversibleElements.Count);
+            for (int y = 0; y < range; y++)
+                second[y, 0] = element[(positionElement++) % element.Count];
             key.Add(Matrix<double>.Build.DenseOfArray(matrix));
             key.Add(Matrix<double>.Build.DenseOfArray(second));
             return key;

@@ -28,7 +28,7 @@ namespace UserInterface
             }
         }
 
-        private void Bodymethod(string dicMode, string affMode, int length, List<string> candidat)//TODO: оптимизировать. считает медленно
+        private void Bodymethod(string dicMode, string affMode, int length, List<string> candidat)
         {
             var dictionary = WordList.CreateFromFiles(dicMode, affMode);
             if (length == -1)

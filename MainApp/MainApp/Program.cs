@@ -19,10 +19,10 @@ namespace MainApp
             //Random rnd = new Random();
             #endregion
             #region
-            var basis = new int[,] { { 2, 2, 1, 2 }, { 3, 1, 4, 2 } };
-            var sequence = Generate.PseudorandomSequence(basis);
-            var key = Generate.ModifiedHillMatrix(sequence, 4);
-            //Console.Write($"{key}");
+            var lcm3 = new TheLinearCongruentialMethod();
+            var lcm11 = new TheLinearCongruentialMethod();
+            var china = new ChineseRemainderTheorem();
+            Random rnd = new Random();
             while (true)
             {
                 var text = Console.ReadLine();
@@ -31,10 +31,16 @@ namespace MainApp
                 var staticKey = Generate.CreateKeysMatrix(text.Length);
                 var libra = new WordAndKey<List<Matrix<double>>>(text, staticKey);
                 var tr = new Hill();
-                tr.Code(libra,sequence);
+                lcm11.CreatePeriod(11, rnd.Next(0,11));
+                lcm3.CreatePeriod(3, rnd.Next(0,3));
+                china.CreatePeriod(lcm3.Period, lcm11.Period);
+                tr.Code(libra,china.Period);
+                hillBase.WriteLine(string.Join(" ", lcm3.Period));
+                hillBase.WriteLine(string.Join(" ", lcm11.Period));
                 hillBase.WriteLine(libra.Word);
                 hillBase.WriteLine(libra.Encoded);
-                hillBase.WriteLine(libra.Key[0].ToMatrixString());
+                foreach (var l in libra.Key)
+                    hillBase.WriteLine(l.ToMatrixString());
             }
             hillBase.Close();
             #endregion //

@@ -55,7 +55,7 @@ namespace CriptoClass
             }
             return element.Encoded;
         }
-        public string Code(WordAndKey<List<Matrix<double>>> element, List<int> sequence) //TODO: декодирования нету. Упс(
+        public string Code(WordAndKey<List<Matrix<double>>> element, List<int> sequence)
         {
             var numberLitera = Converter.ConvertWordToCode(element.Word);
             var n = element.Key[0].ToArray().GetLength(0);

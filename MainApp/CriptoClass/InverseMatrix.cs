@@ -9,7 +9,7 @@ namespace CriptoClass
 {
      public static class InverseMatrix
     {
-        public static Matrix<double> Inverse_Matrix(Matrix<double> matrix) //TODO: доделать. Понять как сделать союзную матрицу
+        public static Matrix<double> Inverse_Matrix(Matrix<double> matrix)
         {
             var determinant = matrix.Determinant() % Languege.z; //Определитель матрицы в кольце
             for (var i=2;i<Languege.z;i++)

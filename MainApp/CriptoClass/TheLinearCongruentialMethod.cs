@@ -14,6 +14,8 @@ namespace CriptoClass
         }
         public void CreatePeriod(int m,int startElement)
         {
+            if (Period.Count > 0)
+                Period.Clear();
             var c = FindMutuallyPrimeNumbers(m);
             var dividersM = FindDividers(m);
             var simpleDividers = new List<int>();
